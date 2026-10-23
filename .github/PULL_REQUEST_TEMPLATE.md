@@ -4,11 +4,13 @@
 
 ## How I tested it
 
-<!-- For example: "Installed from my fork on an Umbrel Home, pressed Fix everything, Sonarr showed qBittorrent (VPN)". -->
+<!-- For example: "python3 tools/umbrel_sim.py canopy-miniflux passes" or "installed from my fork on an Umbrel Home". -->
 
 ## Checklist
 
 - [ ] `pytest -q tests` passes
-- [ ] Added or updated a test for the behaviour I changed
+- [ ] For a new or changed app: `python3 tools/umbrel_sim.py <app-id>` passes
+- [ ] Images are pinned to a release tag and digest, and run on amd64 and arm64
 - [ ] Anything a user reads is in plain English (no jargon, says what to do next)
-- [ ] If this should reach users as a release: bumped `version` in `yams-media/umbrel-app.yml` **and** `YAMS_VERSION` in `yams-media/docker-compose.yml`, and added a line to `CHANGELOG.md`
+- [ ] No real passwords, keys or personal files anywhere in the change
+- [ ] For YAMS releases: bumped `version` in `canopy-yams/umbrel-app.yml` **and** `YAMS_VERSION` in `canopy-yams/docker-compose.yml`, and added a line to `CHANGELOG.md`

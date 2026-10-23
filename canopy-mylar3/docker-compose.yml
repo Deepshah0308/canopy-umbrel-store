@@ -1,0 +1,19 @@
+version: "3.7"
+
+services:
+  app_proxy:
+    environment:
+      APP_HOST: canopy-mylar3_mylar3_1
+      APP_PORT: 8090
+
+  mylar3:
+    image: linuxserver/mylar3:0.11.0@sha256:85f41065ad9f264f5f9000abcf17215a9b2b0cd207c954fb6b47c6dcf950389f
+    restart: on-failure
+    environment:
+      PUID: "1000"
+      PGID: "1000"
+      TZ: ${TZ:-Etc/UTC}
+    volumes:
+      - ${APP_DATA_DIR}/data/config:/config
+      - ${UMBREL_ROOT}/data/storage/downloads/media/comics:/comics
+      - ${UMBREL_ROOT}/data/storage/downloads:/downloads

@@ -1,0 +1,26 @@
+manifestVersion: 1
+id: canopy-bytestash
+category: developer
+name: ByteStash
+version: "1.6.0"
+tagline: "Save, organise and share your code snippets"
+icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/bytestash.svg
+description: >-
+  ByteStash is a home for the code snippets, commands and config files you keep needing: tag them, search them, keep several files in one snippet, and share a read-only link when you need to.
+
+
+  Create your account the first time you open it. To stop anyone else on your network creating an account afterwards, turn off sign-ups in the app's settings.
+developer: Jordan Dalby
+website: https://github.com/jordan-dalby/ByteStash
+dependencies: []
+repo: https://github.com/jordan-dalby/ByteStash
+support: https://github.com/Deepshah0308/canopy-umbrel-store/issues
+port: 7409
+gallery: []
+path: ""
+defaultUsername: ""
+defaultPassword: ""
+releaseNotes: >-
+  ByteStash 1.6.0, new to Umbrel.
+submitter: Deepshah0308
+submission: https://github.com/Deepshah0308/canopy-umbrel-store

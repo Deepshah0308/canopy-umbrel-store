@@ -1,17 +1,17 @@
 name: Something isn't working
-description: Report a problem with YAMS on Umbrel
+description: Report a problem with an app from Canopy
 labels: [bug]
 body:
   - type: markdown
     attributes:
       value: |
-        Thanks for reporting! Before you start, try **Quick fixes → Fix everything** in the YAMS dashboard. It solves most connection problems.
+        Thanks for reporting! For YAMS, try **Quick fixes → Fix everything** on its dashboard first. It solves most connection problems.
   - type: input
     id: version
     attributes:
-      label: YAMS version
-      description: Shown at the top of the YAMS dashboard, next to "YAMS on Umbrel".
-      placeholder: v1.3.0
+      label: App and version
+      description: Shown on the app's page in the Umbrel App Store (and at the top of the YAMS dashboard).
+      placeholder: YAMS 1.4.0
     validations:
       required: true
   - type: dropdown
@@ -19,7 +19,9 @@ body:
     attributes:
       label: Which part is affected?
       options:
-        - Installing YAMS
+        - Installing an app
+        - Another Canopy app (Netdata, Miniflux, …)
+        - YAMS extras (Seerr, Lidarr, Recyclarr, Unpackerr, Decluttarr)
         - VPN (gluetun)
         - qBittorrent
         - Sonarr

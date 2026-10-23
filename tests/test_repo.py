@@ -8,7 +8,7 @@ import subprocess
 import yaml
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-APP = os.path.join(ROOT, "yams-media")
+APP = os.path.join(ROOT, "canopy-yams")
 HOOKS = os.path.join(APP, "hooks")
 HOOK_NAMES = {"pre-install", "post-install", "pre-start", "post-start", "pre-stop", "post-stop",
               "pre-update", "post-update", "pre-uninstall", "post-uninstall"}
@@ -104,3 +104,16 @@ def test_no_secrets_in_the_repository():
             for match in pattern.finditer(text):
                 found.append(f"{os.path.relpath(path, ROOT)}: {match.group(0)[:12]}…")
     assert not found, "Possible secrets committed:\n" + "\n".join(found)
+
+
+def test_every_extra_is_in_the_app_and_waits_for_its_switch():
+    import sys
+    sys.path.insert(0, os.path.join(HOOKS, "yams", "dashboard"))
+    import extras
+    services = load(os.path.join(APP, "docker-compose.yml"))["services"]
+    for name in extras.ORDER:
+        svc = services.get(name)
+        assert svc, f"the {name} extra is missing from docker-compose.yml"
+        assert svc["entrypoint"][:3] == ["/bin/sh", "/yams-app/extras/gate.sh", name], f"{name} must start through the gate"
+        assert any(v.endswith(":/yams-extras:ro") for v in svc["volumes"]), f"{name} can't see its switch"
+        assert svc.get("networks") == ["yams"], f"{name} must only be on the private yams network"

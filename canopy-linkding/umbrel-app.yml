@@ -1,0 +1,26 @@
+manifestVersion: 1
+id: canopy-linkding
+category: social
+name: linkding
+version: "1.47.0"
+tagline: "Fast, minimal bookmark manager with tags and archiving"
+icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/linkding.svg
+description: >-
+  linkding keeps your bookmarks in one fast, clean list. Tag them, search them, mark them to read later, share them, and let linkding save a copy of each page so it doesn't disappear.
+
+
+  Browser extensions for Firefox and Chrome add a page in two clicks. Sign in with the username and password shown on this page.
+developer: Sascha Ißbrücker
+website: https://linkding.link
+dependencies: []
+repo: https://github.com/sissbruecker/linkding
+support: https://github.com/Deepshah0308/canopy-umbrel-store/issues
+port: 7405
+gallery: []
+path: ""
+defaultUsername: "umbrel"
+deterministicPassword: true
+releaseNotes: >-
+  linkding 1.47.0, new to Umbrel.
+submitter: Deepshah0308
+submission: https://github.com/Deepshah0308/canopy-umbrel-store

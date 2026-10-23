@@ -1,0 +1,13 @@
+version: "3.7"
+
+services:
+  app_proxy:
+    environment:
+      APP_HOST: canopy-feishin_feishin_1
+      APP_PORT: 9180
+
+  feishin:
+    image: ghcr.io/jeffvli/feishin:1.17.0@sha256:6c75a4d3b99065ac245e2eb2b693fde3e5f2a6fe41c9e255da4fcb8948071965
+    restart: on-failure
+    environment:
+      PUBLIC_PATH: /

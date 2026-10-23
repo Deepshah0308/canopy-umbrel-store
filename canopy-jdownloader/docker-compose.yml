@@ -1,0 +1,20 @@
+version: "3.7"
+
+services:
+  app_proxy:
+    environment:
+      APP_HOST: canopy-jdownloader_jdownloader_1
+      APP_PORT: 5800
+
+  jdownloader:
+    image: jlesage/jdownloader-2:v26.09.1@sha256:bd6cd2fdc72818f30207e677b33cd7f1b425048c4e7132624e541e99f992be4c
+    restart: on-failure
+    environment:
+      USER_ID: "1000"
+      GROUP_ID: "1000"
+      TZ: ${TZ:-Etc/UTC}
+      KEEP_APP_RUNNING: "1"
+      DARK_MODE: "1"
+    volumes:
+      - ${APP_DATA_DIR}/data/config:/config
+      - ${UMBREL_ROOT}/data/storage/downloads/jdownloader:/output

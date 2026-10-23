@@ -1,12 +1,12 @@
 name: Idea or improvement
-description: Suggest something that would make YAMS on Umbrel easier or better
+description: Suggest an app for Canopy, or something that would make an app easier
 labels: [enhancement]
 body:
   - type: textarea
     id: problem
     attributes:
-      label: What would you like to be easier?
-      description: Describe the situation, not only the solution. "I keep having to…" is a great start.
+      label: What would you like to be easier, or which app should Canopy add?
+      description: Describe the situation, not only the solution. "I keep having to…" is a great start. Canopy adds apps that aren't in Umbrel's official store, or that other stores ship out of date.
     validations:
       required: true
   - type: textarea

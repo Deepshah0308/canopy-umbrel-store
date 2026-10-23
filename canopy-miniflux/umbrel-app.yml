@@ -1,0 +1,26 @@
+manifestVersion: 1
+id: canopy-miniflux
+category: social
+name: Miniflux
+version: "2.3.4"
+tagline: "Minimalist, fast RSS reader with no clutter"
+icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/miniflux.svg
+description: >-
+  Miniflux is a reader for RSS and Atom feeds that does one thing well: shows you new articles from the sites you follow, quickly, without ads or tracking. It fetches full articles, removes trackers from links, supports keyboard shortcuts and works with mobile apps through the Fever and Google Reader APIs.
+
+
+  Sign in with the username and password shown on this page.
+developer: Frédéric Guillot
+website: https://miniflux.app
+dependencies: []
+repo: https://github.com/miniflux/v2
+support: https://github.com/Deepshah0308/canopy-umbrel-store/issues
+port: 7406
+gallery: []
+path: ""
+defaultUsername: "umbrel"
+deterministicPassword: true
+releaseNotes: >-
+  Miniflux 2.3.4, new to Umbrel.
+submitter: Deepshah0308
+submission: https://github.com/Deepshah0308/canopy-umbrel-store

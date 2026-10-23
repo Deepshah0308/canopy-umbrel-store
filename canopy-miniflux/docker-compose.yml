@@ -1,0 +1,37 @@
+version: "3.7"
+
+services:
+  app_proxy:
+    environment:
+      APP_HOST: canopy-miniflux_miniflux_1
+      APP_PORT: 8080
+      # Miniflux has its own login
+      PROXY_AUTH_ADD: "false"
+
+  miniflux:
+    image: miniflux/miniflux:2.3.4@sha256:72e49f513a63104506aab98ba8cfc3a409d4fde23550a583dec07ec941f1e94e
+    restart: on-failure
+    environment:
+      DATABASE_URL: postgres://miniflux:${APP_PASSWORD}@canopy-miniflux_db_1/miniflux?sslmode=disable
+      RUN_MIGRATIONS: "1"
+      CREATE_ADMIN: "1"
+      ADMIN_USERNAME: umbrel
+      ADMIN_PASSWORD: ${APP_PASSWORD}
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: postgres:17.11-alpine@sha256:eee6c6e1b0894fa4fe0075eb054af9fd1cf39a35321c2d4110626cfe506411fb
+    restart: on-failure
+    environment:
+      POSTGRES_USER: miniflux
+      POSTGRES_PASSWORD: ${APP_PASSWORD}
+      POSTGRES_DB: miniflux
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      - ${APP_DATA_DIR}/data/db:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "miniflux"]
+      interval: 10s
+      start_period: 30s

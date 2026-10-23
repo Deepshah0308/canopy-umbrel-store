@@ -46,15 +46,15 @@ class FakeDocker:
         merged = {"Hostname": cid[:12], "Image": ref,
                   "Env": list(img_cfg.get("Env", [])) + cfg.pop("Env", []),
                   "Labels": {**img_cfg.get("Labels", {}), **cfg.pop("Labels", {}),
-                             "com.docker.compose.project": "yams-media",
+                             "com.docker.compose.project": "canopy-yams",
                              "com.docker.compose.service": service},
                   "Cmd": img_cfg.get("Cmd"), "Entrypoint": img_cfg.get("Entrypoint")}
         merged.update(cfg)
         self.containers[cid] = {
-            "Id": cid, "Name": f"/yams-media_{service}_1", "Image": image_id,
+            "Id": cid, "Name": f"/canopy-yams_{service}_1", "Image": image_id,
             "Config": merged, "HostConfig": host or {"NetworkMode": "umbrel_main_network", "Binds": [f"/data/{service}:/config"]},
             "NetworkSettings": {"Networks": networks if networks is not None else
-                                {"umbrel_main_network": {"Aliases": [service, f"yams-media_{service}_1", cid[:12]],
+                                {"umbrel_main_network": {"Aliases": [service, f"canopy-yams_{service}_1", cid[:12]],
                                                          "IPAMConfig": None, "Links": None}}},
             "State": {"Running": running},
         }
@@ -235,6 +235,9 @@ class FakeApps:
         self.commands = []
         self.qbit_ok = True
         self.links_ok = True
+        self.proxies = [{"id": 1, "implementation": "FlareSolverr",
+                         "fields": [{"name": "host", "value": "http://canopy-yams_flaresolverr_1:8191/"},
+                                    {"name": "requestTimeout", "value": 60}]}]
 
     def start(self):
         fake = self
@@ -287,7 +290,7 @@ class FakeApps:
                     if rest == "/tag":
                         return self.reply(200, [{"id": 1, "label": "flaresolverr"}])
                     if rest == "/indexerProxy":
-                        return self.reply(200, [{"implementation": "FlareSolverr"}])
+                        return self.reply(200, copy.deepcopy(fake.proxies))
                     if rest == "/indexer":
                         return self.reply(200, [{"id": 1}, {"id": 2}])
                 return self.reply(404, {})
@@ -304,6 +307,10 @@ class FakeApps:
                         names = {f["name"] for f in body.get("fields", [])}
                         if set(ARR_FIELDS[app]) - names:
                             return self.reply(400, [{"errorMessage": "missing fields"}])
+                        # Like the real apps: an enabled client is tested on save, even with forceSave
+                        if body.get("enable") and not fake.qbit_ok:
+                            return self.reply(400, [{"errorMessage": "Unable to connect to qBittorrent",
+                                                     "severity": "error"}])
                         body["id"] = len(fake.clients[app]) + 1
                         fake.clients[app].append(body)
                         return self.reply(201, body)
@@ -334,10 +341,21 @@ class FakeApps:
                 if app in ("sonarr", "radarr") and rest.startswith("/downloadclient/"):
                     fake.clients[app] = [body if c["id"] == body["id"] else c for c in fake.clients[app]]
                     return self.reply(202, body)
+                if app == "prowlarr" and rest.startswith("/indexerProxy/"):
+                    fake.proxies = [body if x["id"] == body["id"] else x for x in fake.proxies]
+                    return self.reply(202, body)
                 if app == "prowlarr" and rest.startswith("/applications/"):
                     fake.apps = [body if a["id"] == body["id"] else a for a in fake.apps]
                     fake.links_ok = True
                     return self.reply(202, body)
+                return self.reply(404, {})
+
+            def do_DELETE(self):
+                app, rest = self.route()
+                if app == "prowlarr" and rest.startswith("/applications/"):
+                    app_id = int(rest.rsplit("/", 1)[1])
+                    fake.apps = [a for a in fake.apps if a["id"] != app_id]
+                    return self.reply(200, {})
                 return self.reply(404, {})
 
         self.server = ThreadingHTTPServer(("127.0.0.1", 0), Handler)

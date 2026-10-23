@@ -1,37 +1,88 @@
-# YAMS App Store for Umbrel
+# Canopy: an app store for Umbrel
 
-[![Checks](https://github.com/Deepshah0308/yams-umbrel-store/actions/workflows/checks.yml/badge.svg)](https://github.com/Deepshah0308/yams-umbrel-store/actions/workflows/checks.yml)
+[![Checks](https://github.com/Deepshah0308/canopy-umbrel-store/actions/workflows/checks.yml/badge.svg)](https://github.com/Deepshah0308/canopy-umbrel-store/actions/workflows/checks.yml)
+[![Update apps](https://github.com/Deepshah0308/canopy-umbrel-store/actions/workflows/update-apps.yml/badge.svg)](https://github.com/Deepshah0308/canopy-umbrel-store/actions/workflows/update-apps.yml)
 
-**Install guide: https://deepshah0308.github.io/yams-umbrel-store/**
+**Website and install guide: https://deepshah0308.github.io/canopy-umbrel-store/**
 
-A community app store for [umbrelOS](https://umbrel.com) with one app: **YAMS** ([Yet Another Media Server](https://yams.media)), packaged so a complete beginner can go from "install" to "watching" without touching a terminal or a config file.
+A community app store for [umbrelOS](https://umbrel.com) with apps Umbrel's own store doesn't have, plus apps that other community stores ship years out of date. Every app is pinned to an exact upstream release, checked for new versions every day, and **installed and tested before an update reaches you**.
 
-One install gives you Jellyfin, Sonarr, Radarr, Prowlarr (+ FlareSolverr), Bazarr and qBittorrent locked behind a VPN, all already connected to each other, plus a setup dashboard that walks you through the four things only you can decide.
+It's also the home of **YAMS**, a complete media server (Jellyfin, Sonarr, Radarr, Prowlarr, Bazarr, qBittorrent behind a VPN) that comes already wired together.
 
-## Publish the store (one time, about 3 minutes)
+## Add the store
 
-1. Create a new **public** GitHub repository, for example `yams-umbrel-store`.
-2. Upload everything in this folder to it (drag the files into GitHub's "Add file → Upload files" page, or `git push`). Keep the folder structure exactly as it is, including the empty `data/` folders.
-3. Your store address is the repository URL. For this store it's:
+1. In Umbrel, open the **App Store**, click **⋯** (top right) and choose **Community App Stores**.
+2. Paste this address and click **Add**:
 
    ```
-   https://github.com/Deepshah0308/yams-umbrel-store
+   https://github.com/Deepshah0308/canopy-umbrel-store
    ```
+3. Open **Canopy** and install whatever you like. Umbrel warns that community apps aren't reviewed by Umbrel; that's expected.
 
-That's it. There's nothing to build; every image is pulled from Docker Hub.
+## What's inside
 
-## Install YAMS (what you tell a newbie)
+| App | What it is | Why it's here |
+|---|---|---|
+| **YAMS** | Pre-wired media server, with Seerr, Lidarr, Recyclarr, Unpackerr and Decluttarr one switch away | Nothing else on Umbrel sets the whole stack up for you |
+| **Netdata** | Live health of your Umbrel and every app | The other package is on 1.47 and doesn't watch the real machine |
+| **JDownloader 2** | Download manager for file hosts and video sites | The other package is a 2024 build |
+| **openHAB** | Vendor-neutral home automation | The other package is on 4.2; this is 5.2 |
+| **SiYuan** | Block-based notes and knowledge base | The other package is on 3.1; this is 3.8 |
+| **linkding** | Minimal bookmark manager | Not on any Umbrel store |
+| **Miniflux** | Fast, minimalist RSS reader | Not on any Umbrel store |
+| **NZBGet** | Lightweight Usenet downloader | Not on any Umbrel store |
+| **Feishin** | Music player for Jellyfin and Navidrome | Not on any Umbrel store |
+| **ByteStash** | Code snippet manager | Not on any Umbrel store |
+| **Mylar3** | Comic book automation | Not on any Umbrel store |
 
-1. In Umbrel, open the **App Store**, click the **⋯** menu (top right) and choose **Community App Stores**.
-2. Paste `https://github.com/Deepshah0308/yams-umbrel-store` and click **Add**. Umbrel will warn that community apps aren't reviewed by Umbrel; that's expected.
-3. Open **YAMS App Store**, click **YAMS**, then **Install**. The first install downloads roughly 2–3 GB of images, so give it a few minutes.
-4. Open YAMS. The dashboard lights up four steps in order:
-   - **Connect a VPN.** Download a WireGuard file from your VPN's website and paste it in (or choose the file). YAMS checks it, fixes the common problems, and connects. Downloads stay off until this works.
-   - **Choose where YAMS searches.** Add your indexers in Prowlarr. They flow to Sonarr and Radarr automatically.
-   - **Add a show or a movie** in Sonarr or Radarr.
-   - **Start watching** in Jellyfin at `http://umbrel.local:8097`, using the login shown on the dashboard.
+The website always shows each app's current version and when it was last updated.
 
-## What's done automatically
+## How Canopy stays current
+
+Every morning a [GitHub Action](.github/workflows/update-apps.yml) runs [`tools/ship_updates.py`](tools/ship_updates.py):
+
+1. **Check.** For every image it asks the registry for newer releases. Only real releases count: a tag must look like the one in use (`v`, number of parts, suffixes like `-alpine`), so betas, release candidates and nightlies are ignored. Databases stay on their major version; language runtimes on their minor version.
+2. **Verify.** A new version must run on both amd64 (Umbrel Home, PCs) and arm64 (Raspberry Pi), and must have been built after the one in use. Images are pinned by digest, and rebuilt tags (security fixes) refresh the digest.
+3. **Test.** [`tools/umbrel_sim.py`](tools/umbrel_sim.py) installs the updated app exactly the way umbrelOS does (same folders, environment and container names, `app_proxy` replaced by a check) and confirms every container stays up and the web UI answers.
+4. **Ship or ask.** Patch, minor and rebuild updates that pass go straight to `main`, and Umbrel offers them within the hour. Major versions, and anything that fails, become a pull request with the test output attached.
+
+Every pull request also runs the unit tests, the store rules ([`tests/test_store.py`](tests/test_store.py)), the online checks ([`tools/lint_store.py`](tools/lint_store.py): both CPU architectures, no port clashes with Umbrel's official store or other popular stores, no duplicates of official apps) and the install test for each changed app.
+
+## Store rules
+
+- Only apps that aren't in Umbrel's official store, or that other stores ship badly out of date.
+- Every image pinned to a release tag **and** its digest, from the app's official publisher.
+- Runs on amd64 and arm64.
+- Apps with their own login skip Umbrel's login (no double sign-in). Apps without one stay behind Umbrel's login.
+- Least privilege: nothing gets the Docker socket, host folders or capabilities it doesn't need. (Netdata reads container names through a read-only proxy that can't start, stop or change anything.)
+- No secrets in the repository. Passwords come from Umbrel (`APP_PASSWORD`, shown on the app's page) or are generated on the device.
+
+## YAMS
+
+YAMS ([Yet Another Media Server](https://yams.media)) packaged so a complete beginner can go from "install" to "watching" without a terminal or a config file. Open it after installing and the dashboard walks you through four steps: connect a VPN (paste a WireGuard file), add indexers in Prowlarr, add a show or movie, and watch in Jellyfin at `http://umbrel.local:8097`.
+
+**Moving from the old YAMS store** (`yams-umbrel-store`, app id `yams-media`)? The old and new YAMS use the same ports, so they can't run side by side. Backups are kept in your Downloads folder, which uninstalling doesn't touch:
+
+1. In the old YAMS, open **Backups** and press **Back up now**.
+2. Uninstall the old YAMS (your media and backups in Downloads stay).
+3. In **Community App Stores**, remove the old YAMS store and add Canopy's address.
+4. Install YAMS from Canopy, open **Backups** and restore the backup from step 1.
+
+Settings, logins, VPN and library come across, and YAMS re-points every connection to its new containers. Jellyfin keeps port 8097, so TV and phone apps keep working.
+
+### Extras
+
+Optional apps that ship with YAMS, off until you switch them on in the dashboard's **Extras** section. While off, each one only runs a tiny wait loop. When you switch one on, YAMS writes its settings and connects it:
+
+| Extra | What YAMS sets up for you |
+|---|---|
+| **Seerr** (port 7475) | Signs in to Jellyfin, turns on the Movies and Shows libraries, adds Sonarr and Radarr, finishes the setup wizard. Family members sign in with their Jellyfin accounts. |
+| **Lidarr** | Music root folder, qBittorrent (category `music`), Prowlarr link, and a Music library in Jellyfin |
+| **Recyclarr** | Syncs the TRaSH Guides quality sizes plus a WEB-1080p profile (Sonarr) and HD Bluray + WEB profile (Radarr), daily; Seerr then requests with them |
+| **Unpackerr** | Watches Sonarr, Radarr (and Lidarr) for `.rar` downloads and unpacks them |
+| **Decluttarr** | Removes stalled, failed and slow downloads and searches again. Never touches private-tracker torrents or torrents you added yourself |
+
+### What's done automatically
 
 | Normally you'd have to… | YAMS on Umbrel does it for you |
 |---|---|
@@ -46,7 +97,7 @@ That's it. There's nothing to build; every image is pulled from Docker Hub.
 
 The one thing left for you inside an app is picking subtitle languages in **Bazarr → Settings → Languages**.
 
-## Managing YAMS
+### Managing YAMS
 
 Once setup is done, the YAMS dashboard becomes the control panel for the whole stack (the equivalent of the `yams` command-line tool):
 
@@ -74,7 +125,7 @@ Backups contain your passwords and VPN key, so keep copies somewhere private.
 
 **Docker access.** The dashboard mounts the Docker socket so it can read logs, restart containers and update apps, the same approach Umbrel's Portainer and Dozzle apps use. It only ever acts on containers that belong to the YAMS app (by their Docker Compose project label), and can't restart itself.
 
-## How it fits together
+### How it fits together
 
 ```
 Umbrel login ──► web (Caddy) ─┬─ /            dashboard (setup + auto-wiring)
@@ -91,53 +142,47 @@ port 8097 ──► Jellyfin                          gluetun (WireGuard VPN)
 
 **Files** live in Umbrel's Downloads folder: `Downloads/torrents` (in progress) and `Downloads/media` (your library). Because both are on one mount, Sonarr and Radarr hardlink finished downloads instead of copying them, so seeding doesn't double your disk usage.
 
-## Repository layout
-
-```
-umbrel-app-store.yml          store id "yams"
-yams-media/
-  umbrel-app.yml              listing shown in Umbrel
-  docker-compose.yml          the stack
-  hooks/yams/                 app code (lives under hooks/ because umbrelOS
-                              re-copies that folder on every app update)
-    setup/seed.py             first boot: keys, passwords, starter configs, folders
-    dashboard/server.py       dashboard API, app wiring, Docker controls, widgets
-    dashboard/backups.py      backup, restore and the backup schedule
-    dashboard/updater.py      app updates: registry checks, pulls, safe container swaps
-    dashboard/index.html      the setup dashboard
-    vpn/vpn-wrapper.sh        starts gluetun once a VPN file exists; reconnects on change
-    qbittorrent/entry.sh      holds qBittorrent until the VPN tunnel is up
-    qbittorrent/vpn-guard.sh  stops qBittorrent if the VPN drops
-    Caddyfile                 routes every UI behind the Umbrel login
-  data/                       persistent config (empty until first run)
-docs/                         the install guide (GitHub Pages)
-tests/                        automated tests, run on every pull request
-```
-
-## Troubleshooting
+### Troubleshooting YAMS
 
 Start with **Quick fixes → Fix everything** in the YAMS dashboard. It solves most connection problems.
 
 - **qBittorrent says "Waiting for the VPN".** Open **Logs** on the **VPN** row. The last lines say why the tunnel isn't up (an expired key, an unreachable server). Downloading a fresh WireGuard file for another server fixes most cases.
 - **An app says "Keeps restarting".** Its row shows the last log line; open **Logs** for the full story.
 - **VPN says "Can't connect".** Download a file for a different server. Some providers' files expire, and a few (e.g. NordVPN) don't offer WireGuard downloads at all; Proton VPN, Mullvad and AirVPN all do.
-- **Port 8097 is taken.** Change `8097:8096` in `docker-compose.yml` and `JELLYFIN_PORT` on the dashboard service to the same new number.
+- **Port 8097 is taken.** Denny's store has an Emby app on the same port; you can't run both. Otherwise change `8097:8096` in `docker-compose.yml` and `JELLYFIN_PORT` on the dashboard service to the same new number.
 - **You changed the qBittorrent password.** Update it in Sonarr and Radarr under Settings → Download Clients.
 - **Logs.** Use **Logs** on any app in the YAMS dashboard. Umbrel's own Troubleshoot view (right-click YAMS) works too. Lines starting with `[yams]` come from this package.
 - **Start over.** Back up first, then uninstall YAMS (this deletes its settings, not your media or backups in Downloads) and install again. Restore the backup if you want your settings back.
 - **A restore went wrong.** Every restore first saves a "Before restore" backup; restore that one to get back to where you were.
 
-## Known limits
+### Known limits
 
 - VPN setup supports WireGuard files. OpenVPN-only providers aren't covered by the dashboard yet.
 - VPN port forwarding isn't configured, so torrents work but may connect to fewer peers.
 - No hardware transcoding by default. On Intel machines you can add `devices: ["/dev/dri:/dev/dri"]` to the Jellyfin service.
 - Only the Downloads folder is used; external drives need Umbrel 2.0's folder access feature or a manual mount.
 
+## Repository layout
+
+```
+umbrel-app-store.yml          store id "canopy"
+canopy-<app>/                 one folder per app: umbrel-app.yml + docker-compose.yml
+canopy-yams/hooks/yams/       YAMS's own code (dashboard, setup, VPN scripts, extras)
+tools/
+  umbrel_sim.py               install an app the way umbrelOS does and check it works
+  update_apps.py              find and apply newer releases
+  ship_updates.py             the daily bot: update, test, ship or open a pull request
+  lint_store.py               online checks: architectures, ports, duplicates
+  registry.py                 small container registry client
+  build_site.py               fills the website's app list
+docs/                         the website (GitHub Pages)
+tests/                        unit tests and store rules, run on every pull request
+```
+
 ## Contributing
 
-Bug reports, ideas and pull requests are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) for how to run the tests and try changes on your own Umbrel. The changes in each version are listed in [CHANGELOG.md](CHANGELOG.md).
+New apps, fixes and ideas are welcome; see [CONTRIBUTING.md](CONTRIBUTING.md). Changes are listed in [CHANGELOG.md](CHANGELOG.md), and security reports go through [SECURITY.md](SECURITY.md).
 
 ## Credits
 
-[YAMS](https://yams.media) by rogs, [gluetun](https://github.com/qdm12/gluetun), the [linuxserver.io](https://linuxserver.io) images, [TRaSH Guides](https://trash-guides.info), and the [Umbrel community app store template](https://github.com/getumbrel/umbrel-community-app-store).
+[YAMS](https://yams.media) by rogs, every app's own authors, [gluetun](https://github.com/qdm12/gluetun), the [linuxserver.io](https://linuxserver.io) images, [TRaSH Guides](https://trash-guides.info), [dashboard-icons](https://github.com/homarr-labs/dashboard-icons) for app icons, and the [Umbrel community app store template](https://github.com/getumbrel/umbrel-community-app-store).

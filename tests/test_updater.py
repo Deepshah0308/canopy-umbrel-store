@@ -60,14 +60,14 @@ def test_update_recreates_only_changed_apps_keeping_their_settings(docker):
     assert updater.job["error"] is None, updater.job["error"]
     assert docker.backups_taken == [1]
     sonarr = docker.by_service("sonarr")
-    assert sonarr["Name"] == "/yams-media_sonarr_1" and sonarr["State"]["Running"]
+    assert sonarr["Name"] == "/canopy-yams_sonarr_1" and sonarr["State"]["Running"]
     assert docker.images[sonarr["Image"]]["RepoDigests"][0].endswith("s-new")
     env = sonarr["Config"]["Env"]
     assert "PUID=1000" in env and "VERSION=2" in env and "VERSION=1" not in env   # new image defaults win
     assert sonarr["Config"]["Labels"]["com.docker.compose.service"] == "sonarr"
     assert sonarr["HostConfig"]["Binds"] == ["/data/sonarr:/config"]
     aliases = sonarr["NetworkSettings"]["Networks"]["umbrel_main_network"]["Aliases"]
-    assert "sonarr" in aliases and "yams-media_sonarr_1" in aliases
+    assert "sonarr" in aliases and "canopy-yams_sonarr_1" in aliases
     assert docker.by_service("radarr")["Id"] == radarr_before                       # untouched
     assert not [c for c in docker.containers.values() if c["Name"].endswith("-yams-old")]
 
@@ -100,7 +100,7 @@ def test_rolls_back_when_the_new_container_will_not_start(docker):
     updater.run_update(services=["sonarr"])
     assert "wouldn't start" in updater.job["error"]
     sonarr = docker.by_service("sonarr")
-    assert sonarr["Id"] == old_id and sonarr["Name"] == "/yams-media_sonarr_1" and sonarr["State"]["Running"]
+    assert sonarr["Id"] == old_id and sonarr["Name"] == "/canopy-yams_sonarr_1" and sonarr["State"]["Running"]
     assert len([c for c in docker.containers.values() if "sonarr" in c["Name"]]) == 1
 
 

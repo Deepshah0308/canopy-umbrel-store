@@ -1,0 +1,26 @@
+manifestVersion: 1
+id: canopy-siyuan
+category: files
+name: SiYuan
+version: "3.8.8"
+tagline: "Private notes and knowledge base with blocks, links and databases"
+icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/siyuan.svg
+description: >-
+  SiYuan is a note-taking app built from blocks: every paragraph can be linked, embedded and referenced elsewhere. It has Markdown editing, PDF annotation, flashcards, databases and full-text search, and your notes stay on your Umbrel.
+
+
+  SiYuan asks for an access code when you open it. Use the password shown on this page.
+developer: B3log
+website: https://b3log.org/siyuan/en/
+dependencies: []
+repo: https://github.com/siyuan-note/siyuan
+support: https://github.com/Deepshah0308/canopy-umbrel-store/issues
+port: 7404
+gallery: []
+path: ""
+defaultUsername: ""
+deterministicPassword: true
+releaseNotes: >-
+  SiYuan 3.8.8. Other stores still ship 3.1.
+submitter: Deepshah0308
+submission: https://github.com/Deepshah0308/canopy-umbrel-store

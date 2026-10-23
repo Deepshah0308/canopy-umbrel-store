@@ -1,0 +1,29 @@
+manifestVersion: 1
+id: canopy-netdata
+category: networking
+name: Netdata
+version: "2.12.2"
+tagline: "Real-time health of your Umbrel: CPU, memory, disks, network and every app"
+icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/netdata.svg
+description: >-
+  Netdata shows what your Umbrel is doing right now, second by second: CPU, memory, disk space and speed, temperatures, network traffic, and how much each app uses.
+
+
+  Unlike older packages, this one watches your real machine (not just itself), names each app's container, and keeps its dashboard behind your Umbrel login. It talks to Docker through a read-only proxy that can only list containers, so it can't start, stop or change anything.
+
+
+  Netdata runs entirely on your Umbrel. Connecting it to Netdata Cloud is optional and off by default; choose "Skip and use the dashboard anonymously" when the dashboard asks.
+developer: Netdata Inc.
+website: https://www.netdata.cloud
+dependencies: []
+repo: https://github.com/netdata/netdata
+support: https://github.com/Deepshah0308/canopy-umbrel-store/issues
+port: 7401
+gallery: []
+path: ""
+defaultUsername: ""
+defaultPassword: ""
+releaseNotes: >-
+  Netdata 2.12.2. Packaged for Canopy with real host monitoring, container names through a read-only Docker proxy, and anonymous statistics turned off.
+submitter: Deepshah0308
+submission: https://github.com/Deepshah0308/canopy-umbrel-store

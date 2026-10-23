@@ -1,0 +1,22 @@
+version: "3.7"
+
+services:
+  app_proxy:
+    environment:
+      APP_HOST: canopy-bytestash_bytestash_1
+      APP_PORT: 5000
+      # ByteStash has its own accounts
+      PROXY_AUTH_ADD: "false"
+
+  bytestash:
+    image: ghcr.io/jordan-dalby/bytestash:1.6.0@sha256:4326e143e2bd4a0fe4a360d58a86c95ef47d67a7bf8ced8eb830ac257dd89844
+    restart: on-failure
+    environment:
+      BASE_PATH: ""
+      JWT_SECRET: ${APP_SEED}
+      TOKEN_EXPIRY: 24h
+      ALLOW_NEW_ACCOUNTS: "true"
+      DISABLE_ACCOUNTS: "false"
+      DISABLE_INTERNAL_ACCOUNTS: "false"
+    volumes:
+      - ${APP_DATA_DIR}/data:/app/data/snippets

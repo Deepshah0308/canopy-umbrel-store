@@ -8,7 +8,7 @@ import pytest
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
-sys.path.insert(0, os.path.join(ROOT, "yams-media", "hooks", "yams", "dashboard"))
+sys.path.insert(0, os.path.join(ROOT, "canopy-yams", "hooks", "yams", "dashboard"))
 sys.path.insert(0, HERE)
 
 _state = tempfile.mkdtemp()

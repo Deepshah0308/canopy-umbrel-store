@@ -1,0 +1,31 @@
+manifestVersion: 1
+id: canopy-jdownloader
+category: networking
+name: JDownloader 2
+version: "26.09.1"
+tagline: "Download manager for file hosts, video sites and link lists"
+icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/jdownloader.svg
+description: >-
+  JDownloader 2 grabs files from hundreds of file-hosting and video sites, splits big downloads into parallel parts, solves many captchas for you, resumes broken downloads and unpacks archives when they finish.
+
+
+  It runs in your browser: open the app and you get JDownloader's normal window. Finished files land in the Files app under Downloads → jdownloader.
+
+
+  Tip: to add links from your phone or another computer, sign in to a free My.JDownloader account in Settings → My.JDownloader.
+developer: AppWork GmbH (packaged by jlesage)
+website: https://jdownloader.org
+dependencies: []
+repo: https://github.com/jlesage/docker-jdownloader-2
+support: https://github.com/Deepshah0308/canopy-umbrel-store/issues
+port: 7402
+gallery: []
+path: ""
+defaultUsername: ""
+defaultPassword: ""
+permissions:
+  - STORAGE_DOWNLOADS
+releaseNotes: >-
+  JDownloader 2 container v26.09.1 (September 2026). Other stores still ship builds from 2024.
+submitter: Deepshah0308
+submission: https://github.com/Deepshah0308/canopy-umbrel-store

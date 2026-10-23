@@ -1,0 +1,28 @@
+manifestVersion: 1
+id: canopy-nzbget
+category: networking
+name: NZBGet
+version: "26.3"
+tagline: "Efficient Usenet downloader that runs well on small machines"
+icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/nzbget.svg
+description: >-
+  NZBGet downloads from Usenet using NZB files. It's written in C++ and uses very little CPU and memory, so it's a good fit for a Raspberry Pi. It repairs and unpacks downloads automatically.
+
+
+  You'll need a Usenet provider account; add it under Settings → News-Servers. Finished files land in the Files app under Downloads → usenet. Sign in with the username and password shown on this page.
+developer: nzbget.com
+website: https://nzbget.com
+dependencies: []
+repo: https://github.com/nzbgetcom/nzbget
+support: https://github.com/Deepshah0308/canopy-umbrel-store/issues
+port: 7407
+gallery: []
+path: ""
+defaultUsername: "umbrel"
+deterministicPassword: true
+permissions:
+  - STORAGE_DOWNLOADS
+releaseNotes: >-
+  NZBGet 26.3 from the maintained nzbget.com project, new to Umbrel.
+submitter: Deepshah0308
+submission: https://github.com/Deepshah0308/canopy-umbrel-store

@@ -1,0 +1,22 @@
+version: "3.7"
+
+services:
+  app_proxy:
+    environment:
+      APP_HOST: canopy-nzbget_nzbget_1
+      APP_PORT: 6789
+      # NZBGet has its own login
+      PROXY_AUTH_ADD: "false"
+
+  nzbget:
+    image: nzbgetcom/nzbget:v26.3@sha256:f451d98066cbc0c108146420a61a60f7638de50e067738951461e0105eeaa56d
+    restart: on-failure
+    environment:
+      PUID: "1000"
+      PGID: "1000"
+      TZ: ${TZ:-Etc/UTC}
+      NZBGET_USER: umbrel
+      NZBGET_PASS: ${APP_PASSWORD}
+    volumes:
+      - ${APP_DATA_DIR}/data/config:/config
+      - ${UMBREL_ROOT}/data/storage/downloads/usenet:/downloads

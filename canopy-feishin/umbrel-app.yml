@@ -1,0 +1,26 @@
+manifestVersion: 1
+id: canopy-feishin
+category: media
+name: Feishin
+version: "1.17.0"
+tagline: "Beautiful music player for your Jellyfin or Navidrome library"
+icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/feishin.svg
+description: >-
+  Feishin is a modern music player for the music you already have in Jellyfin (including YAMS) or Navidrome: gapless playback, synced lyrics, smart playlists, a queue you can rearrange, and a now-playing view.
+
+
+  Open it and add your server, for example http://umbrel.local:8097 for YAMS's Jellyfin, then sign in with your Jellyfin or Navidrome account. Nothing is stored in this app; your library stays on your music server.
+developer: jeffvli
+website: https://github.com/jeffvli/feishin
+dependencies: []
+repo: https://github.com/jeffvli/feishin
+support: https://github.com/Deepshah0308/canopy-umbrel-store/issues
+port: 7408
+gallery: []
+path: ""
+defaultUsername: ""
+defaultPassword: ""
+releaseNotes: >-
+  Feishin 1.17.0, new to Umbrel.
+submitter: Deepshah0308
+submission: https://github.com/Deepshah0308/canopy-umbrel-store

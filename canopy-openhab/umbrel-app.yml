@@ -1,0 +1,29 @@
+manifestVersion: 1
+id: canopy-openhab
+category: automation
+name: openHAB
+version: "5.2.3"
+tagline: "Vendor-neutral home automation that runs entirely at home"
+icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/openhab.svg
+description: >-
+  openHAB connects the smart devices in your home, whatever brand they are, and lets you control them from one place and automate them with rules. It works without any cloud account.
+
+
+  The first time you open it, create your administrator account, then follow the setup wizard to pick your location and add-ons.
+
+
+  openHAB uses about 600 MB of memory. Devices that are found automatically on your network (UPnP and mDNS discovery) may need to be added by IP address instead, because the app runs in its own network for safety.
+developer: openHAB Foundation
+website: https://www.openhab.org
+dependencies: []
+repo: https://github.com/openhab/openhab-docker
+support: https://github.com/Deepshah0308/canopy-umbrel-store/issues
+port: 7403
+gallery: []
+path: ""
+defaultUsername: ""
+defaultPassword: ""
+releaseNotes: >-
+  openHAB 5.2.3. Other stores still ship openHAB 4.2.
+submitter: Deepshah0308
+submission: https://github.com/Deepshah0308/canopy-umbrel-store

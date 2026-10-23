@@ -1,0 +1,302 @@
+version: "3.7"
+
+# Container names on umbrelOS follow <app-id>_<service>_1, e.g. canopy-yams_sonarr_1.
+# Every web UI (except Jellyfin, which TV apps need to reach directly) is served through
+# the "web" service below, which sits behind your Umbrel login.
+#
+# App code lives in hooks/yams/ on purpose: umbrelOS re-copies the hooks folder on
+# every app update, but not other folders. Nothing in it is named like a hook
+# (pre-start, post-update, ...) so umbrelOS never executes it.
+#
+# Security: the media apps live on a private network ("yams") that other Umbrel apps
+# can't reach. Only the router (web) and the dashboard also join Umbrel's shared
+# network: the router so the Umbrel login can reach it, and the dashboard only to
+# serve the two read-only home-screen widgets. The dashboard's controls are served on
+# a Unix socket that only the router mounts.
+#
+# The media apps use moving tags (latest, or v3 for gluetun) so the YAMS dashboard's
+# "Update apps" button can bring them up to date without waiting for a YAMS release.
+
+x-common-env: &common-env
+  PUID: "1000"
+  PGID: "1000"
+  TZ: ${TZ:-Etc/UTC}
+
+networks:
+  yams: {}
+
+services:
+  app_proxy:
+    environment:
+      APP_HOST: canopy-yams_web_1
+      APP_PORT: 8080
+
+  # ---------------------------------------------------------------------------
+  # One-shot setup: generates API keys and passwords, writes starter configs for
+  # every app and creates the media folders. Safe to re-run; never overwrites.
+  # ---------------------------------------------------------------------------
+  init:
+    image: python:3.12.15-alpine@sha256:b658b05ce9c4eb97ec6fc19424818a1f31993659c2b505a532f470e83807815d
+    command: ["python", "-u", "/app/setup/seed.py"]
+    restart: "no"
+    environment:
+      APP_PREFIX: canopy-yams
+    volumes:
+      - ${APP_DATA_DIR}/hooks/yams:/app:ro
+      - ${APP_DATA_DIR}/data:/yams
+      - ${UMBREL_ROOT}/data/storage/downloads:/data
+    networks: [yams]
+
+  # Front door: routes /sonarr, /radarr, /prowlarr, /bazarr, /qbittorrent and the dashboard.
+  web:
+    image: caddy:2.11.7-alpine@sha256:eb4d35b7452d1ab6171fbdbe8d9275b2301dad6dad92115d91e19fb9b24d510f
+    command: ["caddy", "run", "--config", "/app/Caddyfile", "--adapter", "caddyfile"]
+    restart: on-failure
+    volumes:
+      - ${APP_DATA_DIR}/hooks/yams:/app:ro
+      - ${APP_DATA_DIR}/data/sock:/sock
+    networks: [default, yams]
+
+  # Setup dashboard, auto-configurator, log viewer, app controls and backups
+  # (plain Python, no custom image needed). It uses the Docker socket only to
+  # read logs from, inspect, stop, start and restart this app's own containers.
+  dashboard:
+    image: python:3.12.15-alpine@sha256:b658b05ce9c4eb97ec6fc19424818a1f31993659c2b505a532f470e83807815d
+    command: ["python", "-u", "/app/dashboard/server.py"]
+    restart: on-failure
+    environment:
+      APP_PREFIX: canopy-yams
+      JELLYFIN_PORT: "8097"
+      YAMS_VERSION: "1.4.0"
+      DATA_DIR: /yams
+      BACKUP_DIR: /backups
+      API_SOCK: /sock/dashboard.sock
+    volumes:
+      - ${APP_DATA_DIR}/hooks/yams:/app:ro
+      - ${APP_DATA_DIR}/data:/yams
+      - ${APP_DATA_DIR}/data/sock:/sock
+      - ${UMBREL_ROOT}/data/storage/downloads/yams-backups:/backups
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks: [default, yams]
+    depends_on:
+      init:
+        condition: service_completed_successfully
+
+  # ---------------------------------------------------------------------------
+  # Watching
+  # ---------------------------------------------------------------------------
+  jellyfin:
+    image: linuxserver/jellyfin:latest
+    restart: on-failure
+    environment:
+      <<: *common-env
+    volumes:
+      - ${APP_DATA_DIR}/data/config/jellyfin:/config
+      - ${UMBREL_ROOT}/data/storage/downloads:/data
+    ports:
+      # Jellyfin keeps its own logins so TV and phone apps can connect directly:
+      # http://umbrel.local:8097
+      - 8097:8096
+    networks: [yams]
+
+  # ---------------------------------------------------------------------------
+  # Finding and organising
+  # ---------------------------------------------------------------------------
+  sonarr:
+    image: linuxserver/sonarr:latest
+    restart: on-failure
+    environment:
+      <<: *common-env
+    volumes:
+      - ${APP_DATA_DIR}/data/config/sonarr:/config
+      - ${UMBREL_ROOT}/data/storage/downloads:/data
+    depends_on:
+      init:
+        condition: service_completed_successfully
+    networks: [yams]
+
+  radarr:
+    image: linuxserver/radarr:latest
+    restart: on-failure
+    environment:
+      <<: *common-env
+    volumes:
+      - ${APP_DATA_DIR}/data/config/radarr:/config
+      - ${UMBREL_ROOT}/data/storage/downloads:/data
+    depends_on:
+      init:
+        condition: service_completed_successfully
+    networks: [yams]
+
+  prowlarr:
+    image: linuxserver/prowlarr:latest
+    restart: on-failure
+    environment:
+      <<: *common-env
+    volumes:
+      - ${APP_DATA_DIR}/data/config/prowlarr:/config
+    depends_on:
+      init:
+        condition: service_completed_successfully
+    networks: [yams]
+
+  flaresolverr:
+    image: flaresolverr/flaresolverr:latest
+    restart: on-failure
+    environment:
+      TZ: ${TZ:-Etc/UTC}
+    networks: [yams]
+
+  bazarr:
+    image: linuxserver/bazarr:latest
+    restart: on-failure
+    environment:
+      <<: *common-env
+    volumes:
+      - ${APP_DATA_DIR}/data/config/bazarr:/config
+      - ${UMBREL_ROOT}/data/storage/downloads:/data
+    depends_on:
+      init:
+        condition: service_completed_successfully
+    networks: [yams]
+
+  # ---------------------------------------------------------------------------
+  # Extras — off until you switch them on in the YAMS dashboard. While off, each
+  # one only runs a tiny wait loop (extras/gate.sh), so it costs disk space but
+  # almost no memory. The dashboard connects each one to the rest of YAMS.
+  # ---------------------------------------------------------------------------
+  # Seerr: a Netflix-style page where you and your family request shows and
+  # movies, signing in with your Jellyfin accounts. http://umbrel.local:7475
+  seerr:
+    image: seerr/seerr:v3
+    entrypoint: ["/bin/sh", "/yams-app/extras/gate.sh", "seerr", "docker-entrypoint.sh", "npm", "start"]
+    restart: on-failure
+    environment:
+      TZ: ${TZ:-Etc/UTC}
+      LOG_LEVEL: info
+    volumes:
+      - ${APP_DATA_DIR}/hooks/yams:/yams-app:ro
+      - ${APP_DATA_DIR}/data/state/extras:/yams-extras:ro
+      - ${APP_DATA_DIR}/data/config/seerr:/app/config
+    ports:
+      - 7475:5055
+    depends_on:
+      init:
+        condition: service_completed_successfully
+    networks: [yams]
+
+  # Lidarr: music, the way Sonarr does TV.
+  lidarr:
+    image: linuxserver/lidarr:latest
+    entrypoint: ["/bin/sh", "/yams-app/extras/gate.sh", "lidarr", "/init"]
+    restart: on-failure
+    environment:
+      <<: *common-env
+    volumes:
+      - ${APP_DATA_DIR}/hooks/yams:/yams-app:ro
+      - ${APP_DATA_DIR}/data/state/extras:/yams-extras:ro
+      - ${APP_DATA_DIR}/data/config/lidarr:/config
+      - ${UMBREL_ROOT}/data/storage/downloads:/data
+    depends_on:
+      init:
+        condition: service_completed_successfully
+    networks: [yams]
+
+  # Recyclarr: keeps Sonarr's and Radarr's quality settings in line with the
+  # TRaSH Guides, once a day.
+  recyclarr:
+    image: ghcr.io/recyclarr/recyclarr:8
+    entrypoint: ["/bin/sh", "/yams-app/extras/gate.sh", "recyclarr", "/sbin/tini", "--", "/entrypoint.sh"]
+    restart: on-failure
+    user: "1000:1000"
+    environment:
+      TZ: ${TZ:-Etc/UTC}
+      CRON_SCHEDULE: "@daily"
+    volumes:
+      - ${APP_DATA_DIR}/hooks/yams:/yams-app:ro
+      - ${APP_DATA_DIR}/data/state/extras:/yams-extras:ro
+      - ${APP_DATA_DIR}/data/config/recyclarr:/config
+    depends_on:
+      init:
+        condition: service_completed_successfully
+    networks: [yams]
+
+  # Unpackerr: unpacks downloads that arrive as .rar files so they can be imported.
+  unpackerr:
+    image: golift/unpackerr:0
+    entrypoint: ["/bin/sh", "/yams-app/extras/gate.sh", "unpackerr", "/unpackerr", "--config", "/config/unpackerr.conf"]
+    restart: on-failure
+    user: "1000:1000"
+    environment:
+      TZ: ${TZ:-Etc/UTC}
+    volumes:
+      - ${APP_DATA_DIR}/hooks/yams:/yams-app:ro
+      - ${APP_DATA_DIR}/data/state/extras:/yams-extras:ro
+      - ${APP_DATA_DIR}/data/config/unpackerr:/config:ro
+      - ${UMBREL_ROOT}/data/storage/downloads:/data
+    depends_on:
+      init:
+        condition: service_completed_successfully
+    networks: [yams]
+
+  # Decluttarr: clears stuck, stalled and failed downloads and searches again.
+  decluttarr:
+    image: ghcr.io/manimatter/decluttarr:latest
+    entrypoint: ["/bin/sh", "/yams-app/extras/gate.sh", "decluttarr", "python", "main.py"]
+    working_dir: /app
+    restart: on-failure
+    environment:
+      TZ: ${TZ:-Etc/UTC}
+    volumes:
+      - ${APP_DATA_DIR}/hooks/yams:/yams-app:ro
+      - ${APP_DATA_DIR}/data/state/extras:/yams-extras:ro
+      - ${APP_DATA_DIR}/data/config/decluttarr:/app/config:ro
+    depends_on:
+      init:
+        condition: service_completed_successfully
+    networks: [yams]
+
+  # ---------------------------------------------------------------------------
+  # Downloading — qBittorrent lives *inside* the VPN container's network.
+  # It only starts once the VPN tunnel is up and shuts itself down if it drops.
+  # ---------------------------------------------------------------------------
+  gluetun:
+    image: qmcgaw/gluetun:v3
+    entrypoint: ["/bin/sh", "/app/vpn/vpn-wrapper.sh"]
+    restart: unless-stopped
+    cap_add:
+      - NET_ADMIN
+    devices:
+      - /dev/net/tun:/dev/net/tun
+    environment:
+      TZ: ${TZ:-Etc/UTC}
+      VPN_SERVICE_PROVIDER: custom
+      VPN_TYPE: wireguard
+      # Let the dashboard (8000) and Sonarr/Radarr (8080) reach in over the private network
+      FIREWALL_INPUT_PORTS: "8080,8000"
+      HTTP_CONTROL_SERVER_ADDRESS: ":8000"
+      UPDATER_PERIOD: "0"
+    volumes:
+      - ${APP_DATA_DIR}/hooks/yams:/app:ro
+      - ${APP_DATA_DIR}/data/vpn:/gluetun
+    networks: [yams]
+
+  qbittorrent:
+    image: linuxserver/qbittorrent:latest
+    # YAMS scripts go in /yams-app, not /app: this image keeps qbittorrent-nox in /app.
+    entrypoint: ["/bin/sh", "/yams-app/qbittorrent/entry.sh"]
+    network_mode: "service:gluetun"
+    restart: unless-stopped
+    environment:
+      <<: *common-env
+      WEBUI_PORT: "8080"
+    volumes:
+      - ${APP_DATA_DIR}/hooks/yams:/yams-app:ro
+      - ${APP_DATA_DIR}/data/config/qbittorrent:/config
+      - ${APP_DATA_DIR}/data/vpn:/vpnstate:ro
+      - ${UMBREL_ROOT}/data/storage/downloads:/data
+    depends_on:
+      gluetun:
+        condition: service_started
+      init:
+        condition: service_completed_successfully

@@ -1,0 +1,52 @@
+version: "3.7"
+
+services:
+  app_proxy:
+    environment:
+      APP_HOST: canopy-netdata_netdata_1
+      APP_PORT: 19999
+
+  netdata:
+    image: netdata/netdata:v2.12.2@sha256:3d00de3756e1e9150c6121080934168ab5f2ceffce6d494573316c09c18adf83
+    restart: on-failure
+    pid: host
+    cap_add:
+      - SYS_PTRACE
+      - SYS_ADMIN
+    security_opt:
+      - apparmor:unconfined
+    environment:
+      NETDATA_EXTRA_DEB_PACKAGES: ""
+      DO_NOT_TRACK: "1"
+      # Container names come from a proxy that can only list containers (see below).
+      DOCKER_HOST: tcp://canopy-netdata_docker_1:2375
+    volumes:
+      - ${APP_DATA_DIR}/data/config:/etc/netdata
+      - ${APP_DATA_DIR}/data/lib:/var/lib/netdata
+      - ${APP_DATA_DIR}/data/cache:/var/cache/netdata
+      - /etc/passwd:/host/etc/passwd:ro
+      - /etc/group:/host/etc/group:ro
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/os-release:/host/etc/os-release:ro
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+    depends_on:
+      - docker
+
+  # Read-only view of Docker: lists containers so Netdata can name them, nothing else.
+  docker:
+    image: linuxserver/socket-proxy:3.4.7@sha256:e5d819de59b343c01b2fe7adc7fad3c7a60e5dba08e45f1ac317352bc08599b5
+    restart: on-failure
+    read_only: true
+    tmpfs:
+      - /run
+    environment:
+      DISABLE_IPV6: "1"  # only Netdata talks to it, over the app's private IPv4 network
+      CONTAINERS: "1"
+      INFO: "1"
+      POST: "0"
+      ALLOW_START: "0"
+      ALLOW_STOP: "0"
+      ALLOW_RESTARTS: "0"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro

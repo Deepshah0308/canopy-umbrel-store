@@ -1,0 +1,115 @@
+{
+  "generated": "2026-10-23",
+  "apps": [
+    {
+      "id": "canopy-yams",
+      "name": "YAMS",
+      "version": "1.4.0",
+      "tagline": "Your own Netflix \u2014 movies, shows and subtitles, fully automatic",
+      "category": "media",
+      "icon": "https://cdn.jsdelivr.net/gh/Deepshah0308/canopy-umbrel-store@2ab2cefa8bb057c5ec148cb63b83520c17846058/canopy-yams/icon.svg",
+      "website": "https://yams.media",
+      "updated": "2026-10-23"
+    },
+    {
+      "id": "canopy-bytestash",
+      "name": "ByteStash",
+      "version": "1.6.0",
+      "tagline": "Save, organise and share your code snippets",
+      "category": "developer",
+      "icon": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/bytestash.svg",
+      "website": "https://github.com/jordan-dalby/ByteStash",
+      "updated": "2026-10-23"
+    },
+    {
+      "id": "canopy-feishin",
+      "name": "Feishin",
+      "version": "1.17.0",
+      "tagline": "Beautiful music player for your Jellyfin or Navidrome library",
+      "category": "media",
+      "icon": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/feishin.svg",
+      "website": "https://github.com/jeffvli/feishin",
+      "updated": "2026-10-23"
+    },
+    {
+      "id": "canopy-jdownloader",
+      "name": "JDownloader 2",
+      "version": "26.09.1",
+      "tagline": "Download manager for file hosts, video sites and link lists",
+      "category": "networking",
+      "icon": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/jdownloader.svg",
+      "website": "https://jdownloader.org",
+      "updated": "2026-10-23"
+    },
+    {
+      "id": "canopy-linkding",
+      "name": "linkding",
+      "version": "1.47.0",
+      "tagline": "Fast, minimal bookmark manager with tags and archiving",
+      "category": "social",
+      "icon": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/linkding.svg",
+      "website": "https://linkding.link",
+      "updated": "2026-10-23"
+    },
+    {
+      "id": "canopy-miniflux",
+      "name": "Miniflux",
+      "version": "2.3.4",
+      "tagline": "Minimalist, fast RSS reader with no clutter",
+      "category": "social",
+      "icon": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/miniflux.svg",
+      "website": "https://miniflux.app",
+      "updated": "2026-10-23"
+    },
+    {
+      "id": "canopy-mylar3",
+      "name": "Mylar3",
+      "version": "0.11.0",
+      "tagline": "Comic book automation: follows series and grabs new issues",
+      "category": "media",
+      "icon": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/png/mylar.png",
+      "website": "https://mylarcomics.com",
+      "updated": "2026-10-23"
+    },
+    {
+      "id": "canopy-netdata",
+      "name": "Netdata",
+      "version": "2.12.2",
+      "tagline": "Real-time health of your Umbrel: CPU, memory, disks, network and every app",
+      "category": "networking",
+      "icon": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/netdata.svg",
+      "website": "https://www.netdata.cloud",
+      "updated": "2026-10-23"
+    },
+    {
+      "id": "canopy-nzbget",
+      "name": "NZBGet",
+      "version": "26.3",
+      "tagline": "Efficient Usenet downloader that runs well on small machines",
+      "category": "networking",
+      "icon": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/nzbget.svg",
+      "website": "https://nzbget.com",
+      "updated": "2026-10-23"
+    },
+    {
+      "id": "canopy-openhab",
+      "name": "openHAB",
+      "version": "5.2.3",
+      "tagline": "Vendor-neutral home automation that runs entirely at home",
+      "category": "automation",
+      "icon": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/openhab.svg",
+      "website": "https://www.openhab.org",
+      "updated": "2026-10-23"
+    },
+    {
+      "id": "canopy-siyuan",
+      "name": "SiYuan",
+      "version": "3.8.8",
+      "tagline": "Private notes and knowledge base with blocks, links and databases",
+      "category": "files",
+      "icon": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/siyuan.svg",
+      "website": "https://b3log.org/siyuan/en/",
+      "updated": "2026-10-23"
+    }
+  ]
+}

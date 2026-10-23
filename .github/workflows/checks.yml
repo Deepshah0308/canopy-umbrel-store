@@ -5,15 +5,79 @@ on:
     branches: [main]
   pull_request:
 
+permissions:
+  contents: read
+
 jobs:
   test:
+    name: Unit tests and store rules
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Install test tools
-        run: pip install pytest pyyaml
-      - name: Run tests
-        run: pytest -q tests
+      - run: pip install pytest pyyaml
+      - run: pytest -q tests
+
+  store:
+    name: Images, ports and duplicates
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pyyaml
+      - run: python tools/lint_store.py
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+
+  changed:
+    name: Find changed apps
+    runs-on: ubuntu-latest
+    outputs:
+      apps: ${{ steps.find.outputs.apps }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - id: find
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            base="${{ github.event.pull_request.base.sha }}"
+          else
+            base="${{ github.event.before }}"
+          fi
+          if [ -z "$base" ] || ! git cat-file -e "$base" 2>/dev/null; then base="HEAD~1"; fi
+          apps=$(git diff --name-only "$base" HEAD | cut -d/ -f1 | sort -u \
+                 | while read -r d; do [ -f "$d/umbrel-app.yml" ] && echo "$d"; done \
+                 | python3 -c 'import json,sys; print(json.dumps([l.strip() for l in sys.stdin if l.strip()]))')
+          echo "apps=$apps" >> "$GITHUB_OUTPUT"
+          echo "Changed apps: $apps"
+
+  install:
+    name: Install test
+    needs: changed
+    if: needs.changed.outputs.apps != '[]' && needs.changed.outputs.apps != ''
+    runs-on: ubuntu-latest
+    env:
+      DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+      DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+      HAS_DOCKERHUB: ${{ secrets.DOCKERHUB_TOKEN != '' }}
+    strategy:
+      fail-fast: false
+      matrix:
+        app: ${{ fromJson(needs.changed.outputs.apps) }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pyyaml
+      - name: Log in to Docker Hub (optional, for higher pull limits)
+        if: env.HAS_DOCKERHUB == 'true'
+        run: echo "$DOCKERHUB_TOKEN" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
+      - name: Install ${{ matrix.app }} like umbrelOS does and check it works
+        run: sudo -E python tools/umbrel_sim.py "${{ matrix.app }}" --timeout 600

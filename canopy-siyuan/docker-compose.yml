@@ -1,0 +1,20 @@
+version: "3.7"
+
+services:
+  app_proxy:
+    environment:
+      APP_HOST: canopy-siyuan_siyuan_1
+      APP_PORT: 6806
+      # SiYuan asks for its own access code
+      PROXY_AUTH_ADD: "false"
+
+  siyuan:
+    image: b3log/siyuan:v3.8.8@sha256:92aa9c361b09657141011ca57c02cccb21ba9f3ddc2c0759a99acd52f29b3f70
+    restart: on-failure
+    command: ["serve", "--workspace=/siyuan/workspace/", "--accessAuthCode=${APP_PASSWORD}"]
+    environment:
+      PUID: "1000"
+      PGID: "1000"
+      TZ: ${TZ:-Etc/UTC}
+    volumes:
+      - ${APP_DATA_DIR}/data/workspace:/siyuan/workspace
