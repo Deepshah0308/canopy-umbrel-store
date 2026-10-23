@@ -4,7 +4,7 @@ category: media
 name: YAMS
 version: "1.4.0"
 tagline: "Your own Netflix — movies, shows and subtitles, fully automatic"
-icon: https://cdn.jsdelivr.net/gh/Deepshah0308/canopy-umbrel-store@2ab2cefa8bb057c5ec148cb63b83520c17846058/canopy-yams/icon.svg
+icon: https://cdn.jsdelivr.net/gh/Deepshah0308/canopy-umbrel-store@24f69a96df050bcb6c34e3a7be0c65303b4f1112/canopy-yams/icon.svg
 description: >-
   YAMS (Yet Another Media Server) packaged for umbrelOS as a single app. One install gives you
   a complete, pre-wired media server:
