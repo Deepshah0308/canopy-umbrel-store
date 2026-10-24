@@ -34,6 +34,7 @@ It's also the home of **YAMS**, a complete media server (Jellyfin, Sonarr, Radar
 | **Feishin** | Music player for Jellyfin and Navidrome | Not on any Umbrel store |
 | **ByteStash** | Code snippet manager | Not on any Umbrel store |
 | **Mylar3** | Comic book automation | Not on any Umbrel store |
+| **RustFS** | S3-compatible object storage, a MinIO alternative | The other package is an early alpha that gives every install the same secret key |
 
 The website always shows each app's current version and when it was last updated.
 

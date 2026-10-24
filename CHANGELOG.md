@@ -1,5 +1,8 @@
 # Changelog
 
+## RustFS (October 2026)
+- **New app: RustFS 1.0.3**, fast S3-compatible object storage. Web console on port 7411, S3 API on 7412. Each Umbrel gets its own secret key; the other Umbrel package is on 1.0.0-alpha.71 with a key shared by every install.
+
 ## Canopy (October 2026)
 The YAMS store became **Canopy**, a store for apps Umbrel doesn't have yet, kept on their latest versions.
 - **10 new apps:** Netdata, JDownloader 2, openHAB, SiYuan (all badly out of date elsewhere), plus linkding, Miniflux, NZBGet, Feishin, ByteStash and Mylar3 (on no other Umbrel store).

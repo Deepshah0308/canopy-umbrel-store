@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-23",
+  "generated": "2026-10-24",
   "apps": [
     {
       "id": "canopy-yams",
@@ -9,7 +9,7 @@
       "category": "media",
       "icon": "https://cdn.jsdelivr.net/gh/Deepshah0308/canopy-umbrel-store@24f69a96df050bcb6c34e3a7be0c65303b4f1112/canopy-yams/icon.svg",
       "website": "https://yams.media",
-      "updated": "2026-10-23"
+      "updated": "2026-10-24"
     },
     {
       "id": "canopy-bytestash",
@@ -100,6 +100,16 @@
       "icon": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/openhab.svg",
       "website": "https://www.openhab.org",
       "updated": "2026-10-23"
+    },
+    {
+      "id": "canopy-rustfs",
+      "name": "RustFS",
+      "version": "1.0.3",
+      "tagline": "Fast S3-compatible object storage, a MinIO alternative written in Rust",
+      "category": "files",
+      "icon": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/rustfs.svg",
+      "website": "https://rustfs.com",
+      "updated": "2026-10-24"
     },
     {
       "id": "canopy-siyuan",

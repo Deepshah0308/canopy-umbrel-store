@@ -1,0 +1,26 @@
+manifestVersion: 1
+id: canopy-rustfs
+category: files
+name: RustFS
+version: "1.0.3"
+tagline: "Fast S3-compatible object storage, a MinIO alternative written in Rust"
+icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/rustfs.svg
+description: >-
+  RustFS turns your Umbrel into your own S3 storage. Anything that can back up or store files to Amazon S3 can use it instead: backup tools, photo apps, Nextcloud, developer tools and more.
+
+
+  Create buckets and access keys in the web console. Other devices reach the S3 API at http://umbrel.local:7412. Sign in with the access key and secret key shown on this page (username and password), and make separate keys for each app that connects.
+developer: RustFS
+website: https://rustfs.com
+dependencies: []
+repo: https://github.com/rustfs/rustfs
+support: https://github.com/Deepshah0308/canopy-umbrel-store/issues
+port: 7411
+gallery: []
+path: "/rustfs/console/"
+defaultUsername: "umbrel"
+deterministicPassword: true
+releaseNotes: >-
+  RustFS 1.0.3, the first stable release line. The other Umbrel package is still on 1.0.0-alpha.71 and ships the same secret key to everyone; here each Umbrel gets its own.
+submitter: Deepshah0308
+submission: https://github.com/Deepshah0308/canopy-umbrel-store

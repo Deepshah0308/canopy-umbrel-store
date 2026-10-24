@@ -1,0 +1,28 @@
+version: "3.7"
+
+services:
+  app_proxy:
+    environment:
+      APP_HOST: canopy-rustfs_rustfs_1
+      APP_PORT: 9001
+      # RustFS has its own login
+      PROXY_AUTH_ADD: "false"
+
+  rustfs:
+    image: rustfs/rustfs:1.0.3@sha256:9ca9559533b537d10482fe923288b676ad08f92a7069d9a17327fbae3cab688b
+    restart: on-failure
+    # Umbrel's user, so RustFS can write to the app's data folder
+    user: "1000:1000"
+    ports:
+      # S3 API for other devices on your network
+      - 7412:9000
+    environment:
+      RUSTFS_ACCESS_KEY: umbrel
+      RUSTFS_SECRET_KEY: ${APP_PASSWORD}
+      RUSTFS_ADDRESS: 0.0.0.0:9000
+      RUSTFS_CONSOLE_ENABLE: "true"
+      RUSTFS_CONSOLE_ADDRESS: 0.0.0.0:9001
+      # empty sends logs to stdout, so they show up in Umbrel
+      RUSTFS_OBS_LOG_DIRECTORY: ""
+    volumes:
+      - ${APP_DATA_DIR}/data:/data
