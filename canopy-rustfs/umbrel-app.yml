@@ -2,7 +2,7 @@ manifestVersion: 1
 id: canopy-rustfs
 category: files
 name: RustFS
-version: "1.0.3"
+version: "1.0.4"
 tagline: "Fast S3-compatible object storage, a MinIO alternative written in Rust"
 icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/rustfs.svg
 description: >-
@@ -21,6 +21,6 @@ path: "/rustfs/console/"
 defaultUsername: "umbrel"
 deterministicPassword: true
 releaseNotes: >-
-  RustFS 1.0.3, the first stable release line. The other Umbrel package is still on 1.0.0-alpha.71 and ships the same secret key to everyone; here each Umbrel gets its own.
+  Updated RustFS automatically by Canopy: rustfs 1.0.3 → 1.0.4. What's new: https://github.com/rustfs/rustfs/releases
 submitter: Deepshah0308
 submission: https://github.com/Deepshah0308/canopy-umbrel-store
