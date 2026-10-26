@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-24",
+  "generated": "2026-10-26",
   "apps": [
     {
       "id": "canopy-yams",
@@ -9,7 +9,7 @@
       "category": "media",
       "icon": "https://cdn.jsdelivr.net/gh/Deepshah0308/canopy-umbrel-store@24f69a96df050bcb6c34e3a7be0c65303b4f1112/canopy-yams/icon.svg",
       "website": "https://yams.media",
-      "updated": "2026-10-24"
+      "updated": "2026-10-23"
     },
     {
       "id": "canopy-bytestash",
@@ -54,12 +54,12 @@
     {
       "id": "canopy-miniflux",
       "name": "Miniflux",
-      "version": "2.3.4",
+      "version": "2.3.5",
       "tagline": "Minimalist, fast RSS reader with no clutter",
       "category": "social",
       "icon": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/miniflux.svg",
       "website": "https://miniflux.app",
-      "updated": "2026-10-23"
+      "updated": "2026-10-26"
     },
     {
       "id": "canopy-mylar3",

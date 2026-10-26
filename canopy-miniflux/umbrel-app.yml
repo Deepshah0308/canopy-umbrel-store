@@ -2,7 +2,7 @@ manifestVersion: 1
 id: canopy-miniflux
 category: social
 name: Miniflux
-version: "2.3.4"
+version: "2.3.5"
 tagline: "Minimalist, fast RSS reader with no clutter"
 icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/miniflux.svg
 description: >-
@@ -21,6 +21,6 @@ path: ""
 defaultUsername: "umbrel"
 deterministicPassword: true
 releaseNotes: >-
-  Miniflux 2.3.4, new to Umbrel.
+  Updated Miniflux automatically by Canopy: postgres 17.11-alpine rebuilt with the latest security fixes. What's new: https://github.com/miniflux/v2/releases
 submitter: Deepshah0308
 submission: https://github.com/Deepshah0308/canopy-umbrel-store
