@@ -4,12 +4,12 @@
     {
       "id": "canopy-yams",
       "name": "YAMS",
-      "version": "1.4.0",
+      "version": "1.4.1",
       "tagline": "Your own Netflix \u2014 movies, shows and subtitles, fully automatic",
       "category": "media",
       "icon": "https://cdn.jsdelivr.net/gh/Deepshah0308/canopy-umbrel-store@24f69a96df050bcb6c34e3a7be0c65303b4f1112/canopy-yams/icon.svg",
       "website": "https://yams.media",
-      "updated": "2026-10-23"
+      "updated": "2026-10-27"
     },
     {
       "id": "canopy-bytestash",

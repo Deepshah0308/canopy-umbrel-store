@@ -2,7 +2,7 @@ manifestVersion: 1.1
 id: canopy-yams
 category: media
 name: YAMS
-version: "1.4.0"
+version: "1.4.1"
 tagline: "Your own Netflix — movies, shows and subtitles, fully automatic"
 icon: https://cdn.jsdelivr.net/gh/Deepshah0308/canopy-umbrel-store@24f69a96df050bcb6c34e3a7be0c65303b4f1112/canopy-yams/icon.svg
 description: >-
@@ -66,12 +66,7 @@ torOnly: false
 permissions:
   - STORAGE_DOWNLOADS
 releaseNotes: >-
-  YAMS now lives in the Canopy app store. New: Extras you can switch on from the dashboard
-  and YAMS connects for you: Seerr (a request page for your family), Lidarr (music, with a Music
-  library in Jellyfin), Recyclarr (TRaSH Guides quality settings), Unpackerr (unpacks .rar
-  downloads) and Decluttarr (clears stuck downloads). Fixed: Sonarr and Radarr now get
-  qBittorrent set up even before your VPN is connected. Moving from the old YAMS store? Back up
-  in the old YAMS, uninstall it (backups in Downloads stay), install this one and restore.
+  Updated YAMS automatically by Canopy: python 3.12.15-alpine → 3.12.16-alpine. What's new: https://github.com/rogsme/yams/releases
 widgets:
   - id: "stats"
     type: "four-stats"

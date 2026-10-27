@@ -36,7 +36,7 @@ services:
   # every app and creates the media folders. Safe to re-run; never overwrites.
   # ---------------------------------------------------------------------------
   init:
-    image: python:3.12.15-alpine@sha256:b658b05ce9c4eb97ec6fc19424818a1f31993659c2b505a532f470e83807815d
+    image: python:3.12.16-alpine@sha256:44bf3bcc455e0c9ccd912b78f39019b2f7e9d2f4fb47c6d6973c7638a99aff14
     command: ["python", "-u", "/app/setup/seed.py"]
     restart: "no"
     environment:
@@ -61,13 +61,13 @@ services:
   # (plain Python, no custom image needed). It uses the Docker socket only to
   # read logs from, inspect, stop, start and restart this app's own containers.
   dashboard:
-    image: python:3.12.15-alpine@sha256:b658b05ce9c4eb97ec6fc19424818a1f31993659c2b505a532f470e83807815d
+    image: python:3.12.16-alpine@sha256:44bf3bcc455e0c9ccd912b78f39019b2f7e9d2f4fb47c6d6973c7638a99aff14
     command: ["python", "-u", "/app/dashboard/server.py"]
     restart: on-failure
     environment:
       APP_PREFIX: canopy-yams
       JELLYFIN_PORT: "8097"
-      YAMS_VERSION: "1.4.0"
+      YAMS_VERSION: "1.4.1"
       DATA_DIR: /yams
       BACKUP_DIR: /backups
       API_SOCK: /sock/dashboard.sock
