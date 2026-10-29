@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-27",
+  "generated": "2026-10-29",
   "apps": [
     {
       "id": "canopy-yams",
@@ -114,12 +114,12 @@
     {
       "id": "canopy-siyuan",
       "name": "SiYuan",
-      "version": "3.8.8",
+      "version": "3.8.9",
       "tagline": "Private notes and knowledge base with blocks, links and databases",
       "category": "files",
       "icon": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/siyuan.svg",
       "website": "https://b3log.org/siyuan/en/",
-      "updated": "2026-10-23"
+      "updated": "2026-10-29"
     }
   ]
 }

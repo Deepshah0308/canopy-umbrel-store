@@ -9,7 +9,7 @@ services:
       PROXY_AUTH_ADD: "false"
 
   siyuan:
-    image: b3log/siyuan:v3.8.8@sha256:92aa9c361b09657141011ca57c02cccb21ba9f3ddc2c0759a99acd52f29b3f70
+    image: b3log/siyuan:v3.8.9@sha256:4f9c119048b9dc685603b04aebf9e9d513695014c9fbd834e0dadd1c22801235
     restart: on-failure
     command: ["serve", "--workspace=/siyuan/workspace/", "--accessAuthCode=${APP_PASSWORD}"]
     environment:
