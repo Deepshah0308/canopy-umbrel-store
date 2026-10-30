@@ -2,7 +2,7 @@ manifestVersion: 1
 id: canopy-mylar3
 category: media
 name: Mylar3
-version: "0.11.0"
+version: "0.11.1"
 tagline: "Comic book automation: follows series and grabs new issues"
 icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/png/mylar.png
 description: >-
@@ -23,6 +23,6 @@ defaultPassword: ""
 permissions:
   - STORAGE_DOWNLOADS
 releaseNotes: >-
-  Mylar3 0.11.0, new to Umbrel.
+  Updated Mylar3 automatically by Canopy: mylar3 0.11.0 rebuilt with the latest security fixes. What's new: https://github.com/mylar3/mylar3/releases
 submitter: Deepshah0308
 submission: https://github.com/Deepshah0308/canopy-umbrel-store
