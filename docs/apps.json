@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-30",
+  "generated": "2026-11-02",
   "apps": [
     {
       "id": "canopy-yams",
@@ -14,12 +14,12 @@
     {
       "id": "canopy-bytestash",
       "name": "ByteStash",
-      "version": "1.6.0",
+      "version": "1.6.1",
       "tagline": "Save, organise and share your code snippets",
       "category": "developer",
       "icon": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/bytestash.svg",
       "website": "https://github.com/jordan-dalby/ByteStash",
-      "updated": "2026-10-23"
+      "updated": "2026-11-02"
     },
     {
       "id": "canopy-feishin",
