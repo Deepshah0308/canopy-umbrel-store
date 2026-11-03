@@ -1,11 +1,18 @@
-# Canopy: an app store for Umbrel
+# Canopy
+
+Apps for your Umbrel that Umbrel's own store doesn't have, kept on their newest versions and tested before every update.
+
+**Install:** in Umbrel, open App Store → ⋯ → Community App Stores and paste `https://github.com/Deepshah0308/canopy-umbrel-store`
+
+![Adding Canopy, picking an app and signing in to it](docs/demo.gif)
+
+**See every app and version live: https://deepshah0308.github.io/canopy-umbrel-store/**
 
 [![Checks](https://github.com/Deepshah0308/canopy-umbrel-store/actions/workflows/checks.yml/badge.svg)](https://github.com/Deepshah0308/canopy-umbrel-store/actions/workflows/checks.yml)
 [![Update apps](https://github.com/Deepshah0308/canopy-umbrel-store/actions/workflows/update-apps.yml/badge.svg)](https://github.com/Deepshah0308/canopy-umbrel-store/actions/workflows/update-apps.yml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
-**Website and install guide: https://deepshah0308.github.io/canopy-umbrel-store/**
-
-A community app store for [umbrelOS](https://umbrel.com) with apps Umbrel's own store doesn't have, plus apps that other community stores ship years out of date. Every app is pinned to an exact upstream release, checked for new versions every day, and **installed and tested before an update reaches you**.
+Canopy is a community app store for [umbrelOS](https://umbrel.com) with apps Umbrel's own store doesn't have, plus apps that other community stores ship years out of date. Every app is pinned to an exact upstream release, checked for new versions every day, and **installed and tested before an update reaches you**.
 
 It's also the home of **YAMS**, a complete media server (Jellyfin, Sonarr, Radarr, Prowlarr, Bazarr, qBittorrent behind a VPN) that comes already wired together.
 

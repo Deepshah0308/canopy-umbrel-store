@@ -6,3 +6,6 @@ contact_links:
   - name: YAMS forum
     url: https://forum.yams.media
     about: General questions about Sonarr, Radarr, Prowlarr and Jellyfin themselves.
+  - name: Questions and ideas
+    url: https://github.com/Deepshah0308/canopy-umbrel-store/discussions
+    about: Ask how to do something, or share an idea, in Discussions.

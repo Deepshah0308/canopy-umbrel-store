@@ -94,4 +94,4 @@ Treat everyone with respect. Assume good intent, explain rather than dismiss, an
 
 ## License
 
-Contributions are shared under the same license as this repository (see `LICENSE`).
+Canopy is MIT licensed (see `LICENSE`), and contributions are shared under the same license. Each app keeps its own upstream license.
