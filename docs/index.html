@@ -3,7 +3,19 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Canopy app store for Umbrel</title>
+<title>Canopy: Umbrel community app store for apps umbrelOS doesn't have</title>
+<link rel="canonical" href="https://deepshah0308.github.io/canopy-umbrel-store/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://deepshah0308.github.io/canopy-umbrel-store/">
+<meta property="og:title" content="Canopy: an Umbrel community app store">
+<meta property="og:description" content="Apps for your Umbrel that Umbrel's own store doesn't have, kept on their newest versions and tested before every update.">
+<meta property="og:image" content="https://deepshah0308.github.io/canopy-umbrel-store/social-preview.png">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="640">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareSourceCode","name":"Canopy","alternateName":"Canopy Umbrel app store","description":"A community app store for umbrelOS with apps Umbrel's official store doesn't have, plus apps other community stores ship out of date. Every update is installed and tested before it ships. Home of YAMS, a pre-wired media server.","url":"https://deepshah0308.github.io/canopy-umbrel-store/","codeRepository":"https://github.com/Deepshah0308/canopy-umbrel-store","license":"https://opensource.org/licenses/MIT","programmingLanguage":"Python","runtimePlatform":"umbrelOS","keywords":"Umbrel, umbrelOS, community app store, self-hosted, homelab, Jellyfin, Sonarr, Radarr, YAMS","author":{"@type":"Person","name":"Deep Shah","url":"https://github.com/Deepshah0308"}}
+</script>
 <meta name="description" content="A community app store for umbrelOS with apps Umbrel doesn't have yet, kept on their latest versions. Every update is installed and tested before it reaches you. Home of YAMS, the pre-wired media server.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='16' fill='%232d6a4f'/><path d='M10 34a22 22 0 0 1 44 0c-3.7-2.6-7.3-2.6-11 0-3.7-2.6-7.3-2.6-11 0-3.7-2.6-7.3-2.6-11 0-3.7-2.6-7.3-2.6-11 0z' fill='%23eef3ef'/><path d='M32 34v14a4 4 0 0 1-8 0' fill='none' stroke='%23f2c14e' stroke-width='4' stroke-linecap='round'/></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -206,6 +218,8 @@
 
   <section aria-labelledby="faq-title">
     <h2 id="faq-title">Questions</h2>
+    <details><summary>How do I add a community app store to Umbrel?</summary><p>In Umbrel, open the <b>App Store</b>, click <b>⋯</b> in the top right and choose <b>Community App Stores</b>. Paste <code>https://github.com/Deepshah0308/canopy-umbrel-store</code> and click <b>Add</b>. Canopy's apps then show up in their own section of the App Store.</p></details>
+    <details><summary>How do I install Jellyfin, Sonarr and Radarr on Umbrel together?</summary><p>Install <b>YAMS</b> from Canopy. It sets up Jellyfin, Sonarr, Radarr, Prowlarr, Bazarr and qBittorrent behind a VPN in one install, already connected to each other, with a dashboard to finish setup.</p></details>
     <details><summary>Do I need to use a terminal?</summary><p>No. Add the store address, click Install. Apps that need a login show it on their page in the App Store.</p></details>
     <details><summary>Is it safe?</summary><p>Community stores aren't reviewed by Umbrel, so it's fair to ask. Every app here is pinned to an exact, published version from its official publisher, apps without their own login sit behind your Umbrel login, and nothing gets more access than it needs. Netdata, for example, can list your containers through a read-only proxy but can't start or stop anything. Found a problem? <a href="https://github.com/Deepshah0308/canopy-umbrel-store/security">Report it privately</a>.</p></details>
     <details><summary>Will it work on my Raspberry Pi?</summary><p>Yes. Every app must run on both Umbrel Home and PCs (amd64) and on Raspberry Pi (arm64), and the store's checks refuse any version that doesn't.</p></details>

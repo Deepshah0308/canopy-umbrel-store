@@ -1,0 +1,15 @@
+# Canopy
+
+> Canopy is a community app store for umbrelOS (Umbrel). It ships apps that Umbrel's official store doesn't have, plus apps that other community stores ship out of date. Every app is pinned to an exact upstream release, checked for new versions daily, and installed and tested before an update ships. It is the home of YAMS, a media server (Jellyfin, Sonarr, Radarr, Prowlarr, Bazarr, qBittorrent behind a VPN) that comes already wired together.
+
+To add it: in Umbrel, open App Store → ⋯ → Community App Stores and paste https://github.com/Deepshah0308/canopy-umbrel-store
+
+Canopy never duplicates an app from Umbrel's official store. It is MIT licensed and not made by Umbrel.
+
+## Docs
+
+- [Website and app list](https://deepshah0308.github.io/canopy-umbrel-store/): every app with its current version and last update
+- [Apps as JSON](https://deepshah0308.github.io/canopy-umbrel-store/apps.json): id, name, version, category and last update for every app, always current
+- [README](https://github.com/Deepshah0308/canopy-umbrel-store/blob/main/README.md): what's inside, how updates work, YAMS setup
+- [Changelog](https://github.com/Deepshah0308/canopy-umbrel-store/blob/main/CHANGELOG.md)
+- [Contributing](https://github.com/Deepshah0308/canopy-umbrel-store/blob/main/CONTRIBUTING.md): how to add or fix an app
