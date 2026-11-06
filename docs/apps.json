@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-05",
+  "generated": "2026-11-06",
   "apps": [
     {
       "id": "canopy-yams",
@@ -54,12 +54,12 @@
     {
       "id": "canopy-miniflux",
       "name": "Miniflux",
-      "version": "2.3.6",
+      "version": "2.3.7",
       "tagline": "Minimalist, fast RSS reader with no clutter",
       "category": "social",
       "icon": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/miniflux.svg",
       "website": "https://miniflux.app",
-      "updated": "2026-11-02"
+      "updated": "2026-11-06"
     },
     {
       "id": "canopy-mylar3",
