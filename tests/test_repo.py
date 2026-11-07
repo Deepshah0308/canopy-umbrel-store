@@ -36,7 +36,10 @@ def test_widget_endpoints_point_at_real_services():
     manifest = load(os.path.join(APP, "umbrel-app.yml"))
     services = load(os.path.join(APP, "docker-compose.yml"))["services"]
     for widget in manifest.get("widgets", []):
-        assert widget["endpoint"].split(":")[0] in services
+        service = widget["endpoint"].split(":")[0]
+        assert service in services
+        # umbrelOS joins every network's IP into one address, so two networks break the widget.
+        assert len(services[service].get("networks") or ["default"]) == 1, f"{service} must be on one network"
 
 
 def test_media_apps_use_moving_tags():
@@ -68,10 +71,9 @@ def test_shell_scripts_parse():
 
 def test_media_apps_are_not_on_the_shared_umbrel_network():
     services = load(os.path.join(APP, "docker-compose.yml"))["services"]
-    for name in ("jellyfin", "sonarr", "radarr", "prowlarr", "bazarr", "flaresolverr", "gluetun", "init"):
+    for name in ("jellyfin", "sonarr", "radarr", "prowlarr", "bazarr", "flaresolverr", "gluetun", "init", "dashboard"):
         assert services[name].get("networks") == ["yams"], f"{name} must only be on the private yams network"
     assert set(services["web"]["networks"]) == {"default", "yams"}
-    assert set(services["dashboard"]["networks"]) == {"default", "yams"}
 
 
 def test_router_reaches_the_dashboard_only_through_its_socket():

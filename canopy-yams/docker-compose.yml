@@ -9,10 +9,10 @@ version: "3.7"
 # (pre-start, post-update, ...) so umbrelOS never executes it.
 #
 # Security: the media apps live on a private network ("yams") that other Umbrel apps
-# can't reach. Only the router (web) and the dashboard also join Umbrel's shared
-# network: the router so the Umbrel login can reach it, and the dashboard only to
-# serve the two read-only home-screen widgets. The dashboard's controls are served on
-# a Unix socket that only the router mounts.
+# can't reach. Only the router (web) also joins Umbrel's shared network, so the
+# Umbrel login can reach it. The dashboard stays on one network: umbrelOS reads the
+# home-screen widgets from the host by container IP, which breaks with two networks.
+# The dashboard's controls are served on a Unix socket that only the router mounts.
 #
 # The media apps use moving tags (latest, or v3 for gluetun) so the YAMS dashboard's
 # "Update apps" button can bring them up to date without waiting for a YAMS release.
@@ -67,7 +67,7 @@ services:
     environment:
       APP_PREFIX: canopy-yams
       JELLYFIN_PORT: "8097"
-      YAMS_VERSION: "1.4.4"
+      YAMS_VERSION: "1.4.5"
       DATA_DIR: /yams
       BACKUP_DIR: /backups
       API_SOCK: /sock/dashboard.sock
@@ -77,7 +77,7 @@ services:
       - ${APP_DATA_DIR}/data/sock:/sock
       - ${UMBREL_ROOT}/data/storage/downloads/yams-backups:/backups
       - /var/run/docker.sock:/var/run/docker.sock
-    networks: [default, yams]
+    networks: [yams]
     depends_on:
       init:
         condition: service_completed_successfully

@@ -2,7 +2,7 @@ manifestVersion: 1.1
 id: canopy-yams
 category: media
 name: YAMS
-version: "1.4.4"
+version: "1.4.5"
 tagline: "Your own Netflix — movies, shows and subtitles, fully automatic"
 icon: https://cdn.jsdelivr.net/gh/Deepshah0308/canopy-umbrel-store@24f69a96df050bcb6c34e3a7be0c65303b4f1112/canopy-yams/icon.svg
 description: >-
@@ -63,10 +63,12 @@ path: ""
 defaultUsername: ""
 defaultPassword: ""
 torOnly: false
+# Umbrel's terminal opens this container (the default, init, only runs once at start).
+defaultShell: dashboard
 permissions:
   - STORAGE_DOWNLOADS
 releaseNotes: >-
-  Updated YAMS automatically by Canopy: python 3.12.16-alpine rebuilt with the latest security fixes; caddy 2.11.8-alpine → 2.11.9-alpine. What's new: https://github.com/rogsme/yams/releases
+  Fixes the YAMS home-screen widgets showing only dashes, and opening YAMS in Umbrel's terminal no longer fails with "container is not running".
 widgets:
   - id: "stats"
     type: "four-stats"
