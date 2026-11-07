@@ -167,7 +167,7 @@ Start with **Quick fixes → Fix everything** in the YAMS dashboard. It solves m
 
 - VPN setup supports WireGuard files. OpenVPN-only providers aren't covered by the dashboard yet.
 - VPN port forwarding isn't configured, so torrents work but may connect to fewer peers.
-- No hardware transcoding by default. On Intel machines you can add `devices: ["/dev/dri:/dev/dri"]` to the Jellyfin service.
+- Hardware transcoding needs umbrelOS 2.1 or newer, which passes your graphics card (Intel, AMD or NVIDIA) to YAMS. Then pick it in Jellyfin under Dashboard → Playback → Transcoding (VAAPI or QSV for Intel/AMD, NVENC for NVIDIA).
 - Only the Downloads folder is used; external drives need Umbrel 2.0's folder access feature or a manual mount.
 
 ## Repository layout

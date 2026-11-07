@@ -2,7 +2,7 @@ manifestVersion: 1.1
 id: canopy-yams
 category: media
 name: YAMS
-version: "1.4.5"
+version: "1.4.6"
 tagline: "Your own Netflix — movies, shows and subtitles, fully automatic"
 icon: https://cdn.jsdelivr.net/gh/Deepshah0308/canopy-umbrel-store@24f69a96df050bcb6c34e3a7be0c65303b4f1112/canopy-yams/icon.svg
 description: >-
@@ -67,8 +67,9 @@ torOnly: false
 defaultShell: dashboard
 permissions:
   - STORAGE_DOWNLOADS
+  - GPU
 releaseNotes: >-
-  Fixes the YAMS home-screen widgets showing only dashes, and opening YAMS in Umbrel's terminal no longer fails with "container is not running".
+  Jellyfin can now use your Umbrel's graphics card (Intel, AMD or NVIDIA) for hardware transcoding, and it stays set up across updates. Needs umbrelOS 2.1 or newer. Then turn it on in Jellyfin: Dashboard → Playback → Transcoding.
 widgets:
   - id: "stats"
     type: "four-stats"
