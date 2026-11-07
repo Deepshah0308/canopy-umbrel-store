@@ -191,6 +191,14 @@ tests/                        unit tests and store rules, run on every pull requ
 
 New apps, fixes and ideas are welcome; see [CONTRIBUTING.md](CONTRIBUTING.md). Changes are listed in [CHANGELOG.md](CHANGELOG.md), and security reports go through [SECURITY.md](SECURITY.md).
 
+Good places to start: [good first issues](https://github.com/Deepshah0308/canopy-umbrel-store/issues?q=is%3Aopen+label%3A%22good+first+issue%22), app requests in [Discussions](https://github.com/Deepshah0308/canopy-umbrel-store/discussions), or testing an app on your own Umbrel and reporting what breaks.
+
+<a href="https://github.com/Deepshah0308/canopy-umbrel-store/graphs/contributors"><img src="https://contrib.rocks/image?repo=Deepshah0308/canopy-umbrel-store" alt="Contributors"></a>
+
+## Sponsor
+
+Canopy is free and run in spare time. If it saves you an evening of Docker wrangling, [sponsoring on GitHub](https://github.com/sponsors/Deepshah0308) keeps the apps updated and tested.
+
 ## Credits
 
 [YAMS](https://yams.media) by rogs, every app's own authors, [gluetun](https://github.com/qdm12/gluetun), the [linuxserver.io](https://linuxserver.io) images, [TRaSH Guides](https://trash-guides.info), [dashboard-icons](https://github.com/homarr-labs/dashboard-icons) for app icons, and the [Umbrel community app store template](https://github.com/getumbrel/umbrel-community-app-store).
