@@ -2,7 +2,7 @@ manifestVersion: 1
 id: canopy-netdata
 category: networking
 name: Netdata
-version: "2.12.4"
+version: "2.12.5"
 tagline: "Real-time health of your Umbrel: CPU, memory, disks, network and every app"
 icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/netdata.svg
 description: >-
@@ -24,6 +24,6 @@ path: ""
 defaultUsername: ""
 defaultPassword: ""
 releaseNotes: >-
-  Updated Netdata automatically by Canopy: netdata v2.12.2 → v2.12.3. What's new: https://github.com/netdata/netdata/releases
+  Updated Netdata automatically by Canopy: socket-proxy 3.4.7 rebuilt with the latest security fixes. What's new: https://github.com/netdata/netdata/releases
 submitter: Deepshah0308
 submission: https://github.com/Deepshah0308/canopy-umbrel-store

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-06",
+  "generated": "2026-11-07",
   "apps": [
     {
       "id": "canopy-yams",
@@ -74,12 +74,12 @@
     {
       "id": "canopy-netdata",
       "name": "Netdata",
-      "version": "2.12.4",
+      "version": "2.12.5",
       "tagline": "Real-time health of your Umbrel: CPU, memory, disks, network and every app",
       "category": "networking",
       "icon": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/netdata.svg",
       "website": "https://www.netdata.cloud",
-      "updated": "2026-11-05"
+      "updated": "2026-11-07"
     },
     {
       "id": "canopy-nzbget",
