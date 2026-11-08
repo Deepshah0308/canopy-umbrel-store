@@ -29,33 +29,28 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&display=swap" rel="stylesheet">
 <style>
+  /* Palette: two quiet bases + one loud accent. Every other shade is mixed from these three. */
   :root {
-    --lichen: #eef3ef;
-    --shade: #dfe8e1;
-    --ink: #16231c;
-    --moss: #4b5f53;
-    --leaf: #2d6a4f;
-    --sun: #f2c14e;
-    --bark: #6b5444;
-    --line: #c9d6cc;
-    --card: #f8fbf8;
+    color-scheme: dark;
+    --night: #0f1a15;   /* base 1: backgrounds */
+    --pine: #1e3a2c;    /* base 2: cards, borders, code */
+    --lime: #d4ff30;    /* accent: buttons, links, key numbers only */
+    --lichen: var(--night);
+    --shade: var(--pine);
+    --card: color-mix(in srgb, var(--pine) 45%, var(--night));
+    --line: var(--pine);
+    --ink: color-mix(in srgb, var(--pine) 8%, #fff);
+    --moss: color-mix(in srgb, var(--pine) 42%, #fff);
+    --leaf: var(--lime);
+    --sun: var(--lime);
+    --bark: var(--moss);
     --display: "Bricolage Grotesque", "Avenir Next", "Segoe UI", system-ui, sans-serif;
     --body: "Atkinson Hyperlegible", "Segoe UI", system-ui, -apple-system, sans-serif;
     --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
   }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      --lichen: #0f1a15; --shade: #16241d; --ink: #e4ede7; --moss: #9fb3a6; --leaf: #7fc29b;
-      --sun: #f2c14e; --bark: #c9ad97; --line: #2a3b32; --card: #13211a;
-    }
-  }
-  :root[data-theme="dark"] {
-    --lichen: #0f1a15; --shade: #16241d; --ink: #e4ede7; --moss: #9fb3a6; --leaf: #7fc29b;
-    --sun: #f2c14e; --bark: #c9ad97; --line: #2a3b32; --card: #13211a;
-  }
   * { box-sizing: border-box; }
   html { background: var(--lichen); }
-  body { margin: 0; background: var(--lichen); color: var(--ink); font: 400 1.0625rem/1.65 var(--body); -webkit-font-smoothing: antialiased; }
+  body { margin: 0; background: radial-gradient(60rem 32rem at 15% -10%, color-mix(in srgb, var(--pine) 70%, transparent), transparent 70%) no-repeat, var(--lichen); color: var(--ink); font: 400 1.0625rem/1.65 var(--body); -webkit-font-smoothing: antialiased; }
   main { max-width: 60rem; margin: 0 auto; padding: 3.5rem 1rem 5rem; }
   a { color: var(--leaf); text-underline-offset: 3px; }
   a:focus-visible, button:focus-visible, summary:focus-visible { outline: 3px solid var(--sun); outline-offset: 3px; border-radius: 6px; }
@@ -68,7 +63,7 @@
   .mark { display: flex; align-items: center; gap: .7rem; font: 700 1.15rem var(--display); margin-bottom: 3rem; }
   .mark svg { width: 40px; height: 40px; flex: none; }
   .mark span { color: var(--moss); font-weight: 500; font-size: 1rem; }
-  h1 { font-size: clamp(2.3rem, 6.4vw, 4rem); line-height: 1.02; font-weight: 800; max-width: 15ch; }
+  h1 { font-size: clamp(2.3rem, 6.4vw, 4rem); line-height: 1; font-weight: 800; letter-spacing: -.03em; max-width: 15ch; }
   .lede { font-size: 1.2rem; color: var(--moss); margin: 1.3rem 0 2.2rem; max-width: 38rem; }
 
   .store { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 1.1rem 1.2rem; max-width: 42rem; }
@@ -76,7 +71,8 @@
   .store-row { display: flex; gap: .6rem; align-items: center; flex-wrap: wrap; }
   .store-url { font: 400 1rem var(--mono); overflow-wrap: anywhere; flex: 1; min-width: 14rem; }
   .btn { appearance: none; border: 0; border-radius: 999px; padding: .6rem 1.2rem; font: 700 .98rem var(--body);
-         background: var(--leaf); color: var(--lichen); cursor: pointer; text-decoration: none; display: inline-block; }
+         background: var(--lime); color: var(--night); cursor: pointer; text-decoration: none; display: inline-block; }
+  .btn:hover { background: color-mix(in srgb, var(--lime) 85%, #fff); }
   .btn.quiet { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 2px var(--line); }
   ol.how { margin: 1.4rem 0 0; padding-left: 1.3rem; color: var(--moss); max-width: 42rem; }
   ol.how li { margin-bottom: .35rem; padding-left: .2rem; }
@@ -152,7 +148,7 @@
 <body>
 <main>
   <div class="mark">
-    <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="16" fill="#2d6a4f"/><path d="M10 34a22 22 0 0 1 44 0c-3.7-2.6-7.3-2.6-11 0-3.7-2.6-7.3-2.6-11 0-3.7-2.6-7.3-2.6-11 0-3.7-2.6-7.3-2.6-11 0z" fill="#eef3ef"/><path d="M32 34v14a4 4 0 0 1-8 0" fill="none" stroke="#f2c14e" stroke-width="4" stroke-linecap="round"/></svg>
+    <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="16" fill="#1e3a2c"/><path d="M10 34a22 22 0 0 1 44 0c-3.7-2.6-7.3-2.6-11 0-3.7-2.6-7.3-2.6-11 0-3.7-2.6-7.3-2.6-11 0-3.7-2.6-7.3-2.6-11 0z" fill="#edefee"/><path d="M32 34v14a4 4 0 0 1-8 0" fill="none" stroke="#d4ff30" stroke-width="4" stroke-linecap="round"/></svg>
     Canopy <span>for umbrelOS</span>
   </div>
 
