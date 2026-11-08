@@ -1,0 +1,18 @@
+/* Canopy palette: two quiet bases + one loud accent, same as the main site. */
+[data-md-color-scheme="slate"] {
+  --night: #0f1a15; --pine: #1e3a2c; --lime: #d4ff30;
+  --md-default-bg-color: var(--night);
+  --md-default-fg-color: color-mix(in srgb, var(--pine) 8%, #fff);
+  --md-default-fg-color--light: color-mix(in srgb, var(--pine) 42%, #fff);
+  --md-primary-fg-color: var(--pine);
+  --md-primary-bg-color: color-mix(in srgb, var(--pine) 8%, #fff);
+  --md-accent-fg-color: var(--lime);
+  --md-typeset-a-color: var(--lime);
+  --md-code-bg-color: color-mix(in srgb, var(--pine) 45%, var(--night));
+  --md-footer-bg-color: var(--pine);
+  --md-footer-bg-color--dark: var(--night);
+}
+.md-header, .md-tabs { background: var(--pine); }
+.md-typeset h1 { color: var(--md-default-fg-color); font-weight: 800; letter-spacing: -.02em; }
+.md-typeset .md-button--primary { background: var(--lime); border-color: var(--lime); color: var(--night); }
+.md-typeset table:not([class]) th { background: var(--pine); }

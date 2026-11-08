@@ -1,0 +1,57 @@
+site_name: Canopy docs
+site_description: How to install and use Canopy, the Umbrel community app store, and YAMS, its pre-wired media server.
+site_url: https://deepshah0308.github.io/canopy-umbrel-store/guide/
+repo_url: https://github.com/Deepshah0308/canopy-umbrel-store
+repo_name: Deepshah0308/canopy-umbrel-store
+edit_uri: edit/main/guide/
+docs_dir: guide
+site_dir: docs/guide   # served by GitHub Pages next to the main site; rebuild with `mkdocs build`
+
+theme:
+  name: material
+  logo: assets/logo.svg
+  favicon: assets/logo.svg
+  palette:
+    scheme: slate
+    primary: custom
+    accent: custom
+  font: false
+  features:
+    - navigation.sections
+    - navigation.top
+    - navigation.footer
+    - content.code.copy
+    - search.highlight
+
+extra_css:
+  - assets/canopy.css
+
+nav:
+  - Welcome: index.md
+  - Install Canopy: install.md
+  - Apps: apps.md
+  - YAMS:
+      - Overview: yams/index.md
+      - What's set up for you: yams/automatic.md
+      - Extras: yams/extras.md
+      - Managing YAMS: yams/managing.md
+      - Hardware transcoding: yams/transcoding.md
+      - How it fits together: yams/how-it-works.md
+      - Troubleshooting: yams/troubleshooting.md
+  - FAQ: faq.md
+  - Contributing: contributing.md
+  - Security: security.md
+  - Changelog: changelog.md
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.snippets:
+      base_path: ["."]
+      check_paths: true

@@ -1,0 +1,1137 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="How to install and use Canopy, the Umbrel community app store, and YAMS, its pre-wired media server.">
+      
+      
+      
+        <link rel="canonical" href="https://deepshah0308.github.io/canopy-umbrel-store/guide/contributing/">
+      
+      
+        <link rel="prev" href="../faq/">
+      
+      
+        <link rel="next" href="../security/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/logo.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Contributing - Canopy docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../assets/canopy.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#contributing-to-canopy" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Canopy docs" class="md-header__button md-logo" aria-label="Canopy docs" data-md-component="logo">
+      
+  <img src="../assets/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Canopy docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Contributing
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Deepshah0308/canopy-umbrel-store" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Deepshah0308/canopy-umbrel-store
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Canopy docs" class="md-nav__button md-logo" aria-label="Canopy docs" data-md-component="logo">
+      
+  <img src="../assets/logo.svg" alt="logo">
+
+    </a>
+    Canopy docs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Deepshah0308/canopy-umbrel-store" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Deepshah0308/canopy-umbrel-store
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Welcome
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../install/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Install Canopy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apps/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Apps
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    YAMS
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    YAMS
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../yams/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../yams/automatic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    What's set up for you
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../yams/extras/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Extras
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../yams/managing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Managing YAMS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../yams/transcoding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hardware transcoding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../yams/how-it-works/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How it fits together
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../yams/troubleshooting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Troubleshooting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FAQ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contributing
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contributing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ways-to-help" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ways to help
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-an-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Add an app
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-the-project-fits-together" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How the project fits together
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#run-the-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Run the tests
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#try-your-change-on-your-own-umbrel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Try your change on your own Umbrel
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rules-that-keep-yams-safe-and-working" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rules that keep YAMS safe and working
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#releasing-a-version" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Releasing a version
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#be-kind" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Be kind
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#license" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        License
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../security/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../changelog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Changelog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ways-to-help" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ways to help
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-an-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Add an app
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-the-project-fits-together" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How the project fits together
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#run-the-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Run the tests
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#try-your-change-on-your-own-umbrel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Try your change on your own Umbrel
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rules-that-keep-yams-safe-and-working" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rules that keep YAMS safe and working
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#releasing-a-version" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Releasing a version
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#be-kind" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Be kind
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#license" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        License
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="contributing-to-canopy">Contributing to Canopy<a class="headerlink" href="#contributing-to-canopy" title="Permanent link">&para;</a></h1>
+<p>Thanks for helping. Whether it's a new app, a bug report, a clearer sentence on the YAMS dashboard or a new feature, contributions are welcome. You don't need to be an expert: plenty of useful changes are a few lines.</p>
+<h2 id="ways-to-help">Ways to help<a class="headerlink" href="#ways-to-help" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Report a problem.</strong> <a href="https://github.com/Deepshah0308/canopy-umbrel-store/issues/new/choose">Open an issue</a> with the app, its version and its logs (YAMS: the dashboard's <strong>Logs</strong> button; other apps: right-click the app in Umbrel → Troubleshoot).</li>
+<li><strong>Add an app.</strong> See <a href="#add-an-app">Add an app</a> below.</li>
+<li><strong>Suggest an improvement.</strong> The best ideas start with "I keep having to…".</li>
+<li><strong>Improve the words.</strong> The dashboard is written for people who've never run a media server. If something confused you, it will confuse others.</li>
+<li><strong>Fix or build something.</strong> Look for issues labelled <code>good first issue</code>, or comment on one to say you're taking it.</li>
+</ul>
+<h2 id="add-an-app">Add an app<a class="headerlink" href="#add-an-app" title="Permanent link">&para;</a></h2>
+<p>Canopy carries apps that aren't in <a href="https://github.com/getumbrel/umbrel-apps">Umbrel's official store</a>, or that other community stores ship badly out of date. Check the official store first.</p>
+<ol>
+<li><strong>Make a folder</strong> named <code>canopy-&lt;app&gt;</code> (lowercase, dashes). Copy a similar app as a starting point: <code>canopy-linkding</code> is a single container with its own login, <code>canopy-miniflux</code> has a database, <code>canopy-jdownloader</code> uses the Downloads folder.</li>
+<li><strong><code>docker-compose.yml</code>.</strong> Pin the image to a release tag <strong>and</strong> its digest: <code>image: publisher/app:1.2.3@sha256:…</code>. <code>python3 -c "import sys; sys.path.insert(0,'tools'); import registry; print(registry.digest('publisher/app:1.2.3'), registry.architectures('publisher/app:1.2.3'))"</code> prints both, and the architectures must include <code>linux/amd64</code> and <code>linux/arm64</code>. <code>app_proxy</code>'s <code>APP_HOST</code> is <code>canopy-&lt;app&gt;_&lt;service&gt;_1</code>. Keep data under <code>${APP_DATA_DIR}/data</code>. If the app has its own login, add <code>PROXY_AUTH_ADD: "false"</code> so people don't sign in twice; if it needs a password, use <code>${APP_PASSWORD}</code> and set <code>deterministicPassword: true</code> in the manifest so Umbrel shows it.</li>
+<li><strong><code>umbrel-app.yml</code>.</strong> <code>id</code> matches the folder, <code>version</code> matches the image tag (without a leading <code>v</code>), and pick a <code>port</code> no other app uses (the checks will tell you if one clashes). Quote the <code>tagline</code>. Write the description for someone who's never heard of the app.</li>
+<li><strong>Test it like umbrelOS installs it:</strong>
+   <div class="highlight"><pre><span></span><code>python3<span class="w"> </span>tools/umbrel_sim.py<span class="w"> </span>canopy-&lt;app&gt;<span class="w">            </span><span class="c1"># install, check, remove</span>
+python3<span class="w"> </span>tools/umbrel_sim.py<span class="w"> </span>canopy-&lt;app&gt;<span class="w"> </span>--keep<span class="w">     </span><span class="c1"># leave it running to try it</span>
+python3<span class="w"> </span>tools/umbrel_sim.py<span class="w"> </span>canopy-&lt;app&gt;<span class="w"> </span>--down
+</code></pre></div>
+   It needs Docker and runs as root (it sets folder ownership the way umbrelOS does).</li>
+<li><strong>Run the checks:</strong> <code>pytest -q tests</code> (offline rules) and <code>python3 tools/lint_store.py canopy-&lt;app&gt;</code> (architectures, ports, duplicates), then <code>python3 tools/build_site.py</code> to add it to the website.</li>
+<li><strong>Open a pull request.</strong> CI runs all of the above again, including the install test. Once merged, the update bot keeps the app current from then on.</li>
+</ol>
+<h2 id="how-the-project-fits-together">How the project fits together<a class="headerlink" href="#how-the-project-fits-together" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>umbrel-app-store.yml          store id "canopy"
+canopy-&lt;app&gt;/                 one folder per app
+canopy-yams/
+  umbrel-app.yml              the App Store listing, version and home-screen widgets
+  docker-compose.yml          every container, including the Extras
+  hooks/yams/                 all of YAMS's own code (see "Rules" for why it lives here)
+    setup/seed.py             first boot: keys, passwords, starter configs, folders
+    dashboard/server.py       dashboard API, app wiring, quick fixes, widgets, Docker controls
+    dashboard/extras.py       Extras: switches, their settings files, Seerr's setup
+    dashboard/updater.py      "Update apps": registry checks, image pulls, container recreation
+    dashboard/backups.py      backup, restore and the backup schedule
+    dashboard/index.html      the dashboard page
+    extras/gate.sh            keeps an Extra waiting until it's switched on
+    vpn/vpn-wrapper.sh        starts gluetun once a VPN file exists
+    qbittorrent/*.sh          the VPN kill switch for qBittorrent
+    Caddyfile                 routes each app's web UI behind the Umbrel login
+tools/                        install simulator, update bot, store checks, website builder
+docs/                         the GitHub Pages site
+tests/                        automated tests (run on every pull request)
+</code></pre></div>
+<h2 id="run-the-tests">Run the tests<a class="headerlink" href="#run-the-tests" title="Permanent link">&para;</a></h2>
+<p>You need Python 3.12 or newer.</p>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>pytest<span class="w"> </span>pyyaml
+pytest<span class="w"> </span>-q<span class="w"> </span>tests
+</code></pre></div>
+<p>The tests use fake versions of Docker, Sonarr, Radarr and Prowlarr, so they run anywhere in about twenty seconds, with no Umbrel needed. They also check every app against the store rules and that the website lists every app. Every pull request runs them automatically, plus the install test for each app it changes.</p>
+<h2 id="try-your-change-on-your-own-umbrel">Try your change on your own Umbrel<a class="headerlink" href="#try-your-change-on-your-own-umbrel" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>Fork</strong> this repository on GitHub and push your change to your fork.</li>
+<li>Raise the app's <code>version</code> in its <code>umbrel-app.yml</code> (for YAMS, for example <code>1.4.0</code> → <code>1.4.1-test</code>, and set <code>YAMS_VERSION</code> in <code>docker-compose.yml</code> to the same value).</li>
+<li>In Umbrel, go to <strong>App Store → ⋯ → Community App Stores</strong>. Remove this store and add your fork's URL instead. Both use the store id <code>canopy</code>, so only one can be added at a time.</li>
+<li>YAMS shows an <strong>Update</strong> button (or install it fresh). The dashboard header shows your test version once it's running.</li>
+<li>When you're done, switch back to <code>https://github.com/Deepshah0308/canopy-umbrel-store</code>.</li>
+</ol>
+<p>Umbrel re-copies <code>hooks/yams/</code> on every update, so code changes reach your Umbrel whenever you bump the version.</p>
+<h2 id="rules-that-keep-yams-safe-and-working">Rules that keep YAMS safe and working<a class="headerlink" href="#rules-that-keep-yams-safe-and-working" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Keep code in <code>hooks/yams/</code>.</strong> umbrelOS only re-copies certain files when an app updates, and the <code>hooks</code> folder is one of them. Code elsewhere would reach new installs but never existing ones. Never name a file after a hook (<code>pre-start</code>, <code>post-update</code>, …) because umbrelOS would run it.</li>
+<li><strong>Standard library only.</strong> The dashboard runs on the stock <code>python:alpine</code> image, so there's nothing to <code>pip install</code>. This keeps installs fast and nothing to build.</li>
+<li><strong>qBittorrent only ever uses the VPN.</strong> It shares gluetun's network, waits for the tunnel before starting, and stops if the tunnel goes. Any change near this needs a test showing downloads can't leave outside the VPN.</li>
+<li><strong>Only touch YAMS's own containers.</strong> Anything using the Docker socket filters by the <code>com.docker.compose.project=canopy-yams</code> label.</li>
+<li><strong>Check what an app accepted.</strong> When wiring apps together, start from the app's own schema (<code>…/schema</code> endpoints), then confirm the change worked before marking a step done. Otherwise failures go silent.</li>
+<li><strong>Write for newcomers.</strong> Messages say what happened and what to do next, in plain words. "Can't reach qBittorrent right now. YAMS checks again every 10 minutes." beats "Connection refused (111)".</li>
+<li><strong>Add a test</strong> for any behaviour you change. The fakes in <code>tests/fakes.py</code> make most things easy to test.</li>
+</ul>
+<h2 id="releasing-a-version">Releasing a version<a class="headerlink" href="#releasing-a-version" title="Permanent link">&para;</a></h2>
+<p>App updates are shipped by the daily update bot (see the README). Major versions arrive as pull requests: read the app's release notes for breaking changes, then merge.</p>
+<p>For YAMS itself, maintainers release by merging to <code>main</code> with the version bumped in both <code>canopy-yams/umbrel-app.yml</code> and <code>YAMS_VERSION</code> in <code>canopy-yams/docker-compose.yml</code> (a test checks they match), plus a line in <code>CHANGELOG.md</code>. Umbrel then offers the update to everyone.</p>
+<h2 id="be-kind">Be kind<a class="headerlink" href="#be-kind" title="Permanent link">&para;</a></h2>
+<p>Treat everyone with respect. Assume good intent, explain rather than dismiss, and remember many people here are running a server for the first time. Harassment or personal attacks aren't welcome and will be removed. If something bothers you, open an issue or contact the maintainer.</p>
+<h2 id="license">License<a class="headerlink" href="#license" title="Permanent link">&para;</a></h2>
+<p>Canopy is MIT licensed (see <code>LICENSE</code>), and contributions are shared under the same license. Each app keeps its own upstream license.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../faq/" class="md-footer__link md-footer__link--prev" aria-label="Previous: FAQ">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                FAQ
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../security/" class="md-footer__link md-footer__link--next" aria-label="Next: Security">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Security
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.top", "navigation.footer", "content.code.copy", "search.highlight"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

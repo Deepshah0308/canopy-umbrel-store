@@ -20,6 +20,17 @@ jobs:
       - run: pip install pytest pyyaml
       - run: pytest -q tests
 
+  docs:
+    name: Docs build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install "mkdocs>=1.6,<2" "mkdocs-material>=9.7,<10"
+      - run: mkdocs build --strict
+
   store:
     name: Images, ports and duplicates
     runs-on: ubuntu-latest
