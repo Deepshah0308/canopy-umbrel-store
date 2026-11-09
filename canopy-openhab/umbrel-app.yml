@@ -2,7 +2,7 @@ manifestVersion: 1
 id: canopy-openhab
 category: automation
 name: openHAB
-version: "5.2.3"
+version: "5.2.4"
 tagline: "Vendor-neutral home automation that runs entirely at home"
 icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/openhab.svg
 description: >-
@@ -24,6 +24,6 @@ path: ""
 defaultUsername: ""
 defaultPassword: ""
 releaseNotes: >-
-  openHAB 5.2.3. Other stores still ship openHAB 4.2.
+  Updated openHAB automatically by Canopy: openhab 5.2.3 → 5.2.4. What's new: https://github.com/openhab/openhab-docker/releases
 submitter: Deepshah0308
 submission: https://github.com/Deepshah0308/canopy-umbrel-store
