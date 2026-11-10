@@ -516,6 +516,39 @@ def ensure_flaresolverr():
     return ok(status)
 
 
+
+# Prowlarr (and FlareSolverr) can search through the VPN, for internet providers that block
+# indexer sites. They use gluetun's HTTP proxy rather than its network, so they keep reaching
+# Sonarr and Radarr by name, and if the VPN is down the proxy is gone and searches fail closed.
+PROWLARR_VPN_FLAG = f"{STATE_DIR}/prowlarr-vpn"   # also read by vpn/via-vpn.sh in FlareSolverr
+VPN_PROXY_PORT = 8888
+
+
+def set_prowlarr_vpn(on):
+    """Point Prowlarr's proxy at the VPN (or back to direct) and restart FlareSolverr to match."""
+    if on and not os.path.exists(WG_PATH):
+        return False, "Connect a VPN first."
+    api, h = prowlarr_api()
+    status, cfg = http("GET", f"{api}/config/host", headers=h)
+    if not ok(status) or not isinstance(cfg, dict):
+        return False, "Prowlarr isn't answering yet. Try again in a minute."
+    cfg.update(proxyEnabled=on, proxyType="http", proxyHostname=host("gluetun") if on else cfg.get("proxyHostname"),
+               proxyPort=VPN_PROXY_PORT, proxyBypassLocalAddresses=True)
+    # Newer Prowlarr refuses to save these settings unless sign-in is "required" or Allowed Hosts
+    # is filled in. Sign-in is Umbrel's job here (method External), so "required" changes nothing.
+    if cfg.get("authenticationMethod", "").lower() == "external" and not cfg.get("allowedHosts"):
+        cfg["authenticationRequired"] = "enabled"
+    status, _ = http("PUT", f"{api}/config/host/{cfg.get('id', 1)}", cfg, headers=h)
+    if not ok(status):
+        return False, "Prowlarr didn't accept the change."
+    if on:
+        open(PROWLARR_VPN_FLAG, "w").close()
+    elif os.path.exists(PROWLARR_VPN_FLAG):
+        os.remove(PROWLARR_VPN_FLAG)
+    restart_service("flaresolverr")
+    return True, "Searches now go through the VPN." if on else "Searches now use your normal connection."
+
+
 def remove_prowlarr_app(kind):
     """When an Extra is switched off, stop Prowlarr pushing indexers to it."""
     api, h = prowlarr_api()
@@ -1639,6 +1672,7 @@ def gather_status():
         "updates": updater.status(),
         "fixes": [{"id": k, "label": v[0], **fix_state.get(k, {})} for k, v in FIXES.items()],
         "extras": extras_status(containers),
+        "prowlarr_vpn": os.path.exists(PROWLARR_VPN_FLAG),
         "seerr_port": SEERR_PORT,
         "setup": {"message": setup.get("message"), "done": setup.get("done", {})},
         "login": {"username": s.get("username"), "password": s.get("password")},
@@ -1872,6 +1906,14 @@ class Handler(BaseHTTPRequestHandler):
                 return self.send(200, backups.update_settings(body.get("schedule"), body.get("keep")))
             except (backups.BackupError, ValueError, TypeError) as err:
                 return self.send(400, {"error": str(err)})
+        if path == "/api/prowlarr-vpn":
+            if not isinstance(body.get("on"), bool):
+                return self.send(400, {"error": "Say on or off."})
+            reason = something_running()
+            if reason:
+                return self.send(409, {"error": reason})
+            done, message = set_prowlarr_vpn(body["on"])
+            return self.send(200 if done else 409, {"ok": done, "message": message, "error": None if done else message})
         if path == "/api/vpn-check":
             return self.send(200, check_vpn())
         if path == "/api/vpn":

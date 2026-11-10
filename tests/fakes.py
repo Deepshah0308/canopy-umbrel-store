@@ -235,6 +235,9 @@ class FakeApps:
         self.commands = []
         self.qbit_ok = True
         self.links_ok = True
+        self.host_config = {"id": 1, "bindAddress": "*", "authenticationMethod": "external",
+                            "authenticationRequired": "disabledForLocalAddresses", "allowedHosts": "", "proxyEnabled": False,
+                            "proxyType": "http", "proxyHostname": "", "proxyPort": 8080, "proxyBypassLocalAddresses": True}
         self.proxies = [{"id": 1, "implementation": "FlareSolverr",
                          "fields": [{"name": "host", "value": "http://canopy-yams_flaresolverr_1:8191/"},
                                     {"name": "requestTimeout", "value": 60}]}]
@@ -293,6 +296,8 @@ class FakeApps:
                         return self.reply(200, copy.deepcopy(fake.proxies))
                     if rest == "/indexer":
                         return self.reply(200, [{"id": 1}, {"id": 2}])
+                    if rest == "/config/host":
+                        return self.reply(200, copy.deepcopy(fake.host_config))
                 return self.reply(404, {})
 
             def do_POST(self):
@@ -340,6 +345,13 @@ class FakeApps:
                 body = self.body()
                 if app in ("sonarr", "radarr") and rest.startswith("/downloadclient/"):
                     fake.clients[app] = [body if c["id"] == body["id"] else c for c in fake.clients[app]]
+                    return self.reply(202, body)
+                if app == "prowlarr" and rest == "/config/host/1":
+                    if set(fake.host_config) - set(body):  # like the real app: the whole form or nothing
+                        return self.reply(400, [{"errorMessage": "missing fields"}])
+                    if body.get("authenticationRequired") != "enabled" and not body.get("allowedHosts"):
+                        return self.reply(400, [{"errorMessage": "Allowed Hosts is required when 'Authentication Required' is not 'Enabled'"}])
+                    fake.host_config = body
                     return self.reply(202, body)
                 if app == "prowlarr" and rest.startswith("/indexerProxy/"):
                     fake.proxies = [body if x["id"] == body["id"] else x for x in fake.proxies]

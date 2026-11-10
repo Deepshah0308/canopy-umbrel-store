@@ -76,3 +76,24 @@ def test_fix_buttons(apps, monkeypatch):
     assert not good and "can't reach qBittorrent" in message
     good, message = server.fix_search()
     assert good and ("sonarr", "MissingEpisodeSearch") in apps.commands and ("radarr", "MissingMoviesSearch") in apps.commands
+
+
+def test_search_through_the_vpn_switches_prowlarr_and_flaresolverr(apps, monkeypatch, tmp_path):
+    wg = tmp_path / "wg0.conf"
+    restarted = []
+    monkeypatch.setattr(server, "WG_PATH", str(wg))
+    monkeypatch.setattr(server, "PROWLARR_VPN_FLAG", str(tmp_path / "prowlarr-vpn"))
+    monkeypatch.setattr(server, "restart_service", restarted.append)
+
+    done, message = server.set_prowlarr_vpn(True)
+    assert not done and "VPN" in message and not apps.host_config["proxyEnabled"]
+
+    wg.write_text("[Interface]\n")
+    assert server.set_prowlarr_vpn(True)[0]
+    cfg = apps.host_config
+    assert cfg["proxyEnabled"] and cfg["proxyHostname"] == server.host("gluetun") and cfg["proxyPort"] == 8888
+    assert cfg["proxyBypassLocalAddresses"] and cfg["authenticationMethod"] == "external"  # rest of the form kept
+    assert (tmp_path / "prowlarr-vpn").exists() and restarted == ["flaresolverr"]
+
+    assert server.set_prowlarr_vpn(False)[0]
+    assert not apps.host_config["proxyEnabled"] and not (tmp_path / "prowlarr-vpn").exists()

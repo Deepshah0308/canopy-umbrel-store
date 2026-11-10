@@ -67,7 +67,7 @@ services:
     environment:
       APP_PREFIX: canopy-yams
       JELLYFIN_PORT: "8097"
-      YAMS_VERSION: "1.4.6"
+      YAMS_VERSION: "1.5.0"
       DATA_DIR: /yams
       BACKUP_DIR: /backups
       API_SOCK: /sock/dashboard.sock
@@ -142,9 +142,13 @@ services:
 
   flaresolverr:
     image: flaresolverr/flaresolverr:latest
+    entrypoint: ["/bin/sh", "/yams-app/vpn/via-vpn.sh", "/usr/bin/dumb-init", "--", "/usr/local/bin/python", "-u", "/app/flaresolverr.py"]
     restart: on-failure
     environment:
       TZ: ${TZ:-Etc/UTC}
+    volumes:
+      - ${APP_DATA_DIR}/hooks/yams:/yams-app:ro
+      - ${APP_DATA_DIR}/data/state:/yams-state:ro
     networks: [yams]
 
   bazarr:
@@ -272,9 +276,14 @@ services:
       TZ: ${TZ:-Etc/UTC}
       VPN_SERVICE_PROVIDER: custom
       VPN_TYPE: wireguard
-      # Let the dashboard (8000) and Sonarr/Radarr (8080) reach in over the private network
-      FIREWALL_INPUT_PORTS: "8080,8000"
+      # Let the dashboard (8000), Sonarr/Radarr (8080) and the VPN proxy (8888) be reached
+      # over the private network
+      FIREWALL_INPUT_PORTS: "8080,8000,8888"
       HTTP_CONTROL_SERVER_ADDRESS: ":8000"
+      # Proxy for "Search through the VPN" (Prowlarr and FlareSolverr). Only YAMS's private
+      # network can reach it, and it only works while the VPN is up.
+      HTTPPROXY: "on"
+      HTTPPROXY_STEALTH: "on"
       UPDATER_PERIOD: "0"
     volumes:
       - ${APP_DATA_DIR}/hooks/yams:/app:ro

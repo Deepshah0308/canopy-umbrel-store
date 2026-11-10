@@ -1,5 +1,14 @@
 # Changelog
 
+## YAMS 1.5.0 (November 2026)
+- **Search through the VPN:** a switch under **VPN check** sends Prowlarr's indexer searches and FlareSolverr through the VPN, for internet providers that block indexer sites ([#11](https://github.com/Deepshah0308/canopy-umbrel-store/issues/11)). If the VPN drops, searches pause instead of going around it.
+
+## YAMS 1.4.6 (November 2026)
+- Jellyfin can use your Umbrel's graphics card for hardware transcoding on umbrelOS 2.1 or newer ([#5](https://github.com/Deepshah0308/canopy-umbrel-store/issues/5)).
+
+## YAMS 1.4.5 (November 2026)
+- Fixed the home-screen widgets showing only dashes, and Umbrel's terminal failing with "container is not running".
+
 ## RustFS (October 2026)
 - **New app: RustFS 1.0.3**, fast S3-compatible object storage. Web console on port 7411, S3 API on 7412. Each Umbrel gets its own secret key; the other Umbrel package is on 1.0.0-alpha.71 with a key shared by every install.
 

@@ -2,7 +2,7 @@ manifestVersion: 1.1
 id: canopy-yams
 category: media
 name: YAMS
-version: "1.4.6"
+version: "1.5.0"
 tagline: "Your own Netflix — movies, shows and subtitles, fully automatic"
 icon: https://cdn.jsdelivr.net/gh/Deepshah0308/canopy-umbrel-store@24f69a96df050bcb6c34e3a7be0c65303b4f1112/canopy-yams/icon.svg
 description: >-
@@ -69,7 +69,7 @@ permissions:
   - STORAGE_DOWNLOADS
   - GPU
 releaseNotes: >-
-  Jellyfin can now use your Umbrel's graphics card (Intel, AMD or NVIDIA) for hardware transcoding, and it stays set up across updates. Needs umbrelOS 2.1 or newer. Then turn it on in Jellyfin: Dashboard → Playback → Transcoding.
+  New: "Search through the VPN" in the dashboard's VPN check sends Prowlarr's indexer searches (and FlareSolverr) through your VPN, for internet providers that block indexer sites. If the VPN drops, searches pause instead of going around it.
 widgets:
   - id: "stats"
     type: "four-stats"

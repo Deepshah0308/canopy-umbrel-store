@@ -119,3 +119,14 @@ def test_every_extra_is_in_the_app_and_waits_for_its_switch():
         assert svc["entrypoint"][:3] == ["/bin/sh", "/yams-app/extras/gate.sh", name], f"{name} must start through the gate"
         assert any(v.endswith(":/yams-extras:ro") for v in svc["volumes"]), f"{name} can't see its switch"
         assert svc.get("networks") == ["yams"], f"{name} must only be on the private yams network"
+
+
+def test_flaresolverr_and_the_vpn_proxy_match_the_dashboard_switch():
+    services = yaml.safe_load(open(os.path.join(APP, "docker-compose.yml")))["services"]
+    gluetun = services["gluetun"]["environment"]
+    assert gluetun["HTTPPROXY"] == "on" and "8888" in gluetun["FIREWALL_INPUT_PORTS"].split(",")
+    flare = services["flaresolverr"]
+    assert flare["entrypoint"][:2] == ["/bin/sh", "/yams-app/vpn/via-vpn.sh"]
+    assert "${APP_DATA_DIR}/data/state:/yams-state:ro" in flare["volumes"]
+    script = open(os.path.join(APP, "hooks/yams/vpn/via-vpn.sh")).read()
+    assert "/yams-state/prowlarr-vpn" in script and "canopy-yams_gluetun_1:8888" in script

@@ -490,6 +490,14 @@
       </dl>
       <p class="verdict" id="vpn-verdict"></p>
     </div>
+    <ul class="fixes">
+      <li>
+        <span class="fix-name">Search through the VPN</span>
+        <span class="fix-what">For internet providers that block indexer sites: Prowlarr's searches and FlareSolverr go through the VPN too. If the VPN drops, searches pause instead of going around it.</span>
+        <button class="switch" id="prowlarr-vpn" type="button" role="switch" aria-label="Search through the VPN"></button>
+        <span class="fix-result" id="prowlarr-vpn-msg" role="status" hidden></span>
+      </li>
+    </ul>
   </div>
 
   <div class="section-head">
@@ -808,7 +816,7 @@ function render(s) {
   renderSteps(s);
   renderDownloads(s);
   renderApps(s);
-  renderExtras(s);
+  renderExtras(s); renderProwlarrVpn(s);
   renderFixes(s);
   renderUpdates(s);
   renderBackups(s);
@@ -964,6 +972,27 @@ $("updates-apply").addEventListener("click", () => applyUpdates(null));
 $("updates").addEventListener("click", (e) => { if (e.target.dataset.update) applyUpdates([e.target.dataset.update]); });
 $("updates-auto").addEventListener("change", async () => {
   try { await post("api/updates/settings", { auto: $("updates-auto").value }); } catch (err) { alert(err.message); }
+});
+
+// ---------------------------------------------------------------- search through the VPN
+function renderProwlarrVpn(s) {
+  const sw = $("prowlarr-vpn");
+  sw.setAttribute("aria-checked", s.prowlarr_vpn ? "true" : "false");
+  if (!sw.dataset.busy) sw.disabled = !!s.busy_all;
+}
+$("prowlarr-vpn").addEventListener("click", async () => {
+  const sw = $("prowlarr-vpn"), msg = $("prowlarr-vpn-msg");
+  const turnOn = sw.getAttribute("aria-checked") !== "true";
+  sw.disabled = true; sw.dataset.busy = "1";
+  msg.hidden = false; msg.className = "fix-result busy"; msg.textContent = turnOn ? "Moving searches onto the VPN\u2026" : "Moving searches off the VPN\u2026";
+  try {
+    const r = await post("api/prowlarr-vpn", { on: turnOn });
+    msg.className = "fix-result good"; msg.textContent = r.message;
+  } catch (err) {
+    msg.className = "fix-result bad"; msg.textContent = err.message;
+  }
+  delete sw.dataset.busy; sw.disabled = false;
+  refresh();
 });
 
 // ---------------------------------------------------------------- extras
