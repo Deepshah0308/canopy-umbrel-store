@@ -2,7 +2,7 @@ manifestVersion: 1
 id: canopy-bytestash
 category: developer
 name: ByteStash
-version: "1.6.1"
+version: "1.6.2"
 tagline: "Save, organise and share your code snippets"
 icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/bytestash.svg
 description: >-
@@ -21,6 +21,6 @@ path: ""
 defaultUsername: ""
 defaultPassword: ""
 releaseNotes: >-
-  Updated ByteStash automatically by Canopy: bytestash 1.6.0 → 1.6.1. What's new: https://github.com/jordan-dalby/ByteStash/releases
+  Updated ByteStash automatically by Canopy: bytestash 1.6.1 → 1.6.2. What's new: https://github.com/jordan-dalby/ByteStash/releases
 submitter: Deepshah0308
 submission: https://github.com/Deepshah0308/canopy-umbrel-store
