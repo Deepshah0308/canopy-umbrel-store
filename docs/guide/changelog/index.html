@@ -701,6 +701,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#yams-151-november-2026" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        YAMS 1.5.1 (November 2026)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#yams-150-november-2026" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -878,6 +889,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#yams-151-november-2026" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        YAMS 1.5.1 (November 2026)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#yams-150-november-2026" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1041,6 +1063,11 @@
 
 
 <h1 id="changelog">Changelog<a class="headerlink" href="#changelog" title="Permanent link">&para;</a></h1>
+<h2 id="yams-151-november-2026">YAMS 1.5.1 (November 2026)<a class="headerlink" href="#yams-151-november-2026" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Fixed:</strong> for people who moved from the old YAMS store, Prowlarr could keep two FlareSolverr entries pointing at the old app, and Prowlarr's "names must be unique" rule made every repair fail, so Cloudflare-protected indexers never worked. YAMS now removes the duplicate and re-points FlareSolverr within 10 minutes (or right away with <strong>Quick fixes → Connect Prowlarr to your apps</strong>).</li>
+<li><strong>Fixed:</strong> the <strong>Open Seerr</strong> button overlapped Seerr's switch.</li>
+</ul>
 <h2 id="yams-150-november-2026">YAMS 1.5.0 (November 2026)<a class="headerlink" href="#yams-150-november-2026" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>Search through the VPN:</strong> a switch under <strong>VPN check</strong> sends Prowlarr's indexer searches and FlareSolverr through the VPN, for internet providers that block indexer sites (<a href="https://github.com/Deepshah0308/canopy-umbrel-store/issues/11">#11</a>). If the VPN drops, searches pause instead of going around it.</li>

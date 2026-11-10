@@ -1,5 +1,9 @@
 # Changelog
 
+## YAMS 1.5.1 (November 2026)
+- **Fixed:** for people who moved from the old YAMS store, Prowlarr could keep two FlareSolverr entries pointing at the old app, and Prowlarr's "names must be unique" rule made every repair fail, so Cloudflare-protected indexers never worked. YAMS now removes the duplicate and re-points FlareSolverr within 10 minutes (or right away with **Quick fixes → Connect Prowlarr to your apps**).
+- **Fixed:** the **Open Seerr** button overlapped Seerr's switch.
+
 ## YAMS 1.5.0 (November 2026)
 - **Search through the VPN:** a switch under **VPN check** sends Prowlarr's indexer searches and FlareSolverr through the VPN, for internet providers that block indexer sites ([#11](https://github.com/Deepshah0308/canopy-umbrel-store/issues/11)). If the VPN drops, searches pause instead of going around it.
 

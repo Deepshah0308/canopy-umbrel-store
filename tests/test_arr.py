@@ -1,4 +1,6 @@
 """Sonarr/Radarr/Prowlarr wiring against strict fake apps."""
+import copy
+
 import pytest
 
 import server
@@ -97,3 +99,15 @@ def test_search_through_the_vpn_switches_prowlarr_and_flaresolverr(apps, monkeyp
 
     assert server.set_prowlarr_vpn(False)[0]
     assert not apps.host_config["proxyEnabled"] and not (tmp_path / "prowlarr-vpn").exists()
+
+
+def test_same_named_flaresolverr_duplicates_are_removed_so_the_fix_can_save(apps):
+    # From the old YAMS store: two "FlareSolverr" entries on the old container name.
+    old = copy.deepcopy(apps.proxies[0])
+    for f in old["fields"]:
+        if f["name"] == "host":
+            f["value"] = "http://yams-media_flaresolverr_1:8191/"
+    apps.proxies = [dict(old, id=1), dict(copy.deepcopy(old), id=2)]
+    assert server.ensure_flaresolverr()
+    assert [p["id"] for p in apps.proxies] == [1]
+    assert fields(apps.proxies[0])["host"] == server.FLARESOLVERR

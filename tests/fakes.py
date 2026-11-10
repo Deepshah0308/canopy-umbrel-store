@@ -238,7 +238,7 @@ class FakeApps:
         self.host_config = {"id": 1, "bindAddress": "*", "authenticationMethod": "external",
                             "authenticationRequired": "disabledForLocalAddresses", "allowedHosts": "", "proxyEnabled": False,
                             "proxyType": "http", "proxyHostname": "", "proxyPort": 8080, "proxyBypassLocalAddresses": True}
-        self.proxies = [{"id": 1, "implementation": "FlareSolverr",
+        self.proxies = [{"id": 1, "name": "FlareSolverr", "implementation": "FlareSolverr",
                          "fields": [{"name": "host", "value": "http://canopy-yams_flaresolverr_1:8191/"},
                                     {"name": "requestTimeout", "value": 60}]}]
 
@@ -354,6 +354,8 @@ class FakeApps:
                     fake.host_config = body
                     return self.reply(202, body)
                 if app == "prowlarr" and rest.startswith("/indexerProxy/"):
+                    if any(x.get("name") == body.get("name") and x["id"] != body["id"] for x in fake.proxies):
+                        return self.reply(400, [{"errorMessage": "Should be unique"}])  # like the real app
                     fake.proxies = [body if x["id"] == body["id"] else x for x in fake.proxies]
                     return self.reply(202, body)
                 if app == "prowlarr" and rest.startswith("/applications/"):
@@ -364,6 +366,10 @@ class FakeApps:
 
             def do_DELETE(self):
                 app, rest = self.route()
+                if app == "prowlarr" and rest.startswith("/indexerProxy/"):
+                    proxy_id = int(rest.split("?")[0].rsplit("/", 1)[1])
+                    fake.proxies = [x for x in fake.proxies if x["id"] != proxy_id]
+                    return self.reply(200, {})
                 if app == "prowlarr" and rest.startswith("/applications/"):
                     app_id = int(rest.rsplit("/", 1)[1])
                     fake.apps = [a for a in fake.apps if a["id"] != app_id]

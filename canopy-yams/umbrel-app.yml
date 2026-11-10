@@ -2,7 +2,7 @@ manifestVersion: 1.1
 id: canopy-yams
 category: media
 name: YAMS
-version: "1.5.0"
+version: "1.5.1"
 tagline: "Your own Netflix — movies, shows and subtitles, fully automatic"
 icon: https://cdn.jsdelivr.net/gh/Deepshah0308/canopy-umbrel-store@24f69a96df050bcb6c34e3a7be0c65303b4f1112/canopy-yams/icon.svg
 description: >-
@@ -69,7 +69,7 @@ permissions:
   - STORAGE_DOWNLOADS
   - GPU
 releaseNotes: >-
-  New: "Search through the VPN" in the dashboard's VPN check sends Prowlarr's indexer searches (and FlareSolverr) through your VPN, for internet providers that block indexer sites. If the VPN drops, searches pause instead of going around it.
+  Fixes FlareSolverr never connecting for people who moved from the old YAMS store (a duplicate entry in Prowlarr blocked the repair), and the "Open Seerr" button overlapping its switch. Also includes "Search through the VPN" from 1.5.0.
 widgets:
   - id: "stats"
     type: "four-stats"

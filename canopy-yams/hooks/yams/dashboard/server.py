@@ -493,7 +493,14 @@ def ensure_flaresolverr():
     if not ok(status):
         return False
     values = {"host": FLARESOLVERR, "requestTimeout": 60}
-    existing = next((p for p in proxies or [] if p.get("implementation") == "FlareSolverr"), None)
+    flares = [p for p in proxies or [] if p.get("implementation") == "FlareSolverr"]
+    existing = flares[0] if flares else None
+    # Prowlarr wants proxy names unique, so a same-named duplicate (left by older versions or the
+    # old YAMS store) makes every save of the first one fail. Drop the duplicates first.
+    for dup in flares[1:]:
+        if dup.get("name") == existing.get("name"):
+            http("DELETE", f"{api}/indexerProxy/{dup['id']}", headers=h)
+            print("[yams] Removed a duplicate FlareSolverr from Prowlarr", flush=True)
     if existing:
         current = {f.get("name"): f.get("value") for f in existing.get("fields", [])}
         if (current.get("host") or "").rstrip("/") == FLARESOLVERR.rstrip("/"):
