@@ -2,7 +2,7 @@ manifestVersion: 1
 id: canopy-rustfs
 category: files
 name: RustFS
-version: "1.0.4"
+version: "1.0.5"
 tagline: "Fast S3-compatible object storage, a MinIO alternative written in Rust"
 icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/rustfs.svg
 description: >-
@@ -21,6 +21,6 @@ path: "/rustfs/console/"
 defaultUsername: "umbrel"
 deterministicPassword: true
 releaseNotes: >-
-  Updated RustFS automatically by Canopy: rustfs 1.0.3 → 1.0.4. What's new: https://github.com/rustfs/rustfs/releases
+  Updated RustFS automatically by Canopy: rustfs 1.0.4 → 1.0.5. What's new: https://github.com/rustfs/rustfs/releases
 submitter: Deepshah0308
 submission: https://github.com/Deepshah0308/canopy-umbrel-store
