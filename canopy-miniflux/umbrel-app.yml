@@ -2,7 +2,7 @@ manifestVersion: 1
 id: canopy-miniflux
 category: social
 name: Miniflux
-version: "2.3.7"
+version: "2.3.8"
 tagline: "Minimalist, fast RSS reader with no clutter"
 icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/miniflux.svg
 description: >-
