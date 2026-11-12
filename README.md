@@ -76,6 +76,8 @@ Every morning a [GitHub Action](https://github.com/Deepshah0308/canopy-umbrel-st
 4. **Ship or ask.** Patch, minor and rebuild updates that pass go straight to `main`, and Umbrel offers them within the hour. Major versions, and anything that fails, become a pull request with the test output attached.
 
 Every pull request also runs the unit tests, the store rules ([`tests/test_store.py`](https://github.com/Deepshah0308/canopy-umbrel-store/blob/main/tests/test_store.py)), the online checks ([`tools/lint_store.py`](https://github.com/Deepshah0308/canopy-umbrel-store/blob/main/tools/lint_store.py): both CPU architectures, no port clashes with Umbrel's official store or other popular stores, no duplicates of official apps) and the install test for each changed app.
+
+Every Monday, [another Action](https://github.com/Deepshah0308/canopy-umbrel-store/blob/main/.github/workflows/release.yml) publishes a [release](https://github.com/Deepshah0308/canopy-umbrel-store/releases) if anything changed that week: new features and fixes listed one by one, app updates in one line at their newest versions.
 <!-- --8<-- [end:updates] -->
 
 ## Store rules

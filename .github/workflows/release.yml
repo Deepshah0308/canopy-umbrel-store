@@ -1,0 +1,35 @@
+name: Release
+
+# Every Monday, after the daily app updates: if anything changed since the last release,
+# publish a new one with notes built from the commits. Run it by hand any time too.
+on:
+  schedule:
+    - cron: "23 14 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Work out the next release
+        id: next
+        run: echo "tag=$(python3 tools/release_notes.py notes.md)" >> "$GITHUB_OUTPUT"
+      - name: Publish it
+        if: steps.next.outputs.tag != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ steps.next.outputs.tag }}
+        run: gh release create "$TAG" --target "$GITHUB_SHA" --title "Canopy $TAG" --notes-file notes.md
+      - name: Nothing new
+        if: steps.next.outputs.tag == ''
+        run: echo "No changes since the last release; skipping."
