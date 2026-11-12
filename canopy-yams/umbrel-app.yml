@@ -2,7 +2,7 @@ manifestVersion: 1.1
 id: canopy-yams
 category: media
 name: YAMS
-version: "1.5.1"
+version: "1.5.2"
 tagline: "Your own Netflix — movies, shows and subtitles, fully automatic"
 icon: https://cdn.jsdelivr.net/gh/Deepshah0308/canopy-umbrel-store@24f69a96df050bcb6c34e3a7be0c65303b4f1112/canopy-yams/icon.svg
 description: >-
@@ -69,7 +69,7 @@ permissions:
   - STORAGE_DOWNLOADS
   - GPU
 releaseNotes: >-
-  Fixes FlareSolverr never connecting for people who moved from the old YAMS store (a duplicate entry in Prowlarr blocked the repair), and the "Open Seerr" button overlapping its switch. Also includes "Search through the VPN" from 1.5.0.
+  Updated YAMS automatically by Canopy: python 3.12.16-alpine rebuilt with the latest security fixes. What's new: https://github.com/rogsme/yams/releases
 widgets:
   - id: "stats"
     type: "four-stats"
