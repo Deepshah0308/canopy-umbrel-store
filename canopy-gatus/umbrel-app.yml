@@ -1,0 +1,30 @@
+manifestVersion: 1
+id: canopy-gatus
+category: networking
+name: Gatus
+version: "5.38.0"
+tagline: "Uptime monitor and status page for your apps and websites"
+icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/gatus.svg
+description: >-
+  Gatus checks your websites, apps and services every few minutes and shows whether each one is up on a clean status page, with response times and history.
+
+
+  It can check web pages, DNS, open ports, certificates and more, and alert you on Discord, Slack, Telegram, email and many others when something goes down.
+
+
+  You choose what to watch in one settings file. Open Umbrel's terminal (Settings > Advanced settings > Terminal > umbrelOS) and run
+  nano ~/umbrel/app-data/canopy-gatus/data/config/config.yaml
+  It starts with a couple of examples, and Gatus picks up your changes by itself. The status page sits behind your Umbrel login.
+developer: TwiN
+website: https://gatus.io
+dependencies: []
+repo: https://github.com/TwiN/gatus
+support: https://github.com/Deepshah0308/canopy-umbrel-store/issues
+port: 7413
+gallery: []
+path: ""
+defaultPassword: ""
+releaseNotes: >-
+  Gatus 5.38.0, new to Umbrel.
+submitter: Deepshah0308
+submission: https://github.com/Deepshah0308/canopy-umbrel-store

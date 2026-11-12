@@ -313,6 +313,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Troubleshooting
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#updates" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -759,6 +770,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Troubleshooting
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#updates" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -809,6 +831,37 @@
 <p><div class="highlight"><pre><span></span><code>https://github.com/Deepshah0308/canopy-umbrel-store
 </code></pre></div>
 3. Open <strong>Canopy</strong> and install whatever you like. Umbrel warns that community apps aren't reviewed by Umbrel; that's expected.</p>
+<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>What you see</th>
+<th>What to do</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The app won't open, or shows an error, right after installing</td>
+<td>Some apps set up a database the first time and need a minute or two. Wait, then open it again. Still stuck? Right-click the app on your Umbrel home screen and choose <strong>Restart</strong>.</td>
+</tr>
+<tr>
+<td>You don't know the app's username or password</td>
+<td>Open the app's page in Umbrel's <strong>App Store</strong>: apps that have their own login show it there. Apps without one sit behind your Umbrel login, so there's nothing extra to type.</td>
+</tr>
+<tr>
+<td>Umbrel says the port is already in use</td>
+<td>Another app on your Umbrel uses the same port. Canopy avoids ports used by Umbrel's official store and the popular community stores, but not every store. Uninstall one of the two, or <a href="https://github.com/Deepshah0308/canopy-umbrel-store/issues/new/choose">tell us</a> which app clashes.</td>
+</tr>
+<tr>
+<td>Canopy's apps don't show up in the App Store</td>
+<td>Check the store address is exactly <code>https://github.com/Deepshah0308/canopy-umbrel-store</code> under <strong>App Store → ⋯ → Community App Stores</strong>, then reload the page.</td>
+</tr>
+<tr>
+<td>Something else is broken</td>
+<td>Right-click the app and choose <strong>Troubleshoot</strong> to see its logs, then <a href="https://github.com/Deepshah0308/canopy-umbrel-store/issues/new/choose">open an issue</a> with what you see. For YAMS, see <a href="https://deepshah0308.github.io/canopy-umbrel-store/guide/yams/troubleshooting/">Troubleshooting YAMS</a> first.</td>
+</tr>
+</tbody>
+</table>
 <h2 id="updates">Updates<a class="headerlink" href="#updates" title="Permanent link">&para;</a></h2>
 <p>Canopy checks every app for new releases each morning, tests them, and ships them. Umbrel then shows an <strong>Update</strong> button on the app, the same as for official apps.</p>
 <h2 id="removing-canopy">Removing Canopy<a class="headerlink" href="#removing-canopy" title="Permanent link">&para;</a></h2>

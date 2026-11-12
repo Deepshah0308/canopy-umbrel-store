@@ -4,6 +4,10 @@ No terminal needed. You only add the store once; after that, Canopy's apps show 
 
 --8<-- "README.md:add-store"
 
+## Troubleshooting
+
+--8<-- "README.md:troubleshooting-general"
+
 ## Updates
 
 Canopy checks every app for new releases each morning, tests them, and ships them. Umbrel then shows an **Update** button on the app, the same as for official apps.

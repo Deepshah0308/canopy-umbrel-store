@@ -1,5 +1,10 @@
 # Changelog
 
+## Canopy (November 2026)
+- **New app: Gatus 5.38.0**, an uptime monitor and status page, on port 7413 ([#9](https://github.com/Deepshah0308/canopy-umbrel-store/issues/9)). The other Umbrel package is on 5.13.
+- The website and `apps.json` now show each app's port ([#3](https://github.com/Deepshah0308/canopy-umbrel-store/issues/3)).
+- README and docs: a short troubleshooting section for the common first-week problems ([#4](https://github.com/Deepshah0308/canopy-umbrel-store/issues/4)).
+
 ## YAMS 1.5.1 (November 2026)
 - **Fixed:** for people who moved from the old YAMS store, Prowlarr could keep two FlareSolverr entries pointing at the old app, and Prowlarr's "names must be unique" rule made every repair fail, so Cloudflare-protected indexers never worked. YAMS now removes the duplicate and re-points FlareSolverr within 10 minutes (or right away with **Quick fixes → Connect Prowlarr to your apps**).
 - **Fixed:** the **Open Seerr** button overlapped Seerr's switch.

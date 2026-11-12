@@ -60,6 +60,7 @@ It's also the home of **YAMS**, a complete media server (Jellyfin, Sonarr, Radar
 | **ByteStash** | Code snippet manager | Not on any Umbrel store |
 | **Mylar3** | Comic book automation | Not on any Umbrel store |
 | **RustFS** | S3-compatible object storage, a MinIO alternative | The other package is an early alpha that gives every install the same secret key |
+| **Gatus** | Uptime monitor and status page for your apps and websites | The other package is on 5.13; this is 5.38 |
 
 The website always shows each app's current version and when it was last updated.
 <!-- --8<-- [end:apps] -->
@@ -87,6 +88,18 @@ Every pull request also runs the unit tests, the store rules ([`tests/test_store
 - Least privilege: nothing gets the Docker socket, host folders or capabilities it doesn't need. (Netdata reads container names through a read-only proxy that can't start, stop or change anything.)
 - No secrets in the repository. Passwords come from Umbrel (`APP_PASSWORD`, shown on the app's page) or are generated on the device.
 <!-- --8<-- [end:rules] -->
+
+## Troubleshooting
+
+<!-- --8<-- [start:troubleshooting-general] -->
+| What you see | What to do |
+|---|---|
+| The app won't open, or shows an error, right after installing | Some apps set up a database the first time and need a minute or two. Wait, then open it again. Still stuck? Right-click the app on your Umbrel home screen and choose **Restart**. |
+| You don't know the app's username or password | Open the app's page in Umbrel's **App Store**: apps that have their own login show it there. Apps without one sit behind your Umbrel login, so there's nothing extra to type. |
+| Umbrel says the port is already in use | Another app on your Umbrel uses the same port. Canopy avoids ports used by Umbrel's official store and the popular community stores, but not every store. Uninstall one of the two, or [tell us](https://github.com/Deepshah0308/canopy-umbrel-store/issues/new/choose) which app clashes. |
+| Canopy's apps don't show up in the App Store | Check the store address is exactly `https://github.com/Deepshah0308/canopy-umbrel-store` under **App Store → ⋯ → Community App Stores**, then reload the page. |
+| Something else is broken | Right-click the app and choose **Troubleshoot** to see its logs, then [open an issue](https://github.com/Deepshah0308/canopy-umbrel-store/issues/new/choose) with what you see. For YAMS, see [Troubleshooting YAMS](https://deepshah0308.github.io/canopy-umbrel-store/guide/yams/troubleshooting/) first. |
+<!-- --8<-- [end:troubleshooting-general] -->
 
 ## YAMS
 

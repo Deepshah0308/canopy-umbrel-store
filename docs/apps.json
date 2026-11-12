@@ -9,6 +9,7 @@
       "category": "media",
       "icon": "https://cdn.jsdelivr.net/gh/Deepshah0308/canopy-umbrel-store@24f69a96df050bcb6c34e3a7be0c65303b4f1112/canopy-yams/icon.svg",
       "website": "https://yams.media",
+      "port": 8746,
       "updated": "2026-11-12"
     },
     {
@@ -19,6 +20,7 @@
       "category": "developer",
       "icon": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/bytestash.svg",
       "website": "https://github.com/jordan-dalby/ByteStash",
+      "port": 7409,
       "updated": "2026-11-10"
     },
     {
@@ -29,7 +31,19 @@
       "category": "media",
       "icon": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/feishin.svg",
       "website": "https://github.com/jeffvli/feishin",
+      "port": 7408,
       "updated": "2026-10-23"
+    },
+    {
+      "id": "canopy-gatus",
+      "name": "Gatus",
+      "version": "5.38.0",
+      "tagline": "Uptime monitor and status page for your apps and websites",
+      "category": "networking",
+      "icon": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/gatus.svg",
+      "website": "https://gatus.io",
+      "port": 7413,
+      "updated": null
     },
     {
       "id": "canopy-jdownloader",
@@ -39,6 +53,7 @@
       "category": "networking",
       "icon": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/jdownloader.svg",
       "website": "https://jdownloader.org",
+      "port": 7402,
       "updated": "2026-10-23"
     },
     {
@@ -49,6 +64,7 @@
       "category": "social",
       "icon": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/linkding.svg",
       "website": "https://linkding.link",
+      "port": 7405,
       "updated": "2026-10-23"
     },
     {
@@ -59,6 +75,7 @@
       "category": "social",
       "icon": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/miniflux.svg",
       "website": "https://miniflux.app",
+      "port": 7406,
       "updated": "2026-11-11"
     },
     {
@@ -69,6 +86,7 @@
       "category": "media",
       "icon": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/png/mylar.png",
       "website": "https://mylarcomics.com",
+      "port": 7410,
       "updated": "2026-11-06"
     },
     {
@@ -79,6 +97,7 @@
       "category": "networking",
       "icon": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/netdata.svg",
       "website": "https://www.netdata.cloud",
+      "port": 7401,
       "updated": "2026-11-07"
     },
     {
@@ -89,6 +108,7 @@
       "category": "networking",
       "icon": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/nzbget.svg",
       "website": "https://nzbget.com",
+      "port": 7407,
       "updated": "2026-10-23"
     },
     {
@@ -99,6 +119,7 @@
       "category": "automation",
       "icon": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/openhab.svg",
       "website": "https://www.openhab.org",
+      "port": 7403,
       "updated": "2026-11-09"
     },
     {
@@ -109,6 +130,7 @@
       "category": "files",
       "icon": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/rustfs.svg",
       "website": "https://rustfs.com",
+      "port": 7411,
       "updated": "2026-11-11"
     },
     {
@@ -119,6 +141,7 @@
       "category": "files",
       "icon": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/siyuan.svg",
       "website": "https://b3log.org/siyuan/en/",
+      "port": 7404,
       "updated": "2026-11-10"
     }
   ]

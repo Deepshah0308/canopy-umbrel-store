@@ -1,0 +1,34 @@
+# Gatus watches these and shows their uptime on its status page.
+# Edit this file from Umbrel's terminal (Settings > Advanced settings > Terminal > umbrelOS):
+#   nano ~/umbrel/app-data/canopy-gatus/data/config/config.yaml
+# Gatus picks up changes by itself within a few seconds. Docs: https://gatus.io/docs
+
+storage:
+  type: sqlite
+  path: /data/data.db   # keeps history across restarts
+
+endpoints:
+  - name: Internet
+    group: Basics
+    url: "https://github.com"
+    interval: 2m
+    conditions:
+      - "[STATUS] == 200"
+      - "[RESPONSE_TIME] < 2000"
+
+  - name: DNS
+    group: Basics
+    url: "1.1.1.1"
+    dns:
+      query-name: "github.com"
+      query-type: "A"
+    interval: 5m
+    conditions:
+      - "[DNS_RCODE] == NOERROR"
+
+  # Watch an app on this Umbrel by its container name and port, for example:
+  # - name: Immich
+  #   group: My Umbrel
+  #   url: "http://immich_server_1:2283"
+  #   conditions:
+  #     - "[STATUS] == 200"

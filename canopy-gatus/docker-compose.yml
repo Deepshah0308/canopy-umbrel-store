@@ -1,0 +1,16 @@
+version: "3.7"
+
+services:
+  app_proxy:
+    environment:
+      APP_HOST: canopy-gatus_gatus_1
+      APP_PORT: 8080
+      # Gatus has no login of its own, so it stays behind your Umbrel login
+
+  gatus:
+    image: twinproduction/gatus:v5.38.0@sha256:085ed63da963728965d00a3c78aa6167e3bf135218485b893201758e079e8415
+    restart: on-failure
+    volumes:
+      # config/config.yaml is yours to edit; Gatus reloads it by itself. Uptime history lives in data.db.
+      - ${APP_DATA_DIR}/data/config:/config
+      - ${APP_DATA_DIR}/data:/data

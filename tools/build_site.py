@@ -41,7 +41,7 @@ def apps():
             m = yaml.safe_load(fh)
         out.append({
             "id": m["id"], "name": m["name"], "version": str(m["version"]), "tagline": m["tagline"],
-            "category": m["category"], "icon": m["icon"], "website": m.get("website", ""),
+            "category": m["category"], "icon": m["icon"], "website": m.get("website", ""), "port": m["port"],
             "updated": last_updated(os.path.basename(os.path.dirname(path))),
         })
     # YAMS first: it's the store's flagship bundle
@@ -58,7 +58,8 @@ def rows(items):
             f'        <li data-updated="{esc["updated"]}">'
             f'<img src="{esc["icon"]}" alt="" width="40" height="40" loading="lazy">'
             f'<div class="app-main"><a href="{esc["website"]}" rel="noopener">{esc["name"]}</a>'
-            f'<span class="app-line">{esc["tagline"]}</span></div>'
+            f'<span class="app-line">{esc["tagline"]}</span>'
+            f'<span class="app-port">Port {esc["port"]}</span></div>'
             f'<span class="app-cat">{html.escape(CATEGORY_NAMES.get(a["category"], a["category"].title()))}</span>'
             f'<span class="app-ver">{esc["version"]}</span>'
             f'<span class="app-date"><span class="fresh" aria-hidden="true"></span>{updated}</span></li>')
@@ -80,7 +81,8 @@ def main():
     new = render(text, items)
     data = json.dumps({"generated": datetime.date.today().isoformat(), "apps": items}, indent=2) + "\n"
     if check:
-        stale = [a["id"] for a in items if f'>{html.escape(a["version"])}</span>' not in text or a["name"] not in text]
+        stale = [a["id"] for a in items if f'>{html.escape(a["version"])}</span>' not in text or a["name"] not in text
+                 or f'>Port {a["port"]}</span>' not in text]
         if stale:
             print("The website's app list is out of date for: " + ", ".join(stale) + ". Run tools/build_site.py")
             return 1
