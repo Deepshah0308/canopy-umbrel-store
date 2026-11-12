@@ -1707,11 +1707,16 @@ def status_loop():
 
 
 # --------------------------------------------------------------------------- widgets
+# umbrelOS runs ms() on the "refresh" in every widget response and fails the widget without it.
+WIDGET_REFRESH = "5s"
+
+
 def widget_stats():
     data = status_cache["data"] or gather_status()
     vpn, dl = data["vpn"], data.get("downloads") or {}
     return {
         "type": "four-stats",
+        "refresh": WIDGET_REFRESH,
         "link": "",
         "items": [
             {"title": "VPN", "text": "On" if vpn["connected"] else "Off",
@@ -1735,7 +1740,7 @@ def widget_downloads():
         items = [{"text": f"{int(t['progress'] * 100)}% \u2022 {t['name']}",
                   "subtext": " \u2022 ".join(x for x in ("\u2193 " + t["speed"], t["eta"]) if x)}
                  for t in dl["items"][:5]]
-    return {"type": "list", "link": "", "items": items}
+    return {"type": "list", "refresh": WIDGET_REFRESH, "link": "", "items": items}
 
 
 # --------------------------------------------------------------------------- HTTP

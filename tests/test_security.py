@@ -59,6 +59,20 @@ def test_widgets_never_include_the_password(secrets_file, quiet_status):
         httpd.shutdown()
 
 
+def test_widget_responses_have_what_umbrelos_needs(secrets_file, quiet_status):
+    # umbrelOS reads "type" and runs ms() on "refresh"; without it the widget shows only dashes.
+    import yaml
+    manifest = yaml.safe_load(open(os.path.join(os.path.dirname(__file__), "..", "canopy-yams", "umbrel-app.yml")))
+    httpd, url = serve(server.WidgetHandler)
+    try:
+        for w in manifest["widgets"]:
+            status, data = call(f"{url}/{w['endpoint'].split('/', 1)[1]}")
+            assert status == 200 and data["type"] == w["type"], w["id"]
+            assert re.fullmatch(r"\d+(ms|s|m|h)", data.get("refresh") or ""), f"{w['id']} needs a refresh like 5s"
+    finally:
+        httpd.shutdown()
+
+
 @pytest.mark.parametrize("headers", [
     {},                                                     # no dashboard header
     {"X-Yams-Request": "1", "Sec-Fetch-Site": "cross-site"},  # another website

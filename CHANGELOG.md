@@ -1,5 +1,8 @@
 # Changelog
 
+## YAMS 1.5.3 (November 2026)
+- **Fixed:** the home-screen widgets still showed only dashes. umbrelOS converts the `refresh` time in every widget update and fails the widget when it's missing; YAMS now sends it. (1.4.5 fixed how umbrelOS reaches the widgets; this fixes what it does with the answer.)
+
 ## Canopy (November 2026)
 - **New app: Gatus 5.38.0**, an uptime monitor and status page, on port 7413 ([#9](https://github.com/Deepshah0308/canopy-umbrel-store/issues/9)). The other Umbrel package is on 5.13.
 - The website and `apps.json` now show each app's port ([#3](https://github.com/Deepshah0308/canopy-umbrel-store/issues/3)).

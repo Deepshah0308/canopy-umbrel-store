@@ -4,7 +4,7 @@
     {
       "id": "canopy-yams",
       "name": "YAMS",
-      "version": "1.5.2",
+      "version": "1.5.3",
       "tagline": "Your own Netflix \u2014 movies, shows and subtitles, fully automatic",
       "category": "media",
       "icon": "https://cdn.jsdelivr.net/gh/Deepshah0308/canopy-umbrel-store@24f69a96df050bcb6c34e3a7be0c65303b4f1112/canopy-yams/icon.svg",
@@ -43,7 +43,7 @@
       "icon": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/gatus.svg",
       "website": "https://gatus.io",
       "port": 7413,
-      "updated": null
+      "updated": "2026-11-12"
     },
     {
       "id": "canopy-jdownloader",
