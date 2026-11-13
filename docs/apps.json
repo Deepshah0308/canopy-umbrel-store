@@ -21,7 +21,7 @@
       "icon": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/png/bigcapital.png",
       "website": "https://bigcapital.app",
       "port": 7414,
-      "updated": null
+      "updated": "2026-11-13"
     },
     {
       "id": "canopy-bytestash",
@@ -81,13 +81,13 @@
     {
       "id": "canopy-miniflux",
       "name": "Miniflux",
-      "version": "2.3.8",
+      "version": "2.3.9",
       "tagline": "Minimalist, fast RSS reader with no clutter",
       "category": "social",
       "icon": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/miniflux.svg",
       "website": "https://miniflux.app",
       "port": 7406,
-      "updated": "2026-11-11"
+      "updated": "2026-11-13"
     },
     {
       "id": "canopy-mylar3",
