@@ -2,7 +2,7 @@ manifestVersion: 1
 id: canopy-bigcapital
 category: finance
 name: Bigcapital
-version: "0.25.45"
+version: "0.25.46"
 tagline: "Accounting and inventory for small businesses"
 icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/png/bigcapital.png
 description: >-
@@ -26,6 +26,6 @@ gallery: []
 path: ""
 defaultPassword: ""
 releaseNotes: >-
-  Bigcapital 0.25.45, new to Umbrel.
+  Updated Bigcapital automatically by Canopy: caddy 2.11.9-alpine rebuilt with the latest security fixes; gotenberg 7.10.2 → 9.5.0. What's new: https://github.com/bigcapitalhq/bigcapital/releases
 submitter: Deepshah0308
 submission: https://github.com/Deepshah0308/canopy-umbrel-store
