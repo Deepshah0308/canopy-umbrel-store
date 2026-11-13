@@ -1,0 +1,31 @@
+manifestVersion: 1
+id: canopy-bigcapital
+category: finance
+name: Bigcapital
+version: "0.25.45"
+tagline: "Accounting and inventory for small businesses"
+icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/png/bigcapital.png
+description: >-
+  Bigcapital is open-source accounting software for small businesses, a self-hosted alternative to QuickBooks and Xero.
+
+
+  Send invoices and estimates, record bills, expenses and payments, track inventory, manage customers and vendors, and run double-entry bookkeeping with a chart of accounts. Reports include profit and loss, balance sheet, cash flow, trial balance, and aged receivables and payables, and invoices and reports can be saved as PDFs. Supports multiple currencies and multiple companies.
+
+
+  The first time you open it, sign up to create your account and company. Bigcapital sits behind your Umbrel login as well, so nobody else on your network can reach the sign-up page.
+
+
+  It runs several services (a database, a PDF maker and file storage), so give it a couple of minutes to start the first time and about 1.5 GB of memory.
+developer: Bigcapital
+website: https://bigcapital.app
+dependencies: []
+repo: https://github.com/bigcapitalhq/bigcapital
+support: https://github.com/Deepshah0308/canopy-umbrel-store/issues
+port: 7414
+gallery: []
+path: ""
+defaultPassword: ""
+releaseNotes: >-
+  Bigcapital 0.25.45, new to Umbrel.
+submitter: Deepshah0308
+submission: https://github.com/Deepshah0308/canopy-umbrel-store

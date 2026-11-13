@@ -1,0 +1,153 @@
+version: "3.7"
+
+# Bigcapital's own setup builds three images from source; Umbrel can't build, so this uses the
+# stock images they're based on: MariaDB (the app connects as root because it creates one database
+# per company), Redis, and the server image itself for migrations and the storage bucket.
+# Garage (its S3 store) needs a manual bootstrap, so files go to a private RustFS instead.
+# ClickHouse analytics and the Watchtower auto-updater are left out: optional and handled by Canopy.
+
+x-db: &db
+  DB_HOST: canopy-bigcapital_db_1
+  DB_USER: root
+  DB_PASSWORD: ${APP_SEED}
+  DB_CHARSET: utf8
+  SYSTEM_DB_NAME: bigcapital_system
+  TENANT_DB_NAME_PERFIX: bigcapital_tenant_
+
+x-s3: &s3
+  S3_REGION: us-east-1
+  S3_ACCESS_KEY_ID: bigcapital
+  S3_SECRET_ACCESS_KEY: ${APP_SEED}
+  S3_ENDPOINT: http://canopy-bigcapital_s3_1:9000
+  S3_BUCKET: bigcapital
+  S3_FORCE_PATH_STYLE: "true"
+
+services:
+  app_proxy:
+    environment:
+      APP_HOST: canopy-bigcapital_web_1
+      APP_PORT: 8080
+      # Bigcapital has its own login; Umbrel's stays in front too, so only you can reach the sign-up page
+
+  # Sends /api to the server and everything else to the web app (Bigcapital's Envoy does the same).
+  web:
+    image: caddy:2.11.9-alpine@sha256:0bbb055bda6793c999bde78b1b5ce3e89f829fb031af2cf50056ea1246559fee
+    restart: on-failure
+    command:
+      - sh
+      - -c
+      - |
+        printf ':8080 {\n\treverse_proxy /api* canopy-bigcapital_server_1:3000\n\treverse_proxy canopy-bigcapital_webapp_1:80\n}\n' > /tmp/Caddyfile
+        exec caddy run --config /tmp/Caddyfile --adapter caddyfile
+    depends_on: [webapp, server]
+
+  webapp:
+    image: bigcapitalhq/webapp:v0.25.45@sha256:7ce33209c225175264eca4a6adea9a398662ae1e3400d4d9a6857523cc2d4a56
+    restart: on-failure
+
+  server:
+    image: bigcapitalhq/server:v0.25.45@sha256:dbedc06ad149726910bf86ca337acf4e435b7cc2e5ac3dcb8e1c60a876a3ddc0
+    restart: on-failure
+    environment:
+      <<: [*db, *s3]
+      REDIS_HOST: canopy-bigcapital_redis_1
+      REDIS_PORT: "6379"
+      QUEUE_HOST: canopy-bigcapital_redis_1
+      QUEUE_PORT: "6379"
+      APP_JWT_SECRET: ${APP_SEED}
+      TWO_FACTOR_ENCRYPTION_KEY: ${APP_SEED}
+      TWO_FACTOR_ISSUER: Bigcapital
+      BASE_URL: http://${DEVICE_DOMAIN_NAME}:7414
+      GOTENBERG_URL: http://canopy-bigcapital_gotenberg_1:3000
+      GOTENBERG_DOCS_URL: http://canopy-bigcapital_server_1:3000/public/
+      CLICKHOUSE_ENABLED: "false"
+      SIGNUP_EMAIL_CONFIRMATION: "false"
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+      bucket:
+        condition: service_completed_successfully
+      redis:
+        condition: service_started
+      gotenberg:
+        condition: service_started
+
+  # Creates and upgrades the databases before the server starts (Bigcapital's migration image).
+  migrate:
+    image: bigcapitalhq/server:v0.25.45@sha256:dbedc06ad149726910bf86ca337acf4e435b7cc2e5ac3dcb8e1c60a876a3ddc0
+    restart: "no"
+    working_dir: /app/packages/server
+    command: ["sh", "-c", "node dist/cli.js system:migrate:latest && node dist/cli.js tenants:migrate:latest"]
+    environment:
+      <<: *db
+    depends_on:
+      db:
+        condition: service_healthy
+
+  # Makes sure the storage bucket exists (what Garage's setup script does by hand).
+  bucket:
+    image: bigcapitalhq/server:v0.25.45@sha256:dbedc06ad149726910bf86ca337acf4e435b7cc2e5ac3dcb8e1c60a876a3ddc0
+    restart: "no"
+    working_dir: /app/packages/server
+    environment:
+      <<: *s3
+    command:
+      - node
+      - -e
+      - |
+        const {S3Client, CreateBucketCommand, HeadBucketCommand} = require("@aws-sdk/client-s3");
+        const e = process.env;
+        const s3 = new S3Client({region: e.S3_REGION, endpoint: e.S3_ENDPOINT, forcePathStyle: true,
+          credentials: {accessKeyId: e.S3_ACCESS_KEY_ID, secretAccessKey: e.S3_SECRET_ACCESS_KEY}});
+        (async () => {
+          for (let i = 0; i < 60; i++) {
+            try { await s3.send(new HeadBucketCommand({Bucket: e.S3_BUCKET})); return console.log("bucket ready"); }
+            catch (err) {
+              if (err.$$metadata && err.$$metadata.httpStatusCode === 404) {
+                await s3.send(new CreateBucketCommand({Bucket: e.S3_BUCKET})); return console.log("bucket created");
+              }
+              await new Promise(r => setTimeout(r, 2000));
+            }
+          }
+          process.exit(1);
+        })().catch(err => { console.error(err); process.exit(1); });
+    depends_on: [s3]
+
+  db:
+    image: mariadb:10.11.19@sha256:7d829180b5b2a9ba74f6242876ab401a0d7dd338a807e522ef92bc9698760f20
+    restart: on-failure
+    environment:
+      MARIADB_ROOT_PASSWORD: ${APP_SEED}
+      MARIADB_DATABASE: bigcapital_system
+    volumes:
+      - ${APP_DATA_DIR}/data/mysql:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+
+  redis:
+    image: redis:7.4.12-alpine@sha256:7f7d30b7fdd09467bac58198a1f166dd69789d348d4fe859cccb20e0cf287fbe
+    restart: on-failure
+    volumes:
+      - ${APP_DATA_DIR}/data/redis:/data
+
+  # Makes PDFs of invoices and reports.
+  gotenberg:
+    image: gotenberg/gotenberg:7.10.2@sha256:d03b8a04c6e6c5e568b38f57352266dee4674849b71818774025f8f48d869a9a
+    restart: on-failure
+
+  # Attachments and documents (private: only Bigcapital can reach it).
+  s3:
+    image: rustfs/rustfs:1.0.5@sha256:b81d16a90ee25bd9511280127ca1471788c6e874cf0f0da759645f46b2dc1d74
+    restart: on-failure
+    user: "1000:1000"
+    environment:
+      RUSTFS_ACCESS_KEY: bigcapital
+      RUSTFS_SECRET_KEY: ${APP_SEED}
+      RUSTFS_ADDRESS: 0.0.0.0:9000
+      RUSTFS_CONSOLE_ENABLE: "false"
+      RUSTFS_OBS_LOG_DIRECTORY: ""
+    volumes:
+      - ${APP_DATA_DIR}/data/s3:/data

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-12",
+  "generated": "2026-11-13",
   "apps": [
     {
       "id": "canopy-yams",
@@ -11,6 +11,17 @@
       "website": "https://yams.media",
       "port": 8746,
       "updated": "2026-11-12"
+    },
+    {
+      "id": "canopy-bigcapital",
+      "name": "Bigcapital",
+      "version": "0.25.45",
+      "tagline": "Accounting and inventory for small businesses",
+      "category": "finance",
+      "icon": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/png/bigcapital.png",
+      "website": "https://bigcapital.app",
+      "port": 7414,
+      "updated": null
     },
     {
       "id": "canopy-bytestash",

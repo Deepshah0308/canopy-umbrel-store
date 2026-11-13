@@ -1,5 +1,8 @@
 # Changelog
 
+## Canopy (13 November 2026)
+- **New app: Bigcapital 0.25.45**, open-source accounting, invoicing and inventory for small businesses (a self-hosted QuickBooks/Xero alternative), on port 7414. Not on any other Umbrel store.
+
 ## YAMS 1.5.3 (November 2026)
 - **Fixed:** the home-screen widgets still showed only dashes. umbrelOS converts the `refresh` time in every widget update and fails the widget when it's missing; YAMS now sends it. (1.4.5 fixed how umbrelOS reaches the widgets; this fixes what it does with the answer.)
 
