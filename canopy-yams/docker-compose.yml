@@ -49,7 +49,7 @@ services:
 
   # Front door: routes /sonarr, /radarr, /prowlarr, /bazarr, /qbittorrent and the dashboard.
   web:
-    image: caddy:2.11.9-alpine@sha256:0bbb055bda6793c999bde78b1b5ce3e89f829fb031af2cf50056ea1246559fee
+    image: caddy:2.11.9-alpine@sha256:003a97808e781aa9f7e75cc2f43d34d461099031faf5e20faefb9f61126836f0
     command: ["caddy", "run", "--config", "/app/Caddyfile", "--adapter", "caddyfile"]
     restart: on-failure
     volumes:
@@ -67,7 +67,7 @@ services:
     environment:
       APP_PREFIX: canopy-yams
       JELLYFIN_PORT: "8097"
-      YAMS_VERSION: "1.5.3"
+      YAMS_VERSION: "1.5.4"
       DATA_DIR: /yams
       BACKUP_DIR: /backups
       API_SOCK: /sock/dashboard.sock

@@ -2,7 +2,7 @@ manifestVersion: 1.1
 id: canopy-yams
 category: media
 name: YAMS
-version: "1.5.3"
+version: "1.5.4"
 tagline: "Your own Netflix — movies, shows and subtitles, fully automatic"
 icon: https://cdn.jsdelivr.net/gh/Deepshah0308/canopy-umbrel-store@24f69a96df050bcb6c34e3a7be0c65303b4f1112/canopy-yams/icon.svg
 description: >-
@@ -69,7 +69,7 @@ permissions:
   - STORAGE_DOWNLOADS
   - GPU
 releaseNotes: >-
-  Fixes the YAMS home-screen widgets showing only dashes: umbrelOS needs a refresh time in every widget update, and YAMS wasn't sending one. Remove and re-add the widgets if they still show dashes after updating.
+  Updated YAMS automatically by Canopy: caddy 2.11.9-alpine rebuilt with the latest security fixes. What's new: https://github.com/rogsme/yams/releases
 widgets:
   - id: "stats"
     type: "four-stats"
