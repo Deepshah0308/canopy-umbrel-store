@@ -2,7 +2,7 @@ manifestVersion: 1
 id: canopy-bigcapital
 category: finance
 name: Bigcapital
-version: "0.25.45-1"
+version: "0.25.45-2"
 tagline: "Accounting and inventory for small businesses"
 icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/png/bigcapital.png
 description: >-
@@ -26,8 +26,8 @@ gallery: []
 path: ""
 defaultPassword: ""
 releaseNotes: >-
-  Fixes sign-up and sign-in: Redis couldn't save to its folder on Umbrel, so the server
-  answered every request with an error. There's no default login: on your first visit,
-  sign up to create your account.
+  The app's terminal (Settings → Advanced → Terminal → Bigcapital) now opens Bigcapital's server,
+  where its command-line tools are, instead of the web proxy.
 submitter: Deepshah0308
 submission: https://github.com/Deepshah0308/canopy-umbrel-store
+defaultShell: server
