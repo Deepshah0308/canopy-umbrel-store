@@ -1,5 +1,8 @@
 # Changelog
 
+## Bigcapital 0.25.45-1 (November 2026)
+- **Fixed:** sign-up and sign-in failed with a stuck spinner. Redis ran as root but couldn't save to its data folder on Umbrel, so it refused writes and Bigcapital's server answered every request with an error. Redis now runs as Umbrel's user, like the file storage already did. There's no default login: your first visit shows sign-up.
+
 ## Canopy (13 November 2026)
 - **New app: Bigcapital 0.25.45**, open-source accounting, invoicing and inventory for small businesses (a self-hosted QuickBooks/Xero alternative), on port 7414. Not on any other Umbrel store.
 

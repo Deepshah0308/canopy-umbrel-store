@@ -130,6 +130,7 @@ services:
   redis:
     image: redis:7.4.12-alpine@sha256:7f7d30b7fdd09467bac58198a1f166dd69789d348d4fe859cccb20e0cf287fbe
     restart: on-failure
+    user: "1000:1000"  # owns data/redis on Umbrel; as root Redis can't save there and refuses writes
     volumes:
       - ${APP_DATA_DIR}/data/redis:/data
 

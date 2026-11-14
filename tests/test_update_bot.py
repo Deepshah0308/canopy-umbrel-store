@@ -49,3 +49,4 @@ def test_manifest_fields_are_rewritten_in_place():
     text = bot.set_field(text, "releaseNotes", "new notes")
     assert text == 'id: x\nversion: "1.1.0"\nreleaseNotes: >-\n  new notes\nsubmitter: me\n'
     assert bot.bump_patch("1.4.0") == "1.4.1"
+    assert bot.bump_patch("0.25.45-1") == "0.25.45-2"

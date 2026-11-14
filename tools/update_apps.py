@@ -158,10 +158,8 @@ def check_image(ref):
 
 
 def bump_patch(version):
-    parts = version.split(".")
-    if parts and parts[-1].isdigit():
-        parts[-1] = str(int(parts[-1]) + 1)
-        return ".".join(parts)
+    if version[-1:].isdigit():  # 1.4.0 -> 1.4.1, 0.25.45-1 -> 0.25.45-2
+        return re.sub(r"\d+$", lambda m: str(int(m[0]) + 1), version)
     return version + ".1"
 
 
