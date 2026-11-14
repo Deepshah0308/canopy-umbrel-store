@@ -31,7 +31,7 @@ services:
 
   # Sends /api to the server and everything else to the web app (Bigcapital's Envoy does the same).
   web:
-    image: caddy:2.11.9-alpine@sha256:0bbb055bda6793c999bde78b1b5ce3e89f829fb031af2cf50056ea1246559fee
+    image: caddy:2.11.9-alpine@sha256:003a97808e781aa9f7e75cc2f43d34d461099031faf5e20faefb9f61126836f0
     restart: on-failure
     command:
       - sh
@@ -136,7 +136,7 @@ services:
 
   # Makes PDFs of invoices and reports.
   gotenberg:
-    image: gotenberg/gotenberg:7.10.2@sha256:d03b8a04c6e6c5e568b38f57352266dee4674849b71818774025f8f48d869a9a
+    image: gotenberg/gotenberg:9.5.0@sha256:ac61457a1e889ef1ca256a9afc117cff8caf517f19e66ea23cede3feb22f69a5
     restart: on-failure
 
   # Attachments and documents (private: only Bigcapital can reach it).
