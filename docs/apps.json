@@ -136,13 +136,13 @@
     {
       "id": "canopy-rustfs",
       "name": "RustFS",
-      "version": "1.0.5",
+      "version": "1.0.6",
       "tagline": "Fast S3-compatible object storage, a MinIO alternative written in Rust",
       "category": "files",
       "icon": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/rustfs.svg",
       "website": "https://rustfs.com",
       "port": 7411,
-      "updated": "2026-11-11"
+      "updated": "2026-11-16"
     },
     {
       "id": "canopy-siyuan",
