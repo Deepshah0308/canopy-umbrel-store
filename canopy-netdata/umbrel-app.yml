@@ -2,7 +2,7 @@ manifestVersion: 1
 id: canopy-netdata
 category: networking
 name: Netdata
-version: "2.12.5"
+version: "2.12.6"
 tagline: "Real-time health of your Umbrel: CPU, memory, disks, network and every app"
 icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/netdata.svg
 description: >-
