@@ -9,7 +9,7 @@ services:
       PROXY_AUTH_ADD: "false"
 
   openhab:
-    image: openhab/openhab:5.2.4@sha256:acc7be1047d413656d81ff56547c30c2ee2cdc2a449226dacf416c8ae7533881
+    image: openhab/openhab:5.2.4@sha256:99398269254ffa00d44c003c10977354fabaafda0e4322764b185c676b924f2d
     restart: on-failure
     environment:
       USER_ID: "1000"
