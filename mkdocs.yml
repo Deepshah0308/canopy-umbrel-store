@@ -26,6 +26,9 @@ theme:
 extra_css:
   - assets/canopy.css
 
+extra:
+  homepage: https://canopystore.app/
+
 nav:
   - Welcome: index.md
   - Install Canopy: install.md

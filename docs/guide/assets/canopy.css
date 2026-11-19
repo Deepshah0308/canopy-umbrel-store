@@ -1,18 +1,81 @@
-/* Canopy palette: two quiet bases + one loud accent, same as the main site. */
+/* Canopy docs: same world as canopystore.app. Dusk sky up top, night ground below,
+   one blue for links and actions, canopy green for "you are here" and tips. */
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap");
+
 [data-md-color-scheme="slate"] {
-  --night: #0f1a15; --pine: #1e3a2c; --lime: #d4ff30;
-  --md-default-bg-color: var(--night);
-  --md-default-fg-color: color-mix(in srgb, var(--pine) 8%, #fff);
-  --md-default-fg-color--light: color-mix(in srgb, var(--pine) 42%, #fff);
-  --md-primary-fg-color: var(--pine);
-  --md-primary-bg-color: color-mix(in srgb, var(--pine) 8%, #fff);
-  --md-accent-fg-color: var(--lime);
-  --md-typeset-a-color: var(--lime);
-  --md-code-bg-color: color-mix(in srgb, var(--pine) 45%, var(--night));
-  --md-footer-bg-color: var(--pine);
-  --md-footer-bg-color--dark: var(--night);
+  --ground: #121827; --snow: #f4f6fa; --mist: #b4bccb; --rim: rgba(255, 255, 255, .09); --tint: rgba(255, 255, 255, .06);
+  --blue: #2463eb; --link: #9ec0ff; --canopy: #7bc48a;
+  --md-text-font: "Plus Jakarta Sans"; --md-code-font: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --md-default-bg-color: var(--ground);
+  --md-default-fg-color: var(--snow);
+  --md-default-fg-color--light: var(--mist);
+  --md-default-fg-color--lighter: rgba(180, 188, 203, .55);
+  --md-default-fg-color--lightest: var(--rim);
+  --md-primary-fg-color: #1a2140;
+  --md-primary-bg-color: var(--snow);
+  --md-accent-fg-color: var(--link);
+  --md-typeset-a-color: var(--link);
+  --md-code-bg-color: var(--tint);
+  --md-code-fg-color: #dfe5f1;
+  --md-footer-bg-color: #0e1320;
+  --md-footer-bg-color--dark: #0b0f1a;
+  --md-typeset-table-color: var(--rim);
+  --md-admonition-bg-color: var(--tint);
 }
-.md-header, .md-tabs { background: var(--pine); }
-.md-typeset h1 { color: var(--md-default-fg-color); font-weight: 800; letter-spacing: -.02em; }
-.md-typeset .md-button--primary { background: var(--lime); border-color: var(--lime); color: var(--night); }
-.md-typeset table:not([class]) th { background: var(--pine); }
+body, input { font-family: "Plus Jakarta Sans", "Segoe UI", system-ui, sans-serif; }
+::selection { background: var(--canopy); color: #0d1a12; }
+html { scrollbar-color: #3a4560 var(--ground); }
+:focus-visible { outline: 2px solid var(--link); outline-offset: 2px; border-radius: 6px; }
+
+/* Header: the top of the dusk sky */
+.md-header { background: linear-gradient(90deg, #151d36, #2a3159 55%, #3b4270); box-shadow: 0 1px 0 var(--rim); }
+.md-header__title { font-weight: 800; letter-spacing: -.01em; }
+.md-header__button.md-logo img { height: 1.8rem; }
+.md-search__form { background: rgba(255, 255, 255, .1); border-radius: 999px; }
+.md-search__form:hover { background: rgba(255, 255, 255, .16); }
+[data-md-toggle="search"]:checked ~ .md-header .md-search__form { border-radius: 1rem 1rem 0 0; }
+
+/* Navigation: green marks where you are */
+.md-nav__title { font-weight: 800; color: var(--snow); }
+.md-nav__item--section > .md-nav__link { color: var(--snow); font-weight: 700; }
+.md-nav__link { border-radius: 8px; transition: color .16s; }
+.md-nav__link--active, .md-nav__link--active:hover { color: var(--canopy) !important; font-weight: 700; }
+.md-nav__link:hover { color: var(--snow); }
+
+/* Reading */
+.md-typeset { font-size: .82rem; line-height: 1.7; }
+.md-typeset h1 { color: var(--snow); font-weight: 800; letter-spacing: -.03em; line-height: 1.1; }
+.md-typeset h2 { font-weight: 800; letter-spacing: -.02em; margin-top: 2.2em; }
+.md-typeset h3 { font-weight: 700; }
+.md-typeset a { text-underline-offset: .2em; }
+.md-typeset a:hover { color: #fff; text-decoration: underline; }
+.md-typeset code { border-radius: 6px; padding: .1em .4em; }
+.md-typeset pre > code { border-radius: 12px; border: 1px solid var(--rim); }
+.md-typeset kbd { background: var(--tint); box-shadow: 0 2px 0 var(--rim); color: var(--snow); }
+
+/* Tables: rounded, quiet rules, header in a tint */
+.md-typeset table:not([class]) { border: 1px solid var(--rim); border-radius: 14px; overflow: hidden; font-size: .78rem; }
+.md-typeset table:not([class]) th { background: rgba(255, 255, 255, .07); color: var(--snow); font-weight: 700; }
+.md-typeset table:not([class]) td { border-top: 1px solid var(--rim); }
+.md-typeset table:not([class]) tr:hover { background: rgba(255, 255, 255, .025); box-shadow: none; }
+
+/* Admonitions: a full tinted box, no side bar */
+.md-typeset .admonition, .md-typeset details { border: 1px solid var(--rim); border-radius: 14px; box-shadow: none; background: var(--tint); font-size: .8rem; }
+.md-typeset .admonition-title, .md-typeset summary { background: transparent !important; font-weight: 700; }
+.md-typeset .tip, .md-typeset .success { border-color: rgba(123, 196, 138, .4); background: rgba(123, 196, 138, .08); }
+.md-typeset .tip > .admonition-title::before, .md-typeset .success > .admonition-title::before { background-color: var(--canopy); }
+.md-typeset .note, .md-typeset .info { border-color: rgba(59, 120, 246, .4); background: rgba(36, 99, 235, .1); }
+.md-typeset .note > .admonition-title::before, .md-typeset .info > .admonition-title::before { background-color: var(--link); }
+.md-typeset .warning { border-color: rgba(240, 180, 90, .45); background: rgba(240, 180, 90, .08); }
+
+/* Buttons */
+.md-typeset .md-button { border-radius: 999px; font-weight: 700; }
+.md-typeset a.md-button:not(.md-button--primary) { color: var(--snow); border-color: rgba(255, 255, 255, .28); }
+.md-typeset a.md-button:not(.md-button--primary):hover { background: var(--tint); border-color: rgba(255, 255, 255, .45); color: #fff; }
+.md-typeset .md-button--primary { background: var(--blue); border-color: var(--blue); color: #fff; }
+.md-typeset .md-button--primary:hover { background: #3b78f6; border-color: #3b78f6; }
+
+/* Footer: the ground under the trees */
+.md-footer__inner { padding: .6rem 0; }
+.md-footer__link:hover { opacity: 1; color: var(--canopy); }
+.md-top { background: #1a2140; color: var(--snow); }
