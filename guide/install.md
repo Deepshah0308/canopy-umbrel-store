@@ -1,3 +1,8 @@
+---
+title_tag: "How to add Canopy to Umbrel"
+description: "Add Canopy to your Umbrel from the App Store: ⋯, Community App Stores, paste the address, Add. No terminal. Plus updates, troubleshooting and removal."
+---
+
 # Install Canopy
 
 No terminal needed. You only add the store once; after that, Canopy's apps show up in Umbrel's App Store next to the official ones.

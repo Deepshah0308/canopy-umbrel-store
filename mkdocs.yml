@@ -9,6 +9,7 @@ site_dir: docs/guide   # served by GitHub Pages next to the main site; rebuild w
 
 theme:
   name: material
+  custom_dir: overrides
   logo: assets/logo.svg
   favicon: assets/logo.svg
   palette:

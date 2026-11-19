@@ -10,6 +10,20 @@ Canopy never duplicates an app from Umbrel's official store. It is MIT licensed 
 
 - [Website and app list](https://canopystore.app/): every app with its current version and last update
 - [Apps as JSON](https://canopystore.app/apps.json): id, name, version, category and last update for every app, always current
-- [README](https://github.com/Deepshah0308/canopy-umbrel-store/blob/main/README.md): what's inside, how updates work, YAMS setup
-- [Changelog](https://github.com/Deepshah0308/canopy-umbrel-store/blob/main/CHANGELOG.md)
-- [Contributing](https://github.com/Deepshah0308/canopy-umbrel-store/blob/main/CONTRIBUTING.md): how to add or fix an app
+- [Install Canopy](https://canopystore.app/guide/install/): add the store to Umbrel, updates, troubleshooting, removal
+- [Apps and store rules](https://canopystore.app/guide/apps/): what each app does, its port, and how updates are tested
+- [FAQ](https://canopystore.app/guide/faq/)
+- [Security](https://canopystore.app/guide/security/): how apps are packaged and how to report a problem
+- [Changelog](https://canopystore.app/guide/changelog/)
+- [Contributing](https://canopystore.app/guide/contributing/): how to add or fix an app
+
+## YAMS
+
+- [YAMS overview](https://canopystore.app/guide/yams/): Jellyfin, Sonarr, Radarr, Prowlarr, Bazarr and qBittorrent behind a VPN in one install
+- [What YAMS sets up for you](https://canopystore.app/guide/yams/automatic/)
+- [Extras](https://canopystore.app/guide/yams/extras/): Seerr, Lidarr, Recyclarr, Unpackerr, Decluttarr
+- [Managing YAMS](https://canopystore.app/guide/yams/managing/): backups, quick fixes, searching through the VPN, updates
+- [Hardware transcoding](https://canopystore.app/guide/yams/transcoding/): Intel, AMD and NVIDIA on umbrelOS 2.1+
+- [How YAMS fits together](https://canopystore.app/guide/yams/how-it-works/)
+- [Troubleshooting YAMS](https://canopystore.app/guide/yams/troubleshooting/)
+- [Source code](https://github.com/Deepshah0308/canopy-umbrel-store)

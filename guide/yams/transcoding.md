@@ -1,3 +1,8 @@
+---
+title_tag: "Jellyfin hardware transcoding on Umbrel"
+description: "Turn on GPU transcoding for Jellyfin in YAMS on umbrelOS 2.1+: NVENC for NVIDIA or VAAPI/QSV for Intel and AMD, step by step."
+---
+
 # Hardware transcoding
 
 Jellyfin can use your Umbrel's graphics card to convert video on the fly, which is much faster and quieter than using the CPU.

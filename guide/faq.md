@@ -1,3 +1,8 @@
+---
+title_tag: "Canopy and YAMS FAQ"
+description: "Answers about adding a community app store to Umbrel, installing Jellyfin, Sonarr and Radarr together with YAMS, safety and Raspberry Pi support."
+---
+
 # Frequently asked questions
 
 ??? question "How do I add a community app store to Umbrel?"

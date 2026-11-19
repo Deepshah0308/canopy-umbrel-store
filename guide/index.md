@@ -1,3 +1,8 @@
+---
+title_tag: "Canopy docs: the Umbrel community app store"
+description: "How to add Canopy to your Umbrel, install its apps, and set up YAMS, the media server that wires Jellyfin, Sonarr and Radarr together for you."
+---
+
 # Welcome to Canopy
 
 **Canopy** is a community app store for [umbrelOS](https://umbrel.com) with apps Umbrel's own store doesn't have, plus apps that other community stores ship years out of date. Every app is pinned to an exact release, checked for new versions every day, and **installed and tested before an update reaches you**.

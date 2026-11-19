@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{# Search engines and link previews: a real title and description per page (set in each page's front matter). #}
+{% block htmltitle %}
+  {% if page.meta and page.meta.title_tag %}<title>{{ page.meta.title_tag }}</title>{% else %}{{ super() }}{% endif %}
+{% endblock %}
+{% block extrahead %}
+  {% set title = page.meta.title_tag if page.meta and page.meta.title_tag else config.site_name %}
+  {% set desc = page.meta.description if page.meta and page.meta.description else config.site_description %}
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Canopy">
+  <meta property="og:title" content="{{ title }}">
+  <meta property="og:description" content="{{ desc }}">
+  <meta property="og:url" content="{{ page.canonical_url }}">
+  <meta property="og:image" content="https://canopystore.app/social-preview.png">
+  <meta property="og:image:width" content="1280">
+  <meta property="og:image:height" content="640">
+  <meta name="twitter:card" content="summary_large_image">
+{% endblock %}
