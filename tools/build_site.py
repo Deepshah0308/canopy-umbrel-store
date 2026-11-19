@@ -54,15 +54,15 @@ def rows(items):
     for a in items:
         esc = {k: html.escape(str(v or ""), quote=True) for k, v in a.items()}
         updated = f'<time datetime="{esc["updated"]}">{esc["updated"]}</time>' if a["updated"] else ""
+        cat = html.escape(CATEGORY_NAMES.get(a["category"], a["category"].title()), quote=True)
         lines.append(
-            f'        <li data-updated="{esc["updated"]}">'
-            f'<img src="{esc["icon"]}" alt="" width="40" height="40" loading="lazy">'
+            f'        <li data-updated="{esc["updated"]}" data-cat="{cat}">'
+            f'<img src="{esc["icon"]}" alt="" width="48" height="48" loading="lazy">'
             f'<div class="app-main"><a href="{esc["website"]}" rel="noopener">{esc["name"]}</a>'
             f'<span class="app-line">{esc["tagline"]}</span>'
-            f'<span class="app-port">Port {esc["port"]}</span></div>'
-            f'<span class="app-cat">{html.escape(CATEGORY_NAMES.get(a["category"], a["category"].title()))}</span>'
-            f'<span class="app-ver">{esc["version"]}</span>'
-            f'<span class="app-date"><span class="fresh" aria-hidden="true"></span>{updated}</span></li>')
+            f'<span class="app-meta"><span class="app-ver">{esc["version"]}</span>'
+            f'<span class="app-port">Port {esc["port"]}</span>'
+            f'<span class="app-date">Updated {updated}</span></span></div></li>')
     return "\n".join(lines)
 
 
