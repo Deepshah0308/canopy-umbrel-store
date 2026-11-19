@@ -1,5 +1,5 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://deepshah0308.github.io/canopy-umbrel-store/sitemap.xml
-Sitemap: https://deepshah0308.github.io/canopy-umbrel-store/guide/sitemap.xml
+Sitemap: https://canopystore.app/sitemap.xml
+Sitemap: https://canopystore.app/guide/sitemap.xml

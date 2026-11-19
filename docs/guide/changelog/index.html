@@ -10,7 +10,7 @@
       
       
       
-        <link rel="canonical" href="https://deepshah0308.github.io/canopy-umbrel-store/guide/changelog/">
+        <link rel="canonical" href="https://canopystore.app/guide/changelog/">
       
       
         <link rel="prev" href="../security/">
@@ -701,6 +701,39 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#canopy-18-november-2026" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Canopy (18 November 2026)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bigcapital-02545-2-november-2026" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bigcapital 0.25.45-2 (November 2026)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bigcapital-02545-1-november-2026" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bigcapital 0.25.45-1 (November 2026)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#canopy-13-november-2026" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -922,6 +955,39 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#canopy-18-november-2026" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Canopy (18 November 2026)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bigcapital-02545-2-november-2026" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bigcapital 0.25.45-2 (November 2026)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bigcapital-02545-1-november-2026" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bigcapital 0.25.45-1 (November 2026)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#canopy-13-november-2026" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1129,6 +1195,18 @@
 
 
 <h1 id="changelog">Changelog<a class="headerlink" href="#changelog" title="Permanent link">&para;</a></h1>
+<h2 id="canopy-18-november-2026">Canopy (18 November 2026)<a class="headerlink" href="#canopy-18-november-2026" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Screenshots in the App Store:</strong> YAMS, Bigcapital, Gatus and RustFS now show a screenshot gallery on their Umbrel App Store pages, like the official store's apps.</li>
+</ul>
+<h2 id="bigcapital-02545-2-november-2026">Bigcapital 0.25.45-2 (November 2026)<a class="headerlink" href="#bigcapital-02545-2-november-2026" title="Permanent link">&para;</a></h2>
+<ul>
+<li>The app's terminal now opens Bigcapital's server (with its command-line tools) instead of the web proxy.</li>
+</ul>
+<h2 id="bigcapital-02545-1-november-2026">Bigcapital 0.25.45-1 (November 2026)<a class="headerlink" href="#bigcapital-02545-1-november-2026" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Fixed:</strong> sign-up and sign-in failed with a stuck spinner. Redis ran as root but couldn't save to its data folder on Umbrel, so it refused writes and Bigcapital's server answered every request with an error. Redis now runs as Umbrel's user, like the file storage already did. There's no default login: your first visit shows sign-up.</li>
+</ul>
 <h2 id="canopy-13-november-2026">Canopy (13 November 2026)<a class="headerlink" href="#canopy-13-november-2026" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>New app: Bigcapital 0.25.45</strong>, open-source accounting, invoicing and inventory for small businesses (a self-hosted QuickBooks/Xero alternative), on port 7414. Not on any other Umbrel store.</li>

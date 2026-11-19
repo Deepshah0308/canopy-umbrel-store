@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-18",
+  "generated": "2026-11-19",
   "apps": [
     {
       "id": "canopy-yams",
@@ -10,7 +10,7 @@
       "icon": "https://cdn.jsdelivr.net/gh/Deepshah0308/canopy-umbrel-store@24f69a96df050bcb6c34e3a7be0c65303b4f1112/canopy-yams/icon.svg",
       "website": "https://yams.media",
       "port": 8746,
-      "updated": "2026-11-13"
+      "updated": "2026-11-18"
     },
     {
       "id": "canopy-bigcapital",
@@ -21,7 +21,7 @@
       "icon": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/png/bigcapital.png",
       "website": "https://bigcapital.app",
       "port": 7414,
-      "updated": "2026-11-13"
+      "updated": "2026-11-18"
     },
     {
       "id": "canopy-bytestash",
@@ -54,7 +54,7 @@
       "icon": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/gatus.svg",
       "website": "https://gatus.io",
       "port": 7413,
-      "updated": "2026-11-12"
+      "updated": "2026-11-18"
     },
     {
       "id": "canopy-jdownloader",
@@ -142,7 +142,7 @@
       "icon": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/rustfs.svg",
       "website": "https://rustfs.com",
       "port": 7411,
-      "updated": "2026-11-16"
+      "updated": "2026-11-18"
     },
     {
       "id": "canopy-siyuan",

@@ -23,9 +23,9 @@ repo: https://github.com/bigcapitalhq/bigcapital
 support: https://github.com/Deepshah0308/canopy-umbrel-store/issues
 port: 7414
 gallery:
-  - https://deepshah0308.github.io/canopy-umbrel-store/gallery/canopy-bigcapital/1.webp
-  - https://deepshah0308.github.io/canopy-umbrel-store/gallery/canopy-bigcapital/2.webp
-  - https://deepshah0308.github.io/canopy-umbrel-store/gallery/canopy-bigcapital/3.webp
+  - https://canopystore.app/gallery/canopy-bigcapital/1.webp
+  - https://canopystore.app/gallery/canopy-bigcapital/2.webp
+  - https://canopystore.app/gallery/canopy-bigcapital/3.webp
 path: ""
 defaultPassword: ""
 releaseNotes: >-

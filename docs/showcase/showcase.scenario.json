@@ -1,13 +1,13 @@
 {
   "project": "canopy-umbrel-store",
-  "baseUrl": "https://deepshah0308.github.io/canopy-umbrel-store",
+  "baseUrl": "https://canopystore.app",
   "outDir": "docs/showcase",
   "loginWall": false,
   "_note": "The YAMS steps use a local test install from tools/umbrel_sim.py (sudo -E python3 tools/umbrel_sim.py canopy-yams --keep); point the YAMS URL at its web container. Passwords are blurred and never revealed.",
   "pages": [
     {
       "label": "hero",
-      "url": "https://deepshah0308.github.io/canopy-umbrel-store/",
+      "url": "https://canopystore.app/",
       "viewport": "desktop",
       "fullPage": false,
       "before": [
@@ -19,7 +19,7 @@
     },
     {
       "label": "mobile-home",
-      "url": "https://deepshah0308.github.io/canopy-umbrel-store/",
+      "url": "https://canopystore.app/",
       "viewport": "mobile",
       "fullPage": false
     },
@@ -49,7 +49,7 @@
     "steps": [
       {
         "action": "goto",
-        "url": "https://deepshah0308.github.io/canopy-umbrel-store/"
+        "url": "https://canopystore.app/"
       },
       {
         "action": "wait",

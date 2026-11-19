@@ -8,8 +8,8 @@ Canopy never duplicates an app from Umbrel's official store. It is MIT licensed 
 
 ## Docs
 
-- [Website and app list](https://deepshah0308.github.io/canopy-umbrel-store/): every app with its current version and last update
-- [Apps as JSON](https://deepshah0308.github.io/canopy-umbrel-store/apps.json): id, name, version, category and last update for every app, always current
+- [Website and app list](https://canopystore.app/): every app with its current version and last update
+- [Apps as JSON](https://canopystore.app/apps.json): id, name, version, category and last update for every app, always current
 - [README](https://github.com/Deepshah0308/canopy-umbrel-store/blob/main/README.md): what's inside, how updates work, YAMS setup
 - [Changelog](https://github.com/Deepshah0308/canopy-umbrel-store/blob/main/CHANGELOG.md)
 - [Contributing](https://github.com/Deepshah0308/canopy-umbrel-store/blob/main/CONTRIBUTING.md): how to add or fix an app

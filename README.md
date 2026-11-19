@@ -12,16 +12,16 @@ Apps for your Umbrel that Umbrel's own store doesn't have, kept on their newest 
 
 | Website | Phone | YAMS dashboard |
 |---|---|---|
-| <a href="https://deepshah0308.github.io/canopy-umbrel-store/"><img src="docs/showcase/hero.webp" width="420" alt="Canopy website"></a> | <img src="docs/showcase/mobile-home.webp" width="200" alt="Canopy website on a phone"> | <img src="docs/showcase/yams-dashboard.webp" width="420" alt="YAMS setup dashboard"> |
+| <a href="https://canopystore.app/"><img src="docs/showcase/hero.webp" width="420" alt="Canopy website"></a> | <img src="docs/showcase/mobile-home.webp" width="200" alt="Canopy website on a phone"> | <img src="docs/showcase/yams-dashboard.webp" width="420" alt="YAMS setup dashboard"> |
 
 </details>
 
 <!-- docs/showcase/demo.mp4 holds a higher-quality version of the demo. -->
 <!-- SHOWCASE:END -->
 
-**See every app and version live: https://deepshah0308.github.io/canopy-umbrel-store/**
+**See every app and version live: https://canopystore.app/**
 
-**📖 Docs: https://deepshah0308.github.io/canopy-umbrel-store/guide/**
+**📖 Docs: https://canopystore.app/guide/**
 
 [![Checks](https://github.com/Deepshah0308/canopy-umbrel-store/actions/workflows/checks.yml/badge.svg)](https://github.com/Deepshah0308/canopy-umbrel-store/actions/workflows/checks.yml)
 [![Update apps](https://github.com/Deepshah0308/canopy-umbrel-store/actions/workflows/update-apps.yml/badge.svg)](https://github.com/Deepshah0308/canopy-umbrel-store/actions/workflows/update-apps.yml)
@@ -101,7 +101,7 @@ Every Monday, [another Action](https://github.com/Deepshah0308/canopy-umbrel-sto
 | You don't know the app's username or password | Open the app's page in Umbrel's **App Store**: apps that have their own login show it there. Apps without one sit behind your Umbrel login, so there's nothing extra to type. |
 | Umbrel says the port is already in use | Another app on your Umbrel uses the same port. Canopy avoids ports used by Umbrel's official store and the popular community stores, but not every store. Uninstall one of the two, or [tell us](https://github.com/Deepshah0308/canopy-umbrel-store/issues/new/choose) which app clashes. |
 | Canopy's apps don't show up in the App Store | Check the store address is exactly `https://github.com/Deepshah0308/canopy-umbrel-store` under **App Store → ⋯ → Community App Stores**, then reload the page. |
-| Something else is broken | Right-click the app and choose **Troubleshoot** to see its logs, then [open an issue](https://github.com/Deepshah0308/canopy-umbrel-store/issues/new/choose) with what you see. For YAMS, see [Troubleshooting YAMS](https://deepshah0308.github.io/canopy-umbrel-store/guide/yams/troubleshooting/) first. |
+| Something else is broken | Right-click the app and choose **Troubleshoot** to see its logs, then [open an issue](https://github.com/Deepshah0308/canopy-umbrel-store/issues/new/choose) with what you see. For YAMS, see [Troubleshooting YAMS](https://canopystore.app/guide/yams/troubleshooting/) first. |
 <!-- --8<-- [end:troubleshooting-general] -->
 
 ## YAMS

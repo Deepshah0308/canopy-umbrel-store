@@ -4,7 +4,7 @@
 
 It's also the home of **YAMS**, a complete media server (Jellyfin, Sonarr, Radarr, Prowlarr, Bazarr and qBittorrent behind a VPN) that comes already wired together.
 
-![Demo: copying Canopy's store address, browsing the apps, then YAMS setting itself up and wiring in an extra](https://deepshah0308.github.io/canopy-umbrel-store/showcase/demo.gif)
+![Demo: copying Canopy's store address, browsing the apps, then YAMS setting itself up and wiring in an extra](https://canopystore.app/showcase/demo.gif)
 
 [Install Canopy](install.md){ .md-button .md-button--primary } [Set up YAMS](yams/index.md){ .md-button }
 
