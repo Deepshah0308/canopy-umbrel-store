@@ -7,7 +7,7 @@ services:
       APP_PORT: 19999
 
   netdata:
-    image: netdata/netdata:v2.12.3@sha256:c7eab00e20901eb60595ebae0fbfe88e59464e663924461874719d40de0735d2
+    image: netdata/netdata:v2.13.0@sha256:2da5100232978bcae211f78e7fe33a7032d75333b5235412bfab743ed1e0c002
     restart: on-failure
     pid: host
     cap_add:
@@ -35,7 +35,7 @@ services:
 
   # Read-only view of Docker: lists containers so Netdata can name them, nothing else.
   docker:
-    image: linuxserver/socket-proxy:3.4.7@sha256:18289eeb306e8e3b70901ffec23eafbb318d73b4514d0bd737dbfc7c5b4fe506
+    image: linuxserver/socket-proxy:3.4.8@sha256:6beb1743581ec3b2ed1a2bafd617e8c7a1d7ae2fe835293e333327618fc2b925
     restart: on-failure
     read_only: true
     tmpfs:

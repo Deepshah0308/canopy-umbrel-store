@@ -103,13 +103,13 @@
     {
       "id": "canopy-netdata",
       "name": "Netdata",
-      "version": "2.12.6",
+      "version": "2.12.7",
       "tagline": "Real-time health of your Umbrel: CPU, memory, disks, network and every app",
       "category": "networking",
       "icon": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/netdata.svg",
       "website": "https://www.netdata.cloud",
       "port": 7401,
-      "updated": "2026-11-16"
+      "updated": "2026-11-19"
     },
     {
       "id": "canopy-nzbget",
