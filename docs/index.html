@@ -32,8 +32,15 @@
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
 {"@type":"Question","name":"How do I add a community app store to Umbrel?","acceptedAnswer":{"@type":"Answer","text":"In Umbrel, open the App Store, click ⋯ in the top right and choose Community App Stores. Paste https://github.com/Deepshah0308/canopy-umbrel-store and click Add. Canopy's apps then show up in their own section of the App Store."}},
 {"@type":"Question","name":"How do I install Jellyfin, Sonarr and Radarr on Umbrel together?","acceptedAnswer":{"@type":"Answer","text":"Install YAMS from Canopy. It sets up Jellyfin, Sonarr, Radarr, Prowlarr, Bazarr and qBittorrent behind a VPN in one install, already connected to each other, with a dashboard to finish setup."}},
+{"@type":"Question","name":"What is YAMS on Umbrel?","acceptedAnswer":{"@type":"Answer","text":"YAMS (Yet Another Media Server) is a complete media server in one app: Jellyfin, Sonarr, Radarr, Prowlarr, Bazarr and qBittorrent, behind a VPN and already connected to each other. Canopy packages it for Umbrel so it installs from the App Store."}},
+{"@type":"Question","name":"Do YAMS downloads go through a VPN?","acceptedAnswer":{"@type":"Answer","text":"Yes, only. qBittorrent runs inside the VPN tunnel (gluetun), so if the VPN drops, downloads stop rather than using your home connection."}},
+{"@type":"Question","name":"Which VPNs work with YAMS?","acceptedAnswer":{"@type":"Answer","text":"Any VPN that gives you a WireGuard configuration file, such as Proton VPN, Mullvad or AirVPN."}},
+{"@type":"Question","name":"Can Jellyfin use my graphics card on Umbrel?","acceptedAnswer":{"@type":"Answer","text":"Yes, on umbrelOS 2.1 and newer. YAMS asks Umbrel for GPU access; then pick NVENC (NVIDIA) or VAAPI/QSV (Intel and AMD) in Jellyfin under Dashboard, Playback, Transcoding."}},
 {"@type":"Question","name":"Is Canopy safe to use?","acceptedAnswer":{"@type":"Answer","text":"Every app is pinned to an exact, published version from its official publisher, apps without their own login sit behind your Umbrel login, and nothing gets more access than it needs."}},
 {"@type":"Question","name":"Will Canopy apps work on a Raspberry Pi?","acceptedAnswer":{"@type":"Answer","text":"Yes. Every app must run on both Umbrel Home and PCs (amd64) and on Raspberry Pi (arm64), and the store's checks refuse any version that doesn't."}}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"YAMS for Umbrel","alternateName":"Yet Another Media Server","applicationCategory":"MultimediaApplication","operatingSystem":"umbrelOS","url":"https://canopystore.app/#yams","description":"A complete media server for Umbrel in one install: Jellyfin, Sonarr, Radarr, Prowlarr, Bazarr and qBittorrent behind a VPN, already connected to each other, with a setup dashboard.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"isBasedOn":"https://yams.media"}
 </script>
 <style>
   /* Direction: the page is the store as it appears inside umbrelOS. A frosted window
@@ -131,7 +138,7 @@
   /* Below the window: plain reading on the ground colour */
   .wrap { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
   section.more { padding: clamp(4rem, 9vw, 6.5rem) 0 0; }
-  section.more h2 { font-size: clamp(1.8rem, 3.2vw, 2.5rem); font-weight: 800; letter-spacing: -.03em; line-height: 1.08; margin: 0 0 .7rem; max-width: 22ch; }
+  section.more h2 { font-size: clamp(1.8rem, 3.2vw, 2.5rem); font-weight: 800; letter-spacing: -.03em; line-height: 1.08; margin: 0 0 .7rem; max-width: 28ch; text-wrap: balance; }
   .sub { color: var(--mist); margin: 0 0 2rem; max-width: 40rem; }
   .flow { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; counter-reset: f; }
   .flow li { counter-increment: f; padding: 1.5rem 1.4rem; border-radius: 20px; background: rgba(255, 255, 255, .04); border: 1px solid var(--rim); }
@@ -145,6 +152,24 @@
   .yams li span { color: var(--mist); }
   .note { padding: 1.4rem 1.5rem; border-radius: 20px; background: rgba(36, 99, 235, .12); border: 1px solid rgba(59, 120, 246, .35); }
   .note p { margin: 0; color: #d6def2; font-size: .97rem; }
+  .stack { list-style: none; padding: 0; margin: 0 0 2.6rem; display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: .8rem; }
+  .stack li { display: grid; justify-items: center; text-align: center; gap: .15rem; padding: 1rem .4rem; border-radius: 18px; background: rgba(255, 255, 255, .04); border: 1px solid var(--rim); }
+  .stack img { width: 44px; height: 44px; margin-bottom: .35rem; }
+  .stack b { font-size: .92rem; }
+  .stack span { color: var(--mist); font-size: .8rem; line-height: 1.3; }
+  .chores h3, .yams-steps-title { font-size: 1.3rem; letter-spacing: -.01em; margin: 0 0 1rem; }
+  .chores dl { margin: 0 0 2.6rem; border-top: 1px solid var(--rim); }
+  .chores dl div { display: grid; grid-template-columns: 1fr 1.3fr; gap: 1.5rem; padding: .9rem 0; border-bottom: 1px solid var(--rim); }
+  .chores dt { color: var(--mist); text-decoration: line-through; text-decoration-color: rgba(180, 188, 203, .45); }
+  .chores dd { margin: 0; position: relative; padding-left: 1.75rem; }
+  .chores dd::before { content: ""; position: absolute; left: 0; top: .2rem; width: 18px; height: 18px; border-radius: 50%; background: var(--canopy) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='m4 8.5 2.5 2.5L12 5.5' fill='none' stroke='%230d1a12' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 12px no-repeat; }
+  .gallery { display: grid; grid-template-columns: 1.4fr 1fr; grid-template-rows: auto auto; gap: 1rem; margin: 0 0 2.6rem; }
+  .gallery img { width: 100%; height: 100%; object-fit: cover; object-position: top; border-radius: 16px; border: 1px solid var(--rim); box-shadow: 0 24px 50px -24px rgba(0, 0, 0, .7); }
+  .gallery img:first-child { grid-row: span 2; }
+  .facts { list-style: none; padding: 0; margin: 0 0 3rem; display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem 2.2rem; }
+  .facts h3 { font-size: 1.05rem; margin: 0 0 .35rem; }
+  .facts p { margin: 0; color: var(--mist); font-size: .96rem; }
+  .more-link { margin: 2rem 0 0; font-weight: 700; }
   details { border-bottom: 1px solid var(--rim); }
   details:first-of-type { border-top: 1px solid var(--rim); }
   summary { cursor: pointer; list-style: none; padding: 1.15rem 2.5rem 1.15rem 0; font-weight: 700; position: relative; }
@@ -159,7 +184,11 @@
     .apps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .feature { grid-template-columns: 1fr; }
     .shots { min-height: 200px; }
-    .flow, .yams { grid-template-columns: 1fr; }
+    .flow, .yams, .facts { grid-template-columns: 1fr; }
+    .stack { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .chores dl div { grid-template-columns: 1fr; gap: .3rem; }
+    .gallery { grid-template-columns: 1fr; }
+    .gallery img:first-child { grid-row: auto; }
   }
   @media (max-width: 620px) {
     .bar nav a:not(:last-child) { display: none; }
@@ -170,6 +199,7 @@
     .win { border-radius: 24px; margin: 0 .75rem; }
     .search, .search input { width: 100%; margin-left: 0; }
     .steps { flex-direction: column; align-items: center; }
+    .stack { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   }
 </style>
 </head>
@@ -202,6 +232,7 @@
   </a>
   <nav aria-label="Main">
     <a href="#store">Apps</a>
+    <a href="#yams">YAMS</a>
     <a href="guide/">Docs</a>
     <a href="https://github.com/Deepshah0308/canopy-umbrel-store">GitHub</a>
   </nav>
@@ -281,12 +312,52 @@
       </ol>
     </section>
 
-    <section class="more" aria-labelledby="yams-title">
-      <h2 id="yams-title">YAMS sets itself up in four steps</h2>
-      <p class="sub">Seerr, Lidarr, Recyclarr, Unpackerr and Decluttarr are one switch away once it's running.</p>
+    <section class="more" id="yams" aria-labelledby="yams-title">
+      <h2 id="yams-title">YAMS: Jellyfin, Sonarr, Radarr and a VPN, wired together for you</h2>
+      <p class="sub"><a href="https://yams.media">YAMS</a> (Yet Another Media Server, by rogs) packaged for Umbrel, so you go from Install to watching without a terminal or a config file. One install gives you a complete, private media server; its dashboard walks you through the rest.</p>
+      <ul class="stack" aria-label="Apps included in YAMS">
+          <li><img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/jellyfin.svg" alt="" width="40" height="40" loading="lazy"><b>Jellyfin</b><span>Watch</span></li>
+          <li><img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/sonarr.svg" alt="" width="40" height="40" loading="lazy"><b>Sonarr</b><span>TV shows</span></li>
+          <li><img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/radarr.svg" alt="" width="40" height="40" loading="lazy"><b>Radarr</b><span>Movies</span></li>
+          <li><img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/prowlarr.svg" alt="" width="40" height="40" loading="lazy"><b>Prowlarr</b><span>Indexers</span></li>
+          <li><img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/bazarr.svg" alt="" width="40" height="40" loading="lazy"><b>Bazarr</b><span>Subtitles</span></li>
+          <li><img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/qbittorrent.svg" alt="" width="40" height="40" loading="lazy"><b>qBittorrent</b><span>Downloads</span></li>
+          <li><img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/flaresolverr.svg" alt="" width="40" height="40" loading="lazy"><b>FlareSolverr</b><span>Cloudflare checks</span></li>
+          <li><img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/gluetun.svg" alt="" width="40" height="40" loading="lazy"><b>gluetun</b><span>VPN tunnel</span></li>
+      </ul>
+
+      <div class="chores">
+        <h3>The setup you'd normally do by hand, already done</h3>
+        <dl>
+          <div><dt>Run Jellyfin's setup wizard and create libraries</dt><dd>Admin user and <b>Movies</b> and <b>Shows</b> libraries created, with real-time folder watching</dd></div>
+          <div><dt>Copy API keys between apps</dt><dd>Keys generated up front; Sonarr, Radarr, Prowlarr and Bazarr wired together</dd></div>
+          <div><dt>Add qBittorrent to Sonarr and Radarr</dt><dd>Done, with <code>tv</code> and <code>movies</code> categories</dd></div>
+          <div><dt>Plan library folders</dt><dd>Hardlink-friendly folders following the <a href="https://trash-guides.info/File-and-Folder-Structure/">TRaSH Guides</a> layout</dd></div>
+          <div><dt>Set up FlareSolverr</dt><dd>Added to Prowlarr and tagged, so Cloudflare-protected indexers work</dd></div>
+          <div><dt>Write VPN config for gluetun</dt><dd>Paste a WireGuard file; YAMS cleans it into the form gluetun needs</dd></div>
+          <div><dt>Log in to five different web apps</dt><dd>Everything except Jellyfin sits behind your Umbrel login</dd></div>
+        </dl>
+      </div>
+
+      <div class="gallery" aria-label="YAMS dashboard screenshots">
+        <img src="gallery/canopy-yams/2.webp" alt="YAMS dashboard listing Jellyfin, Sonarr, Radarr, Prowlarr, Bazarr and qBittorrent, all running" width="1440" height="900" loading="lazy">
+        <img src="gallery/canopy-yams/4.webp" alt="YAMS VPN check showing downloads use the VPN address, not the home address" width="1440" height="900" loading="lazy">
+        <img src="gallery/canopy-yams/3.webp" alt="YAMS Extras: switches for Seerr, Lidarr, Recyclarr, Unpackerr and Decluttarr" width="1440" height="900" loading="lazy">
+      </div>
+
+      <ul class="facts">
+        <li><h3>Downloads only through your VPN</h3><p>qBittorrent lives inside the VPN tunnel. If the VPN drops, downloads stop instead of using your home connection. <b>VPN check</b> proves it any time.</p></li>
+        <li><h3>Extras are one switch</h3><p>Seerr for family requests, Lidarr for music, Recyclarr for TRaSH quality settings, Unpackerr for .rar downloads and Decluttarr for stuck downloads. YAMS connects each one for you.</p></li>
+        <li><h3>Graphics card transcoding</h3><p>On umbrelOS 2.1 and newer, Jellyfin can use Intel, AMD or NVIDIA graphics to transcode for phones and TVs.</p></li>
+        <li><h3>Indexers blocked by your ISP?</h3><p>Switch on <b>Search through the VPN</b> and Prowlarr's searches go through the tunnel too.</p></li>
+        <li><h3>Backups in one click</h3><p>Every app's settings and your VPN file, saved to your Downloads folder, on a schedule if you like.</p></li>
+        <li><h3>Fix everything button</h3><p>If something stops talking to something else, <b>Quick fixes</b> re-checks every connection and only changes what's wrong.</p></li>
+      </ul>
+
+      <h3 class="yams-steps-title">Set it up in four steps</h3>
       <div class="yams">
         <ol>
-          <li><b>Connect a VPN</b><span>Paste your VPN's WireGuard file. Downloads stay off until it works.</span></li>
+          <li><b>Connect a VPN</b><span>Paste a WireGuard file from Proton VPN, Mullvad, AirVPN or similar. Downloads stay off until it works.</span></li>
           <li><b>Choose where YAMS searches</b><span>Add indexers in Prowlarr; they reach Sonarr and Radarr on their own.</span></li>
           <li><b>Add a show or a movie</b><span>In Sonarr or Radarr, or let your family ask for them in Seerr.</span></li>
           <li><b>Watch</b><span>In Jellyfin at <code>umbrel.local:8097</code>, on your TV, phone or browser.</span></li>
@@ -295,12 +366,17 @@
           <p><b>Moving from the old YAMS store?</b> The two can't run side by side, so: in your current YAMS, open <b>Backups</b> and press <b>Back up now</b>. Uninstall it (your media and backups in Downloads stay), remove the old store and add Canopy, install YAMS from Canopy, then restore that backup. Settings, logins, VPN and library come with you, and TV apps keep working on the same port.</p>
         </div>
       </div>
+      <p class="more-link"><a href="guide/yams/">Read the full YAMS guide</a></p>
     </section>
 
   <section class="more" aria-labelledby="faq-title">
     <h2 id="faq-title">Questions</h2>
     <details><summary>How do I add a community app store to Umbrel?</summary><p>In Umbrel, open the <b>App Store</b>, click <b>⋯</b> in the top right and choose <b>Community App Stores</b>. Paste <code>https://github.com/Deepshah0308/canopy-umbrel-store</code> and click <b>Add</b>. Canopy's apps then show up in their own section of the App Store.</p></details>
     <details><summary>How do I install Jellyfin, Sonarr and Radarr on Umbrel together?</summary><p>Install <b>YAMS</b> from Canopy. It sets up Jellyfin, Sonarr, Radarr, Prowlarr, Bazarr and qBittorrent behind a VPN in one install, already connected to each other, with a dashboard to finish setup.</p></details>
+    <details><summary>What is YAMS on Umbrel?</summary><p>YAMS (Yet Another Media Server) is a complete media server in one app: Jellyfin to watch, Sonarr and Radarr to find shows and movies, Prowlarr for indexers, Bazarr for subtitles and qBittorrent for downloads, all behind a VPN and already connected to each other. Canopy packages it for Umbrel so it installs from the App Store.</p></details>
+    <details><summary>Do YAMS downloads go through a VPN?</summary><p>Yes, only. qBittorrent runs inside the VPN tunnel (gluetun), so if the VPN drops, downloads stop rather than using your home connection. The dashboard's <b>VPN check</b> compares your home address with the one downloads use.</p></details>
+    <details><summary>Which VPNs work with YAMS?</summary><p>Any VPN that gives you a <b>WireGuard</b> configuration file, such as Proton VPN, Mullvad or AirVPN. Download the file from your VPN's website and paste it into the YAMS dashboard.</p></details>
+    <details><summary>Can Jellyfin use my graphics card on Umbrel?</summary><p>Yes, on umbrelOS 2.1 and newer. YAMS asks Umbrel for GPU access, then you pick NVENC (NVIDIA) or VAAPI/QSV (Intel and AMD) in Jellyfin under <b>Dashboard → Playback → Transcoding</b>. See the <a href="guide/yams/transcoding/">transcoding guide</a>.</p></details>
     <details><summary>Do I need to use a terminal?</summary><p>No. Add the store address, click Install. Apps that need a login show it on their page in the App Store.</p></details>
     <details><summary>Is it safe?</summary><p>Community stores aren't reviewed by Umbrel, so it's fair to ask. Every app here is pinned to an exact, published version from its official publisher, apps without their own login sit behind your Umbrel login, and nothing gets more access than it needs. Netdata, for example, can list your containers through a read-only proxy but can't start or stop anything. Found a problem? <a href="https://github.com/Deepshah0308/canopy-umbrel-store/security">Report it privately</a>.</p></details>
     <details><summary>Will it work on my Raspberry Pi?</summary><p>Yes. Every app must run on both Umbrel Home and PCs (amd64) and on Raspberry Pi (arm64), and the store's checks refuse any version that doesn't.</p></details>
