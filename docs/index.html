@@ -118,6 +118,7 @@
 
   .apps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .4rem 1.2rem; }
   .apps li { position: relative; display: flex; gap: .95rem; align-items: flex-start; padding: .8rem; margin: 0 -.8rem; border-radius: 16px; transition: background .18s var(--ease); }
+  .apps li[hidden] { display: none; }
   .apps li:hover, .apps li:focus-within { background: var(--tint); }
   .apps img { flex: none; width: 52px; height: 52px; border-radius: 14px; background: #fff; padding: 5px; }
   .app-main { min-width: 0; }
