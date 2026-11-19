@@ -16,7 +16,10 @@ dependencies: []
 repo: https://github.com/rustfs/rustfs
 support: https://github.com/Deepshah0308/canopy-umbrel-store/issues
 port: 7411
-gallery: []
+gallery:
+  - https://deepshah0308.github.io/canopy-umbrel-store/gallery/canopy-rustfs/1.webp
+  - https://deepshah0308.github.io/canopy-umbrel-store/gallery/canopy-rustfs/2.webp
+  - https://deepshah0308.github.io/canopy-umbrel-store/gallery/canopy-rustfs/3.webp
 path: "/rustfs/console/"
 defaultUsername: "umbrel"
 deterministicPassword: true

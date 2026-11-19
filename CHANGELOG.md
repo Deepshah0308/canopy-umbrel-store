@@ -1,5 +1,8 @@
 # Changelog
 
+## Canopy (18 November 2026)
+- **Screenshots in the App Store:** YAMS, Bigcapital, Gatus and RustFS now show a screenshot gallery on their Umbrel App Store pages, like the official store's apps.
+
 ## Bigcapital 0.25.45-2 (November 2026)
 - The app's terminal now opens Bigcapital's server (with its command-line tools) instead of the web proxy.
 

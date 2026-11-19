@@ -21,7 +21,10 @@ dependencies: []
 repo: https://github.com/TwiN/gatus
 support: https://github.com/Deepshah0308/canopy-umbrel-store/issues
 port: 7413
-gallery: []
+gallery:
+  - https://deepshah0308.github.io/canopy-umbrel-store/gallery/canopy-gatus/1.webp
+  - https://deepshah0308.github.io/canopy-umbrel-store/gallery/canopy-gatus/2.webp
+  - https://deepshah0308.github.io/canopy-umbrel-store/gallery/canopy-gatus/3.webp
 path: ""
 defaultPassword: ""
 releaseNotes: >-

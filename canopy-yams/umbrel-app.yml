@@ -58,7 +58,11 @@ dependencies: []
 repo: https://github.com/rogsme/yams
 support: https://github.com/Deepshah0308/canopy-umbrel-store/issues
 port: 8746
-gallery: []
+gallery:
+  - https://deepshah0308.github.io/canopy-umbrel-store/gallery/canopy-yams/1.webp
+  - https://deepshah0308.github.io/canopy-umbrel-store/gallery/canopy-yams/2.webp
+  - https://deepshah0308.github.io/canopy-umbrel-store/gallery/canopy-yams/3.webp
+  - https://deepshah0308.github.io/canopy-umbrel-store/gallery/canopy-yams/4.webp
 path: ""
 defaultUsername: ""
 defaultPassword: ""
