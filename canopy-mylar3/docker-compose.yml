@@ -7,7 +7,7 @@ services:
       APP_PORT: 8090
 
   mylar3:
-    image: linuxserver/mylar3:0.11.0@sha256:08db04be13a3536a18aae2d1b455b805dbc3ec26323cc0c78d3c132596efe5ef
+    image: linuxserver/mylar3:5.9.5@sha256:b4c8c2bdd69ccb3a1842ca427137e43a1878718a7f89974fb2bf912e9ab8494a
     restart: on-failure
     environment:
       PUID: "1000"
