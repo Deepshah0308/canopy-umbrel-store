@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-19",
+  "generated": "2026-11-20",
   "apps": [
     {
       "id": "canopy-yams",
@@ -125,13 +125,13 @@
     {
       "id": "canopy-openhab",
       "name": "openHAB",
-      "version": "5.2.6",
+      "version": "5.2.7",
       "tagline": "Vendor-neutral home automation that runs entirely at home",
       "category": "automation",
       "icon": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/openhab.svg",
       "website": "https://www.openhab.org",
       "port": 7403,
-      "updated": "2026-11-19"
+      "updated": "2026-11-20"
     },
     {
       "id": "canopy-rustfs",
