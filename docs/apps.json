@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-20",
+  "generated": "2026-11-21",
   "apps": [
     {
       "id": "canopy-yams",
@@ -92,13 +92,13 @@
     {
       "id": "canopy-mylar3",
       "name": "Mylar3",
-      "version": "0.11.3",
+      "version": "0.11.4",
       "tagline": "Comic book automation: follows series and grabs new issues",
       "category": "media",
       "icon": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/png/mylar.png",
       "website": "https://mylarcomics.com",
       "port": 7410,
-      "updated": "2026-11-13"
+      "updated": "2026-11-21"
     },
     {
       "id": "canopy-netdata",
