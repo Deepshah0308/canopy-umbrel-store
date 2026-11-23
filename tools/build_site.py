@@ -21,7 +21,7 @@ import yaml
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SITE = os.path.join(ROOT, "docs", "index.html")
 START, END = "<!-- apps:start -->", "<!-- apps:end -->"
-CATEGORY_NAMES = {"media": "Media", "files": "Files & notes", "social": "Reading", "networking": "Downloads & network",
+CATEGORY_NAMES = {"media": "Media", "files": "Files & notes", "social": "Reading & newsletters", "networking": "Downloads & network",
                   "automation": "Home", "developer": "Developer", "finance": "Finance", "ai": "AI"}
 
 

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-22",
+  "generated": "2026-11-23",
   "apps": [
     {
       "id": "canopy-yams",
@@ -43,7 +43,7 @@
       "icon": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/feishin.svg",
       "website": "https://github.com/jeffvli/feishin",
       "port": 7408,
-      "updated": "2026-10-23"
+      "updated": "2026-11-04"
     },
     {
       "id": "canopy-gatus",
@@ -57,6 +57,17 @@
       "updated": "2026-11-18"
     },
     {
+      "id": "canopy-grist",
+      "name": "Grist",
+      "version": "1.7.22",
+      "tagline": "Spreadsheets that work like a database, an Airtable alternative",
+      "category": "files",
+      "icon": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/grist.svg",
+      "website": "https://www.getgrist.com",
+      "port": 7416,
+      "updated": null
+    },
+    {
       "id": "canopy-jdownloader",
       "name": "JDownloader 2",
       "version": "26.09.1",
@@ -65,7 +76,7 @@
       "icon": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/jdownloader.svg",
       "website": "https://jdownloader.org",
       "port": 7402,
-      "updated": "2026-10-23"
+      "updated": "2026-11-04"
     },
     {
       "id": "canopy-linkding",
@@ -76,7 +87,18 @@
       "icon": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/linkding.svg",
       "website": "https://linkding.link",
       "port": 7405,
-      "updated": "2026-10-23"
+      "updated": "2026-11-04"
+    },
+    {
+      "id": "canopy-listmonk",
+      "name": "Listmonk",
+      "version": "6.2.0",
+      "tagline": "Newsletters and mailing lists you run yourself",
+      "category": "social",
+      "icon": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/listmonk.svg",
+      "website": "https://listmonk.app",
+      "port": 7415,
+      "updated": null
     },
     {
       "id": "canopy-miniflux",
@@ -120,7 +142,7 @@
       "icon": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/nzbget.svg",
       "website": "https://nzbget.com",
       "port": 7407,
-      "updated": "2026-10-23"
+      "updated": "2026-11-04"
     },
     {
       "id": "canopy-openhab",

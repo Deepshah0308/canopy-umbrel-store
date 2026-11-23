@@ -1,5 +1,10 @@
 # Changelog
 
+## Canopy (23 November 2026)
+- **New app: Grist 1.7.22**, spreadsheets that work like a database (an Airtable alternative), on port 7416. It opens behind your Umbrel login with no separate account, and runs formulas in Grist's gVisor sandbox when your Umbrel supports it.
+- **New app: Listmonk 6.2.0**, newsletters and mailing lists (a Mailchimp alternative), on port 7415. Sign in with the username and password shown on its App Store page.
+- Both were asked for in Umbrel's app-request thread and aren't in Umbrel's own store.
+
 ## Canopy (18 November 2026)
 - **Screenshots in the App Store:** YAMS, Bigcapital, Gatus and RustFS now show a screenshot gallery on their Umbrel App Store pages, like the official store's apps.
 

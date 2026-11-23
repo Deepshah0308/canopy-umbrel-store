@@ -62,6 +62,8 @@ It's also the home of **YAMS**, a complete media server (Jellyfin, Sonarr, Radar
 | **RustFS** | S3-compatible object storage, a MinIO alternative | The other package is an early alpha that gives every install the same secret key |
 | **Gatus** | Uptime monitor and status page for your apps and websites | The other package is on 5.13; this is 5.38 |
 | **Bigcapital** | Accounting, invoicing and inventory for small businesses | Not on any Umbrel store |
+| **Grist** | Spreadsheets that work like a database, an Airtable alternative | Asked for on Umbrel's forum; not in Umbrel's store |
+| **Listmonk** | Newsletters and mailing lists, a Mailchimp alternative | Asked for on Umbrel's forum; not in Umbrel's store |
 
 The website always shows each app's current version and when it was last updated.
 <!-- --8<-- [end:apps] -->

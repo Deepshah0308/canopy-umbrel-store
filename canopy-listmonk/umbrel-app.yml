@@ -1,0 +1,26 @@
+manifestVersion: 1
+id: canopy-listmonk
+category: social
+name: Listmonk
+version: "6.2.0"
+tagline: "Newsletters and mailing lists you run yourself"
+icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/listmonk.svg
+description: >-
+  Listmonk sends newsletters and email campaigns to your own subscriber lists, like Mailchimp or Substack but on your Umbrel. Write campaigns in a visual editor, Markdown or HTML, segment subscribers, run double opt-in sign-up forms, and see opens and clicks. It's fast enough for lists of millions on modest hardware.
+
+
+  Sign in with the username and password shown on this page. To send email, add your mail provider's SMTP details (for example Amazon SES, Brevo, Mailgun or your own mail server) under Settings → SMTP, and set Settings → General → Root URL to the address people will use to reach Listmonk.
+developer: Kailash Nadh
+website: https://listmonk.app
+dependencies: []
+repo: https://github.com/knadh/listmonk
+support: https://github.com/Deepshah0308/canopy-umbrel-store/issues
+port: 7415
+gallery: []
+path: ""
+defaultUsername: "umbrel"
+deterministicPassword: true
+releaseNotes: >-
+  Listmonk 6.2.0, new to Umbrel.
+submitter: Deepshah0308
+submission: https://github.com/Deepshah0308/canopy-umbrel-store

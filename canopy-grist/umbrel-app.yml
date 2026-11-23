@@ -1,0 +1,26 @@
+manifestVersion: 1
+id: canopy-grist
+category: files
+name: Grist
+version: "1.7.22"
+tagline: "Spreadsheets that work like a database, an Airtable alternative"
+icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/grist.svg
+description: >-
+  Grist looks like a spreadsheet but thinks like a database. Columns have types (dates, choices, references to other tables), formulas are written in Python, and the same data can be shown as tables, cards, charts and forms on one page. Use it for budgets, inventories, CRMs, project trackers or anything you'd otherwise keep in Excel or Airtable.
+
+
+  Import and export Excel and CSV files, share forms that add rows, and keep every document on your Umbrel. Grist opens straight away behind your Umbrel login, with no separate account to create.
+developer: Grist Labs
+website: https://www.getgrist.com
+dependencies: []
+repo: https://github.com/gristlabs/grist-core
+support: https://github.com/Deepshah0308/canopy-umbrel-store/issues
+port: 7416
+gallery: []
+path: ""
+defaultUsername: ""
+defaultPassword: ""
+releaseNotes: >-
+  Grist 1.7.22, new to Umbrel.
+submitter: Deepshah0308
+submission: https://github.com/Deepshah0308/canopy-umbrel-store
