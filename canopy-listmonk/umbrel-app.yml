@@ -16,7 +16,10 @@ dependencies: []
 repo: https://github.com/knadh/listmonk
 support: https://github.com/Deepshah0308/canopy-umbrel-store/issues
 port: 7415
-gallery: []
+gallery:
+  - https://canopystore.app/gallery/canopy-listmonk/1.webp
+  - https://canopystore.app/gallery/canopy-listmonk/2.webp
+  - https://canopystore.app/gallery/canopy-listmonk/3.webp
 path: ""
 defaultUsername: "umbrel"
 deterministicPassword: true

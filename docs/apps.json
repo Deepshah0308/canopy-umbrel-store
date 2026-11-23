@@ -59,13 +59,13 @@
     {
       "id": "canopy-grist",
       "name": "Grist",
-      "version": "1.7.22",
+      "version": "1.7.22-1",
       "tagline": "Spreadsheets that work like a database, an Airtable alternative",
       "category": "files",
       "icon": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/grist.svg",
       "website": "https://www.getgrist.com",
       "port": 7416,
-      "updated": null
+      "updated": "2026-11-23"
     },
     {
       "id": "canopy-jdownloader",
@@ -98,7 +98,7 @@
       "icon": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/listmonk.svg",
       "website": "https://listmonk.app",
       "port": 7415,
-      "updated": null
+      "updated": "2026-11-23"
     },
     {
       "id": "canopy-miniflux",

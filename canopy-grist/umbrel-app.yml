@@ -2,7 +2,7 @@ manifestVersion: 1
 id: canopy-grist
 category: files
 name: Grist
-version: "1.7.22"
+version: "1.7.22-1"
 tagline: "Spreadsheets that work like a database, an Airtable alternative"
 icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/grist.svg
 description: >-
@@ -16,11 +16,14 @@ dependencies: []
 repo: https://github.com/gristlabs/grist-core
 support: https://github.com/Deepshah0308/canopy-umbrel-store/issues
 port: 7416
-gallery: []
+gallery:
+  - https://canopystore.app/gallery/canopy-grist/1.webp
+  - https://canopystore.app/gallery/canopy-grist/2.webp
+  - https://canopystore.app/gallery/canopy-grist/3.webp
 path: ""
 defaultUsername: ""
 defaultPassword: ""
 releaseNotes: >-
-  Grist 1.7.22, new to Umbrel.
+  Grist no longer gets stuck starting when its formula sandbox check hangs (seen on arm64): the check now gives up after 30 seconds and Grist runs formulas without the sandbox. Also adds screenshots to the App Store page.
 submitter: Deepshah0308
 submission: https://github.com/Deepshah0308/canopy-umbrel-store

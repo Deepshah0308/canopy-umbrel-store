@@ -1,5 +1,9 @@
 # Changelog
 
+## Grist 1.7.22-1 (23 November 2026)
+- **Fixed:** on some machines (seen on arm64), Grist's check for its formula sandbox could hang, so Grist never started. The check now gives up after 30 seconds and Grist starts without the sandbox.
+- Grist and Listmonk now show screenshots on their Umbrel App Store pages.
+
 ## Canopy (23 November 2026)
 - **New app: Grist 1.7.22**, spreadsheets that work like a database (an Airtable alternative), on port 7416. It opens behind your Umbrel login with no separate account, and runs formulas in Grist's gVisor sandbox when your Umbrel supports it.
 - **New app: Listmonk 6.2.0**, newsletters and mailing lists (a Mailchimp alternative), on port 7415. Sign in with the username and password shown on its App Store page.
