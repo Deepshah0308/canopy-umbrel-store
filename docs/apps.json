@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-23",
+  "generated": "2026-11-24",
   "apps": [
     {
       "id": "canopy-yams",
@@ -43,7 +43,7 @@
       "icon": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/feishin.svg",
       "website": "https://github.com/jeffvli/feishin",
       "port": 7408,
-      "updated": "2026-11-04"
+      "updated": "2026-10-23"
     },
     {
       "id": "canopy-gatus",
@@ -76,7 +76,7 @@
       "icon": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/jdownloader.svg",
       "website": "https://jdownloader.org",
       "port": 7402,
-      "updated": "2026-11-04"
+      "updated": "2026-10-23"
     },
     {
       "id": "canopy-linkding",
@@ -87,7 +87,7 @@
       "icon": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/linkding.svg",
       "website": "https://linkding.link",
       "port": 7405,
-      "updated": "2026-11-04"
+      "updated": "2026-10-23"
     },
     {
       "id": "canopy-listmonk",
@@ -142,7 +142,7 @@
       "icon": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/nzbget.svg",
       "website": "https://nzbget.com",
       "port": 7407,
-      "updated": "2026-11-04"
+      "updated": "2026-10-23"
     },
     {
       "id": "canopy-openhab",
@@ -169,13 +169,13 @@
     {
       "id": "canopy-siyuan",
       "name": "SiYuan",
-      "version": "3.8.11",
+      "version": "3.8.12",
       "tagline": "Private notes and knowledge base with blocks, links and databases",
       "category": "files",
       "icon": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/siyuan.svg",
       "website": "https://b3log.org/siyuan/en/",
       "port": 7404,
-      "updated": "2026-11-19"
+      "updated": "2026-11-24"
     }
   ]
 }
