@@ -7,7 +7,7 @@ services:
       APP_PORT: 5800
 
   jdownloader:
-    image: jlesage/jdownloader-2:v26.09.1@sha256:bd6cd2fdc72818f30207e677b33cd7f1b425048c4e7132624e541e99f992be4c
+    image: jlesage/jdownloader-2:v26.11.1@sha256:2619aae2d501abfcaba01862882716840068fcc25b4584b656ff0cc16d76f2c0
     restart: on-failure
     environment:
       USER_ID: "1000"
