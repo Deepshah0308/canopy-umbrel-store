@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-25",
+  "generated": "2026-11-26",
   "apps": [
     {
       "id": "canopy-yams",
@@ -70,13 +70,13 @@
     {
       "id": "canopy-jdownloader",
       "name": "JDownloader 2",
-      "version": "26.11.1",
+      "version": "26.11.2",
       "tagline": "Download manager for file hosts, video sites and link lists",
       "category": "networking",
       "icon": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/jdownloader.svg",
       "website": "https://jdownloader.org",
       "port": 7402,
-      "updated": "2026-11-25"
+      "updated": "2026-11-26"
     },
     {
       "id": "canopy-linkding",

@@ -2,7 +2,7 @@ manifestVersion: 1
 id: canopy-jdownloader
 category: networking
 name: JDownloader 2
-version: "26.11.1"
+version: "26.11.2"
 tagline: "Download manager for file hosts, video sites and link lists"
 icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/jdownloader.svg
 description: >-
@@ -26,6 +26,6 @@ defaultPassword: ""
 permissions:
   - STORAGE_DOWNLOADS
 releaseNotes: >-
-  Updated JDownloader 2 automatically by Canopy: jdownloader-2 v26.09.1 → v26.11.1. What's new: https://github.com/jlesage/docker-jdownloader-2/releases
+  Updated JDownloader 2 automatically by Canopy: jdownloader-2 v26.11.1 → v26.11.2. What's new: https://github.com/jlesage/docker-jdownloader-2/releases
 submitter: Deepshah0308
 submission: https://github.com/Deepshah0308/canopy-umbrel-store
