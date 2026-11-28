@@ -2,7 +2,7 @@ manifestVersion: 1
 id: canopy-bigcapital
 category: finance
 name: Bigcapital
-version: "0.25.45-2"
+version: "0.25.45-3"
 tagline: "Accounting and inventory for small businesses"
 icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/png/bigcapital.png
 description: >-
@@ -29,8 +29,7 @@ gallery:
 path: ""
 defaultPassword: ""
 releaseNotes: >-
-  The app's terminal (Settings → Advanced → Terminal → Bigcapital) now opens Bigcapital's server,
-  where its command-line tools are, instead of the web proxy.
+  Updated Bigcapital automatically by Canopy: caddy 2.11.9-alpine rebuilt with the latest security fixes; webapp v0.25.45 → v0.25.48; server v0.25.45 → v0.25.48; mariadb 10.11.19 → 10.11.20; gotenberg 7.10.2 → 9.10.3; rustfs 1.0.5 → 1.0.7. What's new: https://github.com/bigcapitalhq/bigcapital/releases
 submitter: Deepshah0308
 submission: https://github.com/Deepshah0308/canopy-umbrel-store
 defaultShell: server
