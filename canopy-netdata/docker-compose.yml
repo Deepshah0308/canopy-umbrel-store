@@ -35,7 +35,7 @@ services:
 
   # Read-only view of Docker: lists containers so Netdata can name them, nothing else.
   docker:
-    image: linuxserver/socket-proxy:3.4.8@sha256:6beb1743581ec3b2ed1a2bafd617e8c7a1d7ae2fe835293e333327618fc2b925
+    image: linuxserver/socket-proxy:3.4.9@sha256:b345bc46664acbabec2086875fa3b2d8cb248a06786dd55806f597055b27b201
     restart: on-failure
     read_only: true
     tmpfs:
